@@ -15,3 +15,8 @@ the console, with three exceptions:
 By print, we are referring to console.log.
 
 */
+
+// Print numbers from 100 to 200, inclusive.
+for (i = 100; i <= 200; i++) {
+  console.log(i);
+}

@@ -18,5 +18,11 @@ By print, we are referring to console.log.
 
 // Print numbers from 100 to 200, inclusive.
 for (i = 100; i <= 200; i++) {
-  console.log(i);
+  // Loopy numbers are printed as "Loopy" instead.
+  if (i % 3 === 0) {
+    console.log("Loopy");
+  } else {
+    // Print the number.
+    console.log(i);
+  }
 }

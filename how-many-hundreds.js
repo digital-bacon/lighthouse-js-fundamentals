@@ -33,7 +33,11 @@ BREAK IT DOWN:
   - We can use Math.floor(number) to remove the decimal
 
 ALGORITHM:
-- 
+- Call howManyHundreds(number)
+- Within howManyHundreds()
+  - divide the value of @number by 100
+  - perform Math.floor on the result
+  - return the result
 
 */
 
@@ -43,7 +47,7 @@ ALGORITHM:
  * @returns {number} The number of hundreds that can be made
  */
  const howManyHundreds = (number) => {
-   
+   return(Math.floor(number/100));
  }
 
 // Test cases

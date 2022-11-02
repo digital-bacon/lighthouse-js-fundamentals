@@ -28,8 +28,18 @@ ALGORITHM:
 - `chooseStations(stations)` is called with the stations array as an
 argument.
 - within `chooseStations()`:
+  - Add a way to store the eligible stations, which will be output by
+  this function  
+    - Create an empty array variable named eligibleStations.
   - Iterate through the array items with a for...of statement.
-  - 
+  - Validate the current station as eligible as a voting station:
+    - Use an if...else statement to test capacity is 20 or more.
+      - if less than 20, use a continue statement to go to skip this 
+      station.
+    - If this station passes all validation, then add it's name to the 
+    `eligibleStations` array.
+      - Use an array.push() method.
+    - Use a `continue` statement to go to the next station.
 */
 
 /**
@@ -39,9 +49,16 @@ argument.
  * @returns {Array.<string>} With the names of qualified venues
  */
 const chooseStations = (stationsArray) => {
+  // Add a way to store the eligible stations.
+  const eligibleStations = [];
+  // Iterate through the stations in the provided array argument.
   for (const station of stationsArray) {
-    console.log(station);
+    //If a station has a capacity of less than 20, skip it.
+    if (station[1] < 20) continue;
+    eligibleStations.push(station[0]);
   }
+  // Test the output.
+  console.log(eligibleStations);
 }
 
 // Dataset of potential voting stations, as an array of array objects.

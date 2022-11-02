@@ -6,7 +6,8 @@ someone's age using just their date of birth. In this challenge, we
 will write a function that determines someone's age, given their date 
 of birth.
 
-Define a function called ageCalculator. This function should take 3 parameters:
+Define a function called ageCalculator. This function should take 3 
+parameters:
 
   - @name – a string representing someone's name
   - @yearOfBirth – a number representing their year of birth
@@ -19,8 +20,10 @@ the person is. For example, if we called:
 follows. "Suzie is 32 years old."
 
 ALGORITHM:
-- 
-
+- Within ageCalculator()
+  - Calculate the current age by subtracting @yearOfBirth from 
+  @currentYear
+    - Return the result.
 */
 
 /**
@@ -31,5 +34,9 @@ ALGORITHM:
  * @returns {string>} A string explaining how old a person is
  */
  const ageCalculator = function (name, yearOfBirth, currentYear) {
-
+  return (currentYear - yearOfBirth);
  }
+
+ // Test case.
+ // Should print `32`.
+console.log(ageCalculator("Suzie", 1983, 2015));

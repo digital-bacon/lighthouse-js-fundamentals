@@ -26,25 +26,27 @@ of the shape.
 undefined.
 
 ALGORITHM:
-- 
+- calculateRectangleArea()
+  - if any of the given parameters are negative, return undefined
+  - return the area of the rectangle using formula: length × width
 
 */
 
 
 /**
  * 
- * @param {number} length The length of the rectangle
- * @param {number} width The width of the rectangle
+ * @param {number} length The length of the rectangle, min value 0
+ * @param {number} width The width of the rectangle, min value 0
  * @returns {number|undefined} The area of the rectangle
  */
  function calculateRectangleArea(length, width) {
-
+  if (length < 0 || width < 0) return;
  }
 
 /**
  * 
- * @param {number} base The base of the triangle
- * @param {number} height The height of the triangle
+ * @param {number} base The base of the triangle, min value 0
+ * @param {number} height The height of the triangle, min value 0
  * @returns {number|undefined} The area of the triangle
  */
  function calculateTriangleArea(base, height) {
@@ -53,8 +55,8 @@ ALGORITHM:
 
 /**
  * 
- * @param {number} radius The radius of the circle
- * @returns {number|undefined} The area of the circle
+ * @param {number} radius The radius of the circle, min value 0
+ * @returns {number|undefined} The area of the circle, min value 0
  */ 
  function calculateCircleArea(radius) {
 

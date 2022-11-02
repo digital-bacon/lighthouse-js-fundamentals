@@ -67,6 +67,7 @@ ALGORITHM:
  */ 
  function calculateCircleArea(radius) {
   if (radius < 0) return;
+  return (Math.PI * (radius ** 2));
  }
 
 // Test cases

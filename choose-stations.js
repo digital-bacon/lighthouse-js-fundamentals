@@ -64,11 +64,9 @@ const chooseStations = (stationsArray) => {
     // Station is eligible, add it to the eligible stations.
     eligibleStations.push(station[0]);
   }
-  // Test the output.
-  console.log(eligibleStations);
+  // Return the eligible stations.
+  return eligibleStations;
 }
-
-
 
 // Dataset of potential voting stations, as an array of array objects.
 const stations = [

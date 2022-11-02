@@ -59,14 +59,14 @@ ALGORITHM:
  */
  const finalPosition = function (moves) {
   // Current position as x,y coordinates.
-  let coordinates = [0, 0];
+   let coordinates = [0, 0];
   // Calculate moves.
-  for (const move of moves) {
-    coordinates = calcMovement(move, coordinates);
-  }
+   for (const move of moves) {
+     coordinates = calcMovement(move, coordinates);
+   }
   // Print the current location to console.
-  return coordinates;
-}
+   return coordinates;
+ }
 
 /**
  * 
@@ -74,13 +74,13 @@ ALGORITHM:
  * @param {Array.<number,number>} coordinates With initaly [x,y] coordinates
  * @returns {Array.<number,number>} With the [x,y] coordinates after all movements have been calculated
  */
-function calcMovement (direction, coordinates) {
+ function calcMovement (direction, coordinates) {
   switch (true) {
-    case (direction === 'north') : coordinates[1] += 1; break; // Move 1 grid square north.
-    case (direction === 'south') : coordinates[1] -= 1; break; // Move 1 grid square south.
-    case (direction === 'east') : coordinates[0] += 1; break; // Move 1 grid square east.
-    case (direction === 'west') : coordinates[0] -= 1; break; // Move 1 grid square west.
-    default: break;
+  case (direction === 'north') : coordinates[1] += 1; break; // Move 1 grid square north.
+  case (direction === 'south') : coordinates[1] -= 1; break; // Move 1 grid square south.
+  case (direction === 'east') : coordinates[0] += 1; break; // Move 1 grid square east.
+  case (direction === 'west') : coordinates[0] -= 1; break; // Move 1 grid square west.
+  default: break;
   }
   return coordinates;
 }

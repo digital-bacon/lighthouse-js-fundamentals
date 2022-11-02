@@ -49,14 +49,14 @@ argument.
 /**
  * A function that takes in an array of possible voting stations, and 
  * then only returns the names of the stations that are appropriate.
- * @param {Array.<string,number,string} stationsArray Name of venue, capacity, venue type
+ * @param {Array.<string,number,string} stations Name of venue, capacity, venue type
  * @returns {Array.<string>} With the names of qualified venues
  */
-const chooseStations = function (stationsArray) {
+const chooseStations = function (stations) {
   // Add a way to store the eligible stations.
   const eligibleStations = [];
   // Verify the voting stations as eligible.
-  for (const station of stationsArray) {
+  for (const station of stations) {
     // A voting station must have a capacity of at least 20.
     if (station[1] < 20) continue; // continue will skip this station.
     // A voting station must be a school or a community centre. 

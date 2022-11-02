@@ -14,8 +14,8 @@ of possible voting stations, and then only returns the names of the
 stations that are appropriate.
 
 CONSTRAINTS: 
-1. A voting station must have a capacity of at least 20.
-2. A voting station must be a school or a community centre.
+1. A voting station must have a capacity of at least 20. 
+2. A voting station must be a school or a community centre. 
 3. The challenge requires a `chooseStations(stations)` function that 
 takes in a provided array of possible voting stations, and then only 
 returns the names of the stations that are appropriate.
@@ -25,7 +25,11 @@ Calling `chooseStations(stations);` should output an array:
 ['Bright Lights Elementary', 'Moose Mountain Community Centre']
 
 ALGORITHM:
-- 
+- `chooseStations(stations)` is called with the stations array as an
+argument.
+- within `chooseStations()`:
+  - Iterate through the array items with a for...of statement.
+  - 
 */
 
 // Dataset of potential voting stations, as an array of array objects.
@@ -36,4 +40,4 @@ const stations = [
 ];
 
 // Output the qualified voting stations.
-//chooseStations(stations);
+// chooseStations(stations);

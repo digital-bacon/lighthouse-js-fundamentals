@@ -50,7 +50,7 @@ ALGORITHM:
  * @returns {number|undefined} The area of the triangle
  */
  function calculateTriangleArea(base, height) {
-
+  if (base < 0 || height < 0) return;
  }
 
 /**
@@ -59,7 +59,7 @@ ALGORITHM:
  * @returns {number|undefined} The area of the circle, min value 0
  */ 
  function calculateCircleArea(radius) {
-
+  if (radius < 0) return;
  }
 
 // Test cases

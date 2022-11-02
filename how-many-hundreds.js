@@ -19,15 +19,27 @@ howManyHundreds(520);	  // 5
 howManyHundreds(99);	  // 0
 howManyHundreds(0);	    // 0
 
+CONSTRAINTS:
+1. The result should be a whole number.
+2. The function must work with an input less than 100.
+3. The function must work with an input of 0.
+
 ALGORITHM:
 - 
 */
 
 /**
- * A function that determines how many hundreds can be made from a number.
+ * A function that determines how many hundreds can be made from a number
  * @param {number} number The input number
  * @returns {number} The number of hundreds that can be made
  */
  const howManyHundreds = (number) => {
    
  }
+
+// Test cases
+howManyHundreds(1000);  // 10
+howManyHundreds(894);	  // 8
+howManyHundreds(520);	  // 5
+howManyHundreds(99);	  // 0
+howManyHundreds(0);	    // 0

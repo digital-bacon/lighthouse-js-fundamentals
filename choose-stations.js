@@ -52,7 +52,7 @@ argument.
  * @param {Array.<string,number,string} stationsArray Name of venue, capacity, venue type
  * @returns {Array.<string>} With the names of qualified venues
  */
-const chooseStations = (stationsArray) => {
+const chooseStations = function (stationsArray) {
   // Add a way to store the eligible stations.
   const eligibleStations = [];
   // Verify the voting stations as eligible.

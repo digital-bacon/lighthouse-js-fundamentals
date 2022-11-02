@@ -24,7 +24,13 @@ The finalPosition function should return the array:
 [-1, 4]
 
 ALGORITHM:
-- 
+- `finalPosition(moves)` is called with the moves array as an argument.
+- within `finalPosition()`:
+  - Add a way to store the final x,y coordinates which will be output 
+  by this function  
+    - Create an array variable named coordinates with initial value of 
+    [0,0] to match the default starting position.
+  - Return 'coordinates'.
 */
 
 /**

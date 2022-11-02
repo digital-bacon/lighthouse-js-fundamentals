@@ -46,9 +46,7 @@ ALGORITHM:
  * @param {number} number The input number
  * @returns {number} The number of hundreds that can be made
  */
- const howManyHundreds = (number) => {
-   return(Math.floor(number/100));
- }
+ const howManyHundreds = (number) => Math.floor(number / 100);
 
 // Test cases
 console.log(howManyHundreds(1000), "=?", 10);

@@ -35,7 +35,7 @@ ALGORITHM:
  * @returns {string>} A string explaining how old a person is
  */
  const ageCalculator = (name, yearOfBirth, currentYear) => {
-  return (`${name} is ${currentYear - yearOfBirth} years old.`);
+   return (`${name} is ${currentYear - yearOfBirth} years old.`);
  }
 
 // Test case.

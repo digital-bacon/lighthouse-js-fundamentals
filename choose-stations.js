@@ -75,5 +75,5 @@ const stations = [
   ['Moose Mountain Community Centre', 45, 'community centre']
 ];
 
-// Output the qualified voting stations.
+// Get an array of the qualified voting stations.
 chooseStations(stations);

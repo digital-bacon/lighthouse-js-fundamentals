@@ -57,6 +57,7 @@ ALGORITHM:
  */
  function calculateTriangleArea(base, height) {
   if (base < 0 || height < 0) return;
+  return (base * height / 2);
  }
 
 /**

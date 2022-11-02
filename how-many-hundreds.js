@@ -24,8 +24,17 @@ CONSTRAINTS:
 2. The function must work with an input less than 100.
 3. The function must work with an input of 0.
 
+BREAK IT DOWN:
+- Start with a number that's easy to understand
+  - The number 200 has two 100's in it
+  - To calculate this, we would divide 200 by 100, resulting in 2
+- Now, for a more complicated number, like 220.
+  - Dividing 220 by 100 equals 2.2
+  - We can use Math.floor(number) to remove the decimal
+
 ALGORITHM:
 - 
+
 */
 
 /**

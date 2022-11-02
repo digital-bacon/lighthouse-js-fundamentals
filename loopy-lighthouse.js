@@ -18,8 +18,11 @@ By print, we are referring to console.log.
 
 // Print numbers from 100 to 200, inclusive.
 for (i = 100; i <= 200; i++) {
+  // LoopyLighthouse numbers are printed as "LoopyLighthouse" instead.
+  if ((i % 3 === 0) && (i % 4 === 0)) {
+    console.log("LoopyLighthouse");
   // Loopy numbers are printed as "Loopy" instead.
-  if (i % 3 === 0) {
+  } else if (i % 3 === 0) {
     console.log("Loopy");
   // Lighthouse numbers are printed as "Lighthouse" instead.
   } else if (i % 4 === 0) {

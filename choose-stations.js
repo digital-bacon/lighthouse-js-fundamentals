@@ -33,9 +33,13 @@ argument.
     - Create an empty array variable named eligibleStations.
   - Iterate through the array items with a for...of statement.
   - Validate the current station as eligible as a voting station:
-    - Use an if...else statement to test capacity is 20 or more.
+    - Use an if...else statement to test capacity meets requirements.
       - if less than 20, use a continue statement to go to skip this 
       station.
+    - Use an if...else statement to test if station type meets 
+    requirements.
+      - if not a school or community centre, use a continue statement
+      to go to skip this station.
     - If this station passes all validation, then add it's name to the 
     `eligibleStations` array.
       - Use an array.push() method.
@@ -53,8 +57,10 @@ const chooseStations = (stationsArray) => {
   const eligibleStations = [];
   // Iterate through the stations in the provided array argument.
   for (const station of stationsArray) {
-    //If a station has a capacity of less than 20, skip it.
-    if (station[1] < 20) continue;
+    // A voting station must have a capacity of at least 20.
+    if (station[1] < 20) continue; // continue will skip this station.
+    // A voting station must be a school or a community centre. 
+    if (station[2] !== "school" && station[2] !== "community centre") continue; // continue will skip this station.
     eligibleStations.push(station[0]);
   }
   // Test the output.

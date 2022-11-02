@@ -23,7 +23,8 @@ ALGORITHM:
 - Within ageCalculator()
   - Calculate the current age by subtracting @yearOfBirth from 
   @currentYear
-    - Return the result.
+  - Add the person's name and other words to the result.
+  - Return the result.
 */
 
 /**
@@ -33,10 +34,16 @@ ALGORITHM:
  * @param {number} currentYear The calendar year
  * @returns {string>} A string explaining how old a person is
  */
- const ageCalculator = function (name, yearOfBirth, currentYear) {
-  return (currentYear - yearOfBirth);
+ const ageCalculator = (name, yearOfBirth, currentYear) => {
+  return (`${name} is ${currentYear - yearOfBirth} years old.`);
  }
 
- // Test case.
- // Should print `32`.
+// Test case.
+// Should print "Suzie is 32 years old."
 console.log(ageCalculator("Suzie", 1983, 2015));
+
+// Additional test cases.
+// Should print "Miranda is 32 years old."
+console.log(ageCalculator("Miranda", 1983, 2015));
+// Should print "Ferdinand is 27 years old."
+console.log(ageCalculator("Ferdinand", 1988, 2015));

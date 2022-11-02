@@ -43,7 +43,7 @@ argument.
     - If this station passes all validation, then add it's name to the 
     `eligibleStations` array.
       - Use an array.push() method.
-    - Use a `continue` statement to go to the next station.
+  - Return the eligibleStations array.
 */
 
 /**

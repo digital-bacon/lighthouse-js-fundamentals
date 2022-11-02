@@ -41,7 +41,10 @@ ALGORITHM:
  * @returns {Array.<number>} With the [x,y] coordinates after all movements have been calculated
  */
  const finalPosition = function (moves) {
-  // Your code in here ...
+  // Add an array to record our current position. The parade starts at [0,0];
+  let coordinates = [0,0];
+  // Print the current location to console.
+  console.log(coordinates);
 }
 
 // Dataset of parade movements.

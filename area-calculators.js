@@ -29,7 +29,12 @@ ALGORITHM:
 - calculateRectangleArea()
   - if any of the given parameters are negative, return undefined
   - return the area of the rectangle using formula: length × width
-
+- calculateTriangleArea()
+  - if any of the given parameters are negative, return undefined
+  - return the area of the rectangle using formula: base × height / 2
+- calculateCircleArea()
+  - if any of the given parameters are negative, return undefined
+  - return the area of the rectangle using formula: π × radius(squared)
 */
 
 

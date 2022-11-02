@@ -30,6 +30,8 @@ ALGORITHM:
   by this function  
     - Create an array variable named coordinates with initial value of 
     [0,0] to match the default starting position.
+    - Iterate through the provided moves argument array.
+      - print the current move to the console.
   - Return 'coordinates'.
 */
 
@@ -43,6 +45,10 @@ ALGORITHM:
  const finalPosition = function (moves) {
   // Add an array to record our current position. The parade starts at [0,0];
   let coordinates = [0,0];
+  // Calculate moves.
+  for (const move of moves) {
+    console.log(move);
+  }
   // Print the current location to console.
   console.log(coordinates);
 }

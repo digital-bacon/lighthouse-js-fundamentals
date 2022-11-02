@@ -46,6 +46,7 @@ ALGORITHM:
  */
  function calculateRectangleArea(length, width) {
   if (length < 0 || width < 0) return;
+  return (length * width);
  }
 
 /**

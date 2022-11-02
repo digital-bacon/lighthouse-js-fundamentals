@@ -32,11 +32,11 @@ argument.
   this function  
     - Create an empty array variable named eligibleStations.
   - Iterate through the array items with a for...of statement.
-  - Validate the current station as eligible as a voting station:
+  - Verify the current station as eligible as a voting station:
     - Use an if...else statement to test capacity meets requirements.
       - if less than 20, use a continue statement to go to skip this 
       station.
-    - Use an if...else statement to test if station type meets 
+    - Use an if...else statement to test if venue type meets 
     requirements.
       - if not a school or community centre, use a continue statement
       to go to skip this station.
@@ -55,18 +55,20 @@ argument.
 const chooseStations = (stationsArray) => {
   // Add a way to store the eligible stations.
   const eligibleStations = [];
-  // Iterate through the stations in the provided array argument.
+  // Verify the voting stations as eligible.
   for (const station of stationsArray) {
     // A voting station must have a capacity of at least 20.
     if (station[1] < 20) continue; // continue will skip this station.
     // A voting station must be a school or a community centre. 
     if (station[2] !== "school" && station[2] !== "community centre") continue; // continue will skip this station.
-    // Add the station to the eligible stations.
+    // Station is eligible, add it to the eligible stations.
     eligibleStations.push(station[0]);
   }
   // Test the output.
   console.log(eligibleStations);
 }
+
+
 
 // Dataset of potential voting stations, as an array of array objects.
 const stations = [

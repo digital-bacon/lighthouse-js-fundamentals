@@ -32,6 +32,16 @@ argument.
   - 
 */
 
+/**
+ * A function that takes in an array of possible voting stations, and 
+ * then only returns the names of the stations that are appropriate.
+ * @param {Array.<string,number,string} stationsArray Name of venue, capacity, venue type
+ * @returns {Array.<string>} With the names of qualified venues
+ */
+const chooseStations = (stationsArray) => {
+
+}
+
 // Dataset of potential voting stations, as an array of array objects.
 const stations = [
   ['Big Bear Donair', 10, 'restaurant'],
@@ -40,4 +50,4 @@ const stations = [
 ];
 
 // Output the qualified voting stations.
-// chooseStations(stations);
+chooseStations(stations);

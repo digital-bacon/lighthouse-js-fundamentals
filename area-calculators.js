@@ -45,8 +45,8 @@ ALGORITHM:
  * @returns {number|undefined} The area of the rectangle
  */
  function calculateRectangleArea(length, width) {
-  if (length < 0 || width < 0) return;
-  return (length * width);
+   if (length < 0 || width < 0) return;
+   return (length * width);
  }
 
 /**
@@ -56,8 +56,8 @@ ALGORITHM:
  * @returns {number|undefined} The area of the triangle
  */
  function calculateTriangleArea(base, height) {
-  if (base < 0 || height < 0) return;
-  return (base * height / 2);
+   if (base < 0 || height < 0) return;
+   return (base * height / 2);
  }
 
 /**
@@ -66,8 +66,8 @@ ALGORITHM:
  * @returns {number|undefined} The area of the circle, min value 0
  */ 
  function calculateCircleArea(radius) {
-  if (radius < 0) return;
-  return (Math.PI * (radius ** 2));
+   if (radius < 0) return;
+   return (Math.PI * radius * radius);
  }
 
 // Test cases

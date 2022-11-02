@@ -32,7 +32,7 @@ ALGORITHM:
  * @param {string} name A person's name
  * @param {number} yearOfBirth The year the person was born
  * @param {number} currentYear The calendar year
- * @returns {string>} A string explaining how old a person is
+ * @returns {string} A string explaining how old a person is
  */
  const ageCalculator = (name, yearOfBirth, currentYear) => {
    return (`${name} is ${currentYear - yearOfBirth} years old.`);

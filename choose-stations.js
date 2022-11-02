@@ -39,7 +39,9 @@ argument.
  * @returns {Array.<string>} With the names of qualified venues
  */
 const chooseStations = (stationsArray) => {
-
+  for (const station of stationsArray) {
+    console.log(station);
+  }
 }
 
 // Dataset of potential voting stations, as an array of array objects.

@@ -61,6 +61,7 @@ const chooseStations = (stationsArray) => {
     if (station[1] < 20) continue; // continue will skip this station.
     // A voting station must be a school or a community centre. 
     if (station[2] !== "school" && station[2] !== "community centre") continue; // continue will skip this station.
+    // Add the station to the eligible stations.
     eligibleStations.push(station[0]);
   }
   // Test the output.

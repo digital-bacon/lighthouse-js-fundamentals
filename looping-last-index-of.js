@@ -23,13 +23,23 @@ CONSTRAINTS:
 2. The function should return the index of the last time the value 
 occurs in the array.
 3. The function will only accept an array as @array.
+4. If the value never occurs, the function should return -1
 
 BREAK IT DOWN:
-- 
+
 
 ALGORITHM:
-- 
-
+- Call lastIndexOf(@arrayToSearchm, @itemToFind)
+- Within lastIndexOf()
+  - Create a numeric variable named lastIndex with no initial value.
+  - Iterate backwards through the array.
+  - Using a for loop, declare a loop counter `i` with initial value
+  equal to the `array.length - 1`, a stop condition of `i >= 0`, and 
+  decrement with `i--`.
+    - Check the current array item `i` for a match to `itemToFind`.
+      - If matching, retrieve set `lastIndex` to the value of the loop 
+      counter. Stop decrementing with `break` keyword.
+  - Return `lastIndex`
 */
 
 /**

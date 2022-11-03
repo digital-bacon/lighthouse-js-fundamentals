@@ -21,9 +21,6 @@ concat([ 0, 3, 1 ], [ 9, 7, 2 ]);	// output: [ 0, 3, 1, 9, 7, 2 ]
 concat([], [ 9, 7, 2 ]);	// output: [ 9, 7, 2 ]
 concat([ 5, 10 ], []);	// output: [ 5, 10 ]
 
-JavaScript has a `.indexOf` function (which does something similar), 
-but you may not use it in this exercise.
-
 CONSTRAINTS:
 1. 
 

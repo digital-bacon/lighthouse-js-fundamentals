@@ -40,7 +40,7 @@ between two numbers.
       - Number.isInteger(@end) // true if integer
       - Number.isInteger(@step) // true if integer
   - @start, @end, or @step being undefined
-    - use a typeof operator to test for undefined
+    - completed with the above operation to test as integers
   - @start being greater than @end
     - use a greater than comparison operator
       - @start > @end
@@ -54,13 +54,11 @@ ALGORITHM:
   - Create an empty array named result to hold the result of the operations
   - Perform input validation on the provided arguments. Return result 
   immediately if any of these tests fail
-    - @start, @end, or @step must be integers
+    - @start, @end, or @step must be integers and cannot be undefined
       - Use a Number.isInteger() object method
         - Number.isInteger(@start) // true if integer
         - Number.isInteger(@end) // true if integer
         - Number.isInteger(@step) // true if integer
-    - @start, @end, or @step cannot be undefined
-      - use a typeof operator to test for undefined
     - @start being greater than @end
       - use a greater than comparison operator
         - @start > @end
@@ -85,22 +83,25 @@ ALGORITHM:
  const range = (start, end, step) => {
   let result = []; // The result of the operations
   // Perform validation of provided arguments
-  if (!validate(start)) return result;
-  if (start > end) return result;
-  if (!validate(end)) return result;
-  if (!validate(step)) return result;
-  if (step <= 0) return result;
+  validate(start)
   // Validation passed
   // Create an array of numbers from start to end counting by step
   for (let i = start; i <= end; (i += step)) {
     result.push(i);
   }
   return result;
-  // A helper function that validates inputs as Integers.
-  function validate(input) {
-    if (typeof input === 'undefined' || isNaN(input)) return false;
-    if (!Number.isInteger(input)) return false;
-    return true;
+  // A helper function that performs validation.
+  function validate() {
+    switch (true) {
+    case (Number.isInteger(start)):
+    case (Number.isInteger(end)):
+    case (Number.isInteger(step)):
+    case (start > end):
+    case (step <= 0):
+      return true;
+    default:
+      return false;
+    }
   }
  }
 

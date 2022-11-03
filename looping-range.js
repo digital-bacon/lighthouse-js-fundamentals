@@ -83,26 +83,17 @@ ALGORITHM:
  const range = (start, end, step) => {
   let result = []; // The result of the operations
   // Perform validation of provided arguments
-  if (validate(start) === false) return result;
+  if (!Number.isInteger(start) || !Number.isInteger(end) || !Number.isInteger(step)) {
+    return result;
+  }
+  if (start > end) return result
+  if (step <= 0) return result
   // Validation passed
   // Create an array of numbers from start to end counting by step
   for (let i = start; i <= end; (i += step)) {
     result.push(i);
   }
   return result;
-  // A helper function that performs validation.
-  function validate() {
-    switch (true) {
-    case (Number.isInteger(start)):
-    case (Number.isInteger(end)):
-    case (Number.isInteger(step)):
-    case (start > end):
-    case (step <= 0):
-      return true;
-    default:
-      return false;
-    }
-  }
  }
 
 // Test cases, using valid arguments

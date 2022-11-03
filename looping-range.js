@@ -31,14 +31,16 @@ between two numbers.
   the start number, the stop condition matching the end number, and 
   increment by 1 in each loop. 
     - Assign the loop counter as the array value
+- We need a way to iterate by @step, rather than 1 at a time.
+  - change the incrementor from `i++` to `i += step`.
 
 ALGORITHM:
 - Call range()
 - Within range():
   - Create an empty array named result to hold the result of the operations
   - Use a for loop to generate an array with an initial value matching 
-  the start number, the stop condition matching the end number, and 
-  increment by 1 in each loop.
+  @start, the stop condition matching @end, and increment the value of 
+  @step in each loop.
   - Assign the loop counter as the array value
   - return the array
 
@@ -53,7 +55,7 @@ ALGORITHM:
  */
  const range = (start, end, step) => {
   let result = []; // The result of the operations
-  for (let i = start; i <= end; i++) {
+  for (let i = start; i <= end; (i += step)) {
     result.push(i);
   }
   return result;

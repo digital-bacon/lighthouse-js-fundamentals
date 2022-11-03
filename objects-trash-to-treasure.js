@@ -50,12 +50,15 @@ minimum the following keys:
   - recycling <number>
   - compost <number>
 
-BREAK IT DOWN:
-- 
-
-
-ALGORITHM:
-- 
+ALGORITHM smartGarbage():
+- We need a way to ensure the trash type is valid.
+  - Create an array of valid trash types.
+  - Use `array.indexOf(trash)` to see if the provided trash type is
+  found in the array.
+    - if not found, -1 will be returned.
+    - if found, the index position matching 0 or more will be returned
+- We need a way to verify if a key exists programmatically
+  - use the `in` keyword to check for the key's existence in `bin`
 
 */
 
@@ -67,7 +70,13 @@ ALGORITHM:
  * @returns {Object} The updated trash bin object
  */
  const smartGarbage = (trash, bin) => {
-  
+  if (['compost', 'waste', 'recycling'].indexOf(trash) === -1) {
+    return bin; // return with no changes
+  }
+  if (trash in bin) {
+    // the trash type matches an existing key in the bin.
+  };
+  return bin;
  }
 
 // Test cases, using valid arguments

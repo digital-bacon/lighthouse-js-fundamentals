@@ -59,7 +59,10 @@ ALGORITHM smartGarbage():
     - if found, the index position matching 0 or more will be returned
 - We need a way to verify if a key exists programmatically
   - use the `in` keyword to check for the key's existence in `bin`
-
+- We need a way to modify a key directly, without knowing the name of 
+the key.
+  - because the trash parameter contains the value of the key to 
+  modify, we can use ES6 
 */
 
 /**
@@ -70,14 +73,29 @@ ALGORITHM smartGarbage():
  * @returns {Object} The updated trash bin object
  */
  const smartGarbage = (trash, bin) => {
+  // Ensure the trash being added is accepted in the bin
   if (['compost', 'waste', 'recycling'].indexOf(trash) === -1) {
     return bin; // return with no changes
   }
+  // Ensure the trash being added already exists in the bin
   if (trash in bin) {
-    // the trash type matches an existing key in the bin.
+    // Add the trash to the existing trash in the bin
+    bin[`${trash}`]++;
+  } else {
+    // Add a new pile of trash in the bin
+    bin[`${trash}`] = 1;
   };
   return bin;
  }
 
 // Test cases, using valid arguments
+// Add recycling to bin with at least 1 item existing of each trash type
 console.log(smartGarbage('recycling', { waste: 4, recycling: 2, compost: 5 }), "=?", { waste: 4, recycling: 3, compost: 5 });
+// Add waste to bin with at least 1 item existing of each trash type
+console.log(smartGarbage('waste', { waste: 4, recycling: 2, compost: 5 }), "=?", { waste: 5, recycling: 2, compost: 5 });
+// Add compost to bin with at least 1 item existing of each trash type
+console.log(smartGarbage('compost', { waste: 4, recycling: 2, compost: 5 }), "=?", { waste: 4, recycling: 2, compost: 6 });
+// Test add recycling to bin when no recycling exists in the bin
+console.log(smartGarbage('recycling', { waste: 4, compost: 5 }), "=?", { waste: 4, compost: 5, recycling: 1 });
+// Test add recycling to bin when the bin is empty
+console.log(smartGarbage('recycling', { }), "=?", { recycling: 1 });

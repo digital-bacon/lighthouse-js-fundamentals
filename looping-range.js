@@ -51,7 +51,7 @@ ALGORITHM:
  * @param {number} start A positive or negative integer
  * @param {*} end A positive or negative integer
  * @param {*} step A positive or negative integer 
- * @returns {Array<numbers>} An array of numbers from start to end counting by step
+ * @returns {Array<...numbers>} An array of numbers from start to end counting by step
  */
  const range = (start, end, step) => {
   let result = []; // The result of the operations

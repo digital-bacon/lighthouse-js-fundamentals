@@ -52,7 +52,11 @@ ALGORITHM:
  * @returns {Array<numbers>} An array of numbers from start to end counting by step
  */
  const range = (start, end, step) => {
-
+  let result = []; // The result of the operations
+  for (let i = start; i <= end; i++) {
+    result.push(i);
+  }
+  return result;
  }
 
 // Test cases

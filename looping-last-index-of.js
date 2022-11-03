@@ -49,7 +49,7 @@ ALGORITHM:
  * @returns {number} Index of the last time the item occurs in the array
  */
  const lastIndexOf = (arrayToSearch, itemToFind) => {
-  let lastIndex;
+  let lastIndex = -1;
   // - Iterate backwards through the array.
   for (i = arrayToSearch.length - 1; i >= 0; i--) {
     // Does the current item match the itemToFind?

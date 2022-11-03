@@ -84,13 +84,32 @@ ALGORITHM:
  */
  const range = (start, end, step) => {
   let result = []; // The result of the operations
+  // Perform validation of provided arguments
+  if (!validate(start)) return result;
+  if (start > end) return result;
+  if (!validate(end)) return result;
+  if (!validate(step)) return result;
+  if (step <= 0) return result;
+  // Validation passed
+  // Create an array of numbers from start to end counting by step
   for (let i = start; i <= end; (i += step)) {
     result.push(i);
   }
   return result;
+  // A helper function that validates inputs as Integers.
+  function validate(input) {
+    if (typeof input === 'undefined' || isNaN(input)) return false;
+    if (!Number.isInteger(input)) return false;
+    return true;
+  }
  }
 
-// Test cases
+// Test cases, using valid arguments
 console.log(range(0, 10, 2), "=?", [ 0, 2, 4, 6, 8, 10 ]);
 console.log(range(10, 30, 5), "=?", [ 10, 15, 20, 25, 30 ]);
 console.log(range(-5, 2, 3), "=?", [ -5, -2, 1 ]);
+// Test cases, using invalid arguments
+console.log(range(-5.2, "2", 3), "=?", [ ]); // Tests for non-integers
+console.log(range(undefined, 2, 3), "=?", [ ]); // Tests for undefined
+console.log(range(5, 2, 3), "=?", [ ]); // Tests for start that's greater than end
+console.log(range(5, 2, 0), "=?", [ ]); // Tests for end that's zero

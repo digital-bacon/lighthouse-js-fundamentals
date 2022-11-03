@@ -25,10 +25,22 @@ parameters, such as:
   - @step being 0, or negative
 
 BREAK IT DOWN:
-- 
+- We need a way to create an array of numbers with every number 
+between two numbers.
+  - Use a for loop to generate an array with an initial value matching 
+  the start number, the stop condition matching the end number, and 
+  increment by 1 in each loop. 
+    - Assign the loop counter as the array value
 
 ALGORITHM:
-- 
+- Call range()
+- Within range():
+  - Create an empty array named result to hold the result of the operations
+  - Use a for loop to generate an array with an initial value matching 
+  the start number, the stop condition matching the end number, and 
+  increment by 1 in each loop.
+  - Assign the loop counter as the array value
+  - return the array
 
 */
 

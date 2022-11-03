@@ -51,7 +51,7 @@ ALGORITHM:
  const lastIndexOf = (arrayToSearch, itemToFind) => {
   let lastIndex = -1;
   // - Iterate backwards through the array.
-  for (i = arrayToSearch.length - 1; i >= 0; i--) {
+  for (let i = arrayToSearch.length - 1; i >= 0; i--) {
     // Does the current item match the itemToFind?
     if (arrayToSearch[i] === itemToFind) {
       lastIndex = i;

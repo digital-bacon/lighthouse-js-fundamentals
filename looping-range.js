@@ -83,7 +83,7 @@ ALGORITHM:
  const range = (start, end, step) => {
   let result = []; // The result of the operations
   // Perform validation of provided arguments
-  validate(start)
+  if (validate(start) === false) return result;
   // Validation passed
   // Create an array of numbers from start to end counting by step
   for (let i = start; i <= end; (i += step)) {
@@ -110,7 +110,8 @@ console.log(range(0, 10, 2), "=?", [ 0, 2, 4, 6, 8, 10 ]);
 console.log(range(10, 30, 5), "=?", [ 10, 15, 20, 25, 30 ]);
 console.log(range(-5, 2, 3), "=?", [ -5, -2, 1 ]);
 // Test cases, using invalid arguments
-console.log(range(-5.2, "2", 3), "=?", [ ]); // Tests for non-integers
+console.log(range(-5, "2", 3), "=?", [ ]); // Tests for strings as numbers
+console.log(range(-5.2, 2, 3), "=?", [ ]); // Tests for non-integer numbers
 console.log(range(undefined, 2, 3), "=?", [ ]); // Tests for undefined
 console.log(range(5, 2, 3), "=?", [ ]); // Tests for start that's greater than end
 console.log(range(5, 2, 0), "=?", [ ]); // Tests for end that's zero

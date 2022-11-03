@@ -11,15 +11,10 @@ location. We're going to have to concatenate the arrays from both
 researchers into a single array.
 
 
-Instruction: Define a function called concat
-
-The function should, when given two arrays, concatenate the arrays
-together.
+Instruction: Define a function called `concat`
 
 EXPECTED OUTPUT:
-When this function is given an array and a value, it should return the 
-index of the last time the value occurs in the array. If the value 
-never occurs, the function should return -1.
+The function should, when given two arrays, concatenate the arrays together.
 
 concat([ 1, 2, 3 ], [ 4, 5, 6 ]);	// output: [ 1, 2, 3, 4, 5, 6 ]
 concat([ 0, 3, 1 ], [ 9, 7, 2 ]);	// output: [ 0, 3, 1, 9, 7, 2 ]

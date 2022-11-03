@@ -15,9 +15,9 @@ range(10, 30, 5);	// [ 10, 15, 20, 25, 30 ]
 range(-5, 2, 3);	// [ -5, -2, 1 ]
 
 CONSTRAINTS:
-1. The function takes 3 integer parameters: start, end, and step.
-2. The function should return an array of numbers from start to end 
-counting by step.
+1. The function takes 3 integer parameters: @start, @end, and @step.
+2. The function should return an array of numbers from @start to @end 
+counting by @step.
 3. The function should return an empty array [] if given incorrect 
 parameters, such as:
   - @start, @end, or @step being undefined
@@ -33,11 +33,40 @@ between two numbers.
     - Assign the loop counter as the array value
 - We need a way to iterate by @step, rather than 1 at a time.
   - change the incrementor from `i++` to `i += step`.
+- We need a way to ensure the provided arguments match the constraints
+  - @start, @end, or @step being non-integers
+    - Use a Number.isInteger() object method
+      - Number.isInteger(@start) // true if integer
+      - Number.isInteger(@end) // true if integer
+      - Number.isInteger(@step) // true if integer
+  - @start, @end, or @step being undefined
+    - use a typeof operator to test for undefined
+  - @start being greater than @end
+    - use a greater than comparison operator
+      - @start > @end
+  - @step being 0, or negative
+    - use an equal to or lesser than comparison operator
+      - @step <= 0
 
 ALGORITHM:
 - Call range()
 - Within range():
   - Create an empty array named result to hold the result of the operations
+  - Perform input validation on the provided arguments. Return result 
+  immediately if any of these tests fail
+    - @start, @end, or @step must be integers
+      - Use a Number.isInteger() object method
+        - Number.isInteger(@start) // true if integer
+        - Number.isInteger(@end) // true if integer
+        - Number.isInteger(@step) // true if integer
+    - @start, @end, or @step cannot be undefined
+      - use a typeof operator to test for undefined
+    - @start being greater than @end
+      - use a greater than comparison operator
+        - @start > @end
+    - @step being 0, or negative
+      - use an equal to or lesser than comparison operator
+        - @step <= 0
   - Use a for loop to generate an array with an initial value matching 
   @start, the stop condition matching @end, and increment the value of 
   @step in each loop.

@@ -47,17 +47,17 @@ characteristic, create a number variable named `entryScore`
  * @returns {string} The name of the winning submitter
  */
  const judgeVegetable = function (vegetables, metric) {
-  let indexOfHighest = 0;
-  let highScore = 0;
-  let entryScore = 0;
-  for (let i = 0; i < vegetables.length; i++) {
-    entryScore = vegetables[i][`${metric}`];
-    if (entryScore > highScore) {
-      indexOfHighest = i;
-      highScore = entryScore;
-    }
-  }
-  return vegetables[indexOfHighest].submitter;
+   let indexOfHighest = 0;
+   let highScore = 0;
+   let entryScore = 0;
+   for (let i = 0; i < vegetables.length; i++) {
+     entryScore = vegetables[i][`${metric}`];
+     if (entryScore > highScore) {
+       indexOfHighest = i;
+       highScore = entryScore;
+     }
+   }
+   return vegetables[indexOfHighest].submitter;
  }
 
  const vegetables = [

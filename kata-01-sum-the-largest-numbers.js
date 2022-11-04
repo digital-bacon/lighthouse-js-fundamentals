@@ -35,8 +35,23 @@ array.
 CONSTRAINTS:
 1. Do not use built-in helper functions like `.sort`, `.map`, `.filter`
 
-ALGORITHM sumLargestNumbers():
-- 
+ALGORITHM:
+We need a way to find the highest value in a data collection
+- Create a way to remember the highest number found so far
+- Create a way to remember the position of the highest number found 
+so far from the data collection
+STEP 1. Read through the data collection
+  - If the value of the current record is larger than the highest 
+  number found so far, update the highest number found so far to 
+  reflect this number, and also record where to find it in the data 
+  collection
+STEP 2.When done reading through the records
+  - Go back to the highest number we found in the records
+  - Remove the number from the data collection
+  - Remember the number somewhere else so we can come back to it 
+  later
+- Repeat the two steps above to find the second highest number.
+- Add the two highest numbers together and return the result.
 
 */
 
@@ -45,7 +60,7 @@ ALGORITHM sumLargestNumbers():
  * @param {Array,<number>} data An array of numbers
  * @returns {number} The sum of the two highest numbers
  */
- const sumLargestNumbers = function(array) {
+ const sumLargestNumbers = function(data) {
    
  }
 

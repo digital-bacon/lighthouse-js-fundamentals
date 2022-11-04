@@ -26,7 +26,15 @@ CONSTRAINTS:
 1. The highest numeric value in the given characteristic wins.
 
 ALGORITHM judgeVegetable():
-- 
+- Create a number variable named `highScore` with an initial value of 0
+to remember the index position of the top scoring vegetable
+- Iterate through the objects in the vegetables array.
+- Reference the key matching the `metric` parameter
+  - If the current key value is higher than the key value matching the 
+  current `highScore` record
+    - update `highScore` to reflect this loop counter number.
+- Return the name of the submitter from the array item matching the
+vegetable record matching `highScore`.
 */
 
 /**

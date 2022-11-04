@@ -25,12 +25,20 @@ ALGORITHM carPassing():
 /**
  * Function that returns an array that includes all of the elements in 
  * cars as well as our new element
- * @param {Array} cars The existing cars as objects in an array
- * @param {number} speed The speed of the car that's being added
- * @returns {Array} The updated array of cars
+ * @param {Array} cars A collection of cars as objects in an array
+ * @param {number} speed The speed of the new car being added
+ * @returns {Array} The updated collection of cars
  */
  const carPassing = function (cars, speed) {
-
+  // Write the new car record
+  const car = {
+    time: Date.now(),
+    speed: speed
+  }
+  // Add the new record to the existing collection of car records
+  cars.push(car);
+  // Return the updated collection of car records
+  return cars;
  }
 
  const cars = [

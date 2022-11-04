@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Check the console</h1>
+  <h2>
+    List of People:
+  </h2>
+  
+  <ul class='people'>
+    <li class='name'>
+      Clara
+    </li>
+    <li class='name'>
+      James
+    </li>
+    <li class='name'>
+      Sara
+    </li>
+  </ul>
+  <script>
+    /*
+    TODO:
+
+    1. Create an empty variable, `elm`
+    2. Find an element by its class name
+    3. Set `elm` to the variable that you found
+    4. Turn them into an array of ONLY strings (not DOM objects).
+    */
+    const elm = document.getElementsByClassName('name');
+    // add only the element text as strings in an array.
+    let arrStrings = [];
+    const toStrings = (elm) => {
+      let arrStrings = [];
+      for (let item of elm) {
+        arrStrings.push(item.innerText);
+      }
+      return arrStrings;
+    }
+    console.log(toStrings(elm));
+  </script>
+</body>
+</html>

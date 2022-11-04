@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      transition-property: width;
+      transition-duration: 1s;
+
+    }
+  </style>
+</head>
+<body>
+  <h1>Check the console</h1>
+  <h2>
+    List of People:
+  </h2>
+  
+  <ul class='people'>
+    <li class='name'>
+      Clara
+    </li>
+    <li class='name'>
+      James
+    </li>
+    <li class='name'>
+      Sara
+    </li>
+  </ul>
+
+  <img id='lhl-logo' src='https://cl.ly/2O3Y2w1R2j0v/Image%202016-07-20%20at%201.16.13%20PM.png' width='200' />
+  
+  <script>
+    /*
+    TODO:
+
+    1. Create an empty variable, `elm`
+    2. Find an element by its class name
+    3. Set `elm` to the variable that you found
+    4. Return the element to the console.
+    */
+    const elm = document.querySelector('.people');
+    // add only the element text as strings in an array.
+    console.log(elm);
+
+    // TODO:
+    // 1. Select the element who's attributes you'd like to change and set it to a variable
+    // 2. Change the width attribute of that element to 200 instead of the default 400 that it starts with in the HTML
+    // 3. Set a 1 second delay, then change it back to 400
+
+    let img = document.querySelector('#lhl-logo');
+    setTimeout(() => img.width = 400, 1000);
+    setTimeout(() => img.width = 600, 3000);
+    setTimeout(() => img.width = 200, 5000);
+
+    function setElementWidth(element, newWidth) {
+      element.width = newWidth;
+      return element;
+    }
+  </script>
+</body>
+</html>

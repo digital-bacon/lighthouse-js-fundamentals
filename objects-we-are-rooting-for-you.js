@@ -26,15 +26,18 @@ CONSTRAINTS:
 1. The highest numeric value in the given characteristic wins.
 
 ALGORITHM judgeVegetable():
-- Create a number variable named `indexOfHighest` with an initial value of 0
-to remember the index position of the top scoring vegetable
-- Iterate through the objects in the vegetables array.
-- Reference the key matching the `metric` parameter
-  - If the current key value is higher than the key value matching the 
-  current `indexOfHighest` record
+- To remember the index position of the top scoring vegetable, create 
+a number variable named `indexOfHighest` with an initial value of 0
+- To track the highest scoring vegetable entry as we loop through them 
+create a number variable named `highScore` with an initial value of 0 
+- To record the current entry's metric score for the given 
+characteristic, create a number variable named `entryScore` 
+- Loop through the objects in the vegetables array.
+  - Store the value of the key matching the `metric` in `entryScore`
+  - If `entryScore` is higher than the `highScore`
+    - update highScore to reflect the value of `entryScore`
     - update `indexOfHighest` to reflect this loop counter number.
-- Return the name of the submitter from the array item matching the
-vegetable record matching `indexOfHighest`.
+- Return the name of the submitter matching the highScore record
 */
 
 /**
@@ -45,9 +48,13 @@ vegetable record matching `indexOfHighest`.
  */
  const judgeVegetable = function (vegetables, metric) {
   let indexOfHighest = 0;
+  let highScore = 0;
+  let entryScore = 0;
   for (let i = 0; i < vegetables.length; i++) {
-    if (vegetables[i][`${metric}`] > vegetables[indexOfHighest][`${metric}`]) {
+    entryScore = vegetables[i][`${metric}`];
+    if (entryScore > highScore) {
       indexOfHighest = i;
+      highScore = entryScore;
     }
   }
   return vegetables[indexOfHighest].submitter;

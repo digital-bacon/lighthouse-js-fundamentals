@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      transition-property: width;
+      transition-duration: 1s;
+
+    }
+  </style>
+</head>
+<body>
+  <h1>Setting an attribute</h1>
+
+  <img id='lhl-logo' src='https://cl.ly/2O3Y2w1R2j0v/Image%202016-07-20%20at%201.16.13%20PM.png' width='200' />
+
+  <input id='name' />
+
+  <script>
+    /*
+    TODO:
+
+    1. Create an empty variable, `elm`
+    2. Find an element by its id
+    3. Set `elm` to the variable that you found
+    4. Modify the height of the element.
+    */
+
+    // Height attribute doesn't exist, use setAttribute to assign it
+    const elm = document.querySelector('#lhl-logo').setAttribute('height', 400);
+
+  </script>
+</body>
+</html>

@@ -22,10 +22,19 @@
     1. Create an empty variable, `elm`
     2. Find a paragraph by its tag name
     3. Set `elm` to the variable that you found
-    4. Alert the inner text of the element with `alert` function, it should alert the text "JavaScript on The DOM" or "Hello World!"
+    4. Turn them into an array of ONLY strings (not DOM objects).
     */
     const elm = document.getElementsByTagName('p');
-    console.log(elm);
+    // add only the paragraph text as strings in an array.
+    let arrStrings = [];
+    const toStrings = (elm) => {
+      let arrStrings = [];
+      for (let item of elm) {
+        arrStrings.push(item.innerText);
+      }
+      return arrStrings;
+    }
+    console.log(toStrings(elm));
   </script>
 </body>
 </html>

@@ -1,4 +1,6 @@
 const sayHello = function() {
-  console.log("Hello");
+  alert("Hello");
 }
 const timer = setInterval(sayHello, 3000);
+
+clearInterval(timer);

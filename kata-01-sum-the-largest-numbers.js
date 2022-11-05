@@ -84,6 +84,9 @@ STEP 2.When done reading through the records
    // Remove the largest number we found and remember it
    largestNumbers.push(data.splice(indexOfLargest, 1));
 
+   // Make the array single dimensional, so we can work on it
+   largestNumbers = largestNumbers.flat();
+   
    return largestNumbers;
  }
 

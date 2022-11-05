@@ -42,15 +42,16 @@ CONSTRAINTS:
 ALGORITHM:
 
 
+
 */
 
 /**
  * Function performs URL encoding on a string
- * @param {string} instructors The text to url encode
+ * @param {string} text The text to url encode
  * @returns {Object} String with URL encoding
  */
 const urlEncode = function(text) {
-  // Put your solution here
+
 };
 
 console.log(urlEncode("Lighthouse Labs"), "=?", "Lighthouse%20Labs")

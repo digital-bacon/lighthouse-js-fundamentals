@@ -34,7 +34,10 @@ CONSTRAINTS:
 
 
 ALGORITHM:
-- 
+We need a way to add all numbers in a data collection
+- Read each number in the data collection
+- Add each number to the sum of the last
+
 
 */
 
@@ -45,6 +48,21 @@ ALGORITHM:
  * @returns {number} The sum of all numbers that match the condition
  */
  const conditionalSum = function(values, condition) {
+
+  return sumAll(values);
+
+  /**
+   * Function that returns the sum of all numbers in an array
+   * @param {Array.<number>} array An array of numbers
+   * @returns {number} The sum of all numbers in the array
+   */
+   function sumAll(array) {
+    let sum = 0; 
+    for (let number of array) {
+       sum += number;
+     }
+    return sum;
+   }
 
  }
 

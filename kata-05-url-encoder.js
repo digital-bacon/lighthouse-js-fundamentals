@@ -40,7 +40,8 @@ CONSTRAINTS:
 
 
 ALGORITHM:
-
+We need a way to trim whitespace from the string before beginning
+  - use charCodeAt(index) to test for the string on either side
 
 
 */
@@ -52,18 +53,70 @@ ALGORITHM:
  */
 const urlEncode = function(text) {
   let newString = '';
-  for (let i = 0; i < text.length; i++) {
-    if (text[i] === ' ') {
-      if (i === 0 || i === text.length -1) {
-        newString += '';
-      } else {
-        newString += '%20';
-      }
-    } else {
-      newString += text[i];
-    }
-  }
+  newString = trimString(text);
+  newString = replaceInString(newString, ' ', '%20');
   return newString;
+
+  /**
+   * Function that removes whitespace from the start and end of a string
+   * @param {string} string String with trailing and leading whitespaces
+   * @returns {string} A string with leading and trailing whitespaces removed
+   */
+  function trimString(string) {
+    let newString = '';
+    for (let i = 0; i < string.length; i++) {
+      if (string[i] === ' ') {
+        if (i === 0 || i === string.length - 1) {
+          newString += '';
+        } else {
+          newString += ' ';
+        }
+      } else {
+        newString += string[i];
+      }
+    }
+    return newString;
+  }
+
+  /**
+   * Function that replaces a character in a string with provided text
+   * @param {string} string String with characters to be replaced
+   * @returns {string} A string with the character removed
+   */
+  function replaceInString(string, findCharacter, replacementText) {
+    let newString = '';
+    for (let i = 0; i < string.length; i++) {
+      if (string[i] === findCharacter) {
+        newString += replacementText;
+      } else {
+        newString += string[i];
+      }
+    }
+    return newString;
+    }
+  // if (text[0] === ' ') text[0] = 'A';
+  // if (text[text.length - 1] === ' ') text[text.length - 1] === '';
+
+  // // A collection of possible UTF-16 characters to replace
+  // const charCodes = {
+  //   32: (input) => '%20' // Space
+  // }
+
+
+  // return replaceAllInString(text);
+
+  // /**
+  //  * Function that returns the sum of all pattern in an array
+  //  * @param {Array.<number>} array An array of pattern
+  //  * @returns {number} The sum of all pattern in the array
+  //  */
+  // function replaceAllInString(string = '', pattern = '', replacement = '') {
+  //   let newString = '';
+  //   for (let i = 0; i < string.length; i++) {
+  //     string.charCodeAt(i) === 32 ? newString += '%20' : newString += string[i];
+  //   }
+  //   return newString;
+  // }
 };
 
 console.log(urlEncode("Lighthouse Labs"), "=?", "Lighthouse%20Labs")

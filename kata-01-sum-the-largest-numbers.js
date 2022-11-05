@@ -86,8 +86,11 @@ STEP 2.When done reading through the records
 
    // Make the array single dimensional, so we can work on it
    largestNumbers = largestNumbers.flat();
-   
-   return largestNumbers;
+   // Add up all the values in the array
+   for (let number of largestNumbers) {
+    sum += number;
+   }
+   return sum;
  }
 
  console.log(sumLargestNumbers([1, 10]), "=?", 11);

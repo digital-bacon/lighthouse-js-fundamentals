@@ -41,10 +41,13 @@ of the new string from the source string.
  * @returns {number} The number of vowels in the string
  */
 const numberOfVowels = function(data) {
+  let totalVowels = 0;
   const regex = /[^aeiou]/g; // pattern matches everything but vowels
   // Replace everything but vowels
   const vowelsRemoved = data.replace(regex, '');
-  return vowelsRemoved.length;
+  totalVowels = vowelsRemoved.length;
+  // Return the total vowels found in the new string
+  return totalVowels;
 };
 
 console.log(numberOfVowels("orange"), "=?", 3)

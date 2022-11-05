@@ -62,8 +62,10 @@ STEP 2.When done reading through the records
  */
  const sumLargestNumbers = function(data) {
    let largestNumbers = [];
-   let indexOfLargest = 0;
    let sum = 0;
+
+  // Find the largest number
+   let indexOfLargest = 0;
    for (let i = 0; i < data.length; i++) {
     if (data[i] >= data[indexOfLargest]) {
       indexOfLargest = i; // Remember where this largest number can be found.
@@ -71,6 +73,17 @@ STEP 2.When done reading through the records
    }
    // Remove the largest number we found and remember it
    largestNumbers.push(data.splice(indexOfLargest, 1));
+
+   // Find the next largest number by doing the same again
+   indexOfLargest = 0; // Reset variable for re-use
+   for (let i = 0; i < data.length; i++) {
+    if (data[i] >= data[indexOfLargest]) {
+      indexOfLargest = i; // Remember where this largest number can be found.
+    }
+   }
+   // Remove the largest number we found and remember it
+   largestNumbers.push(data.splice(indexOfLargest, 1));
+
    return largestNumbers;
  }
 

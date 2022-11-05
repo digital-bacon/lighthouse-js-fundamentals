@@ -36,12 +36,12 @@ of the new string from the source string.
 */
 
 /**
- * Function that returns the sum of numbers that match a condition
+ * Function that returns the number of vowels in a string
  * @param {string} data The string 
  * @returns {number} The number of vowels in the string
  */
- const numberOfVowels = function(data) {
-  // Put your solution here
+const numberOfVowels = function(data) {
+
 };
 
 console.log(numberOfVowels("orange"), "=?", 3)

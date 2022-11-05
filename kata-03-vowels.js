@@ -22,6 +22,16 @@ CONSTRAINTS:
 
 
 ALGORITHM:
+We need a way to return a string containing only the vowels from the 
+original string.
+  - string.replace(regex, '')
+    - this will return a string with only the vowels found in the 
+    source string
+  - use regex expression /[aeiou]/g
+    - translates to: find all letters in this range, and do so 
+    globally (across the entire string)
+We can then return the number of vowels by subtracting the length
+of the new string from the source string.
 
 */
 
@@ -37,3 +47,8 @@ ALGORITHM:
 console.log(numberOfVowels("orange"), "=?", 3)
 console.log(numberOfVowels("lighthouse labs"), "=?", 5)
 console.log(numberOfVowels("aeiou"), "=?", 5)
+
+// RegEx testing
+let fruit = "apple";
+let regex = /[aeiou]/g;
+console.log(fruit.replace(regex, ''));

@@ -62,35 +62,41 @@ STEP 2.When done reading through the records
  */
  const sumLargestNumbers = function(data) {
    let largestNumbers = [];
-   let sum = 0;
+   let index = undefined;
 
   // Find the largest number
-   let indexOfLargest = 0;
-   for (let i = 0; i < data.length; i++) {
-    if (data[i] >= data[indexOfLargest]) {
-      indexOfLargest = i; // Remember where this largest number can be found.
-    }
-   }
-   // Remove the largest number we found and remember it
-   largestNumbers.push(data.splice(indexOfLargest, 1));
+  index = indexOfLargest(data);
+  // Remove the largest number we found and remember it
+  largestNumbers.push(data.splice(index, 1));
 
-   // Find the next largest number by doing the same again
-   indexOfLargest = 0; // Reset variable for re-use
-   for (let i = 0; i < data.length; i++) {
-    if (data[i] >= data[indexOfLargest]) {
-      indexOfLargest = i; // Remember where this largest number can be found.
-    }
-   }
-   // Remove the largest number we found and remember it
-   largestNumbers.push(data.splice(indexOfLargest, 1));
+  // Find the next largest number
+  index = indexOfLargest(data);
+  // Remove the largest number we found and remember it
+  largestNumbers.push(data.splice(index, 1));
 
    // Make the array single dimensional, so we can work on it
    largestNumbers = largestNumbers.flat();
+
    // Add up all the values in the array
-   for (let number of largestNumbers) {
-    sum += number;
+   return sumAll(largestNumbers);
+
+   function sumAll(array) {
+    let sum = 0; 
+    for (let number of array) {
+       sum += number;
+     }
+     return sum;
    }
-   return sum;
+
+   function indexOfLargest(array) {
+     let indexOfLargest = 0;
+     for (let i = 0; i < array.length; i++) {
+       if (array[i] >= array[indexOfLargest]) {
+         indexOfLargest = i; // Remember where this largest number can be found.
+       }
+     }
+     return indexOfLargest;
+   }
  }
 
  console.log(sumLargestNumbers([1, 10]), "=?", 11);

@@ -57,7 +57,7 @@ STEP 2.When done reading through the records
 
 /**
  * Function that returns the sum of the two largest numbers in an array
- * @param {Array,<number>} data An array of numbers
+ * @param {Array.<number>} data An array of numbers
  * @returns {number} The sum of the two largest numbers
  */
  const sumLargestNumbers = function(data) {
@@ -80,6 +80,11 @@ STEP 2.When done reading through the records
    // Add up all the values in the array
    return sumAll(largestNumbers);
 
+  /**
+   * Function that returns the sum of all numbers in an array
+   * @param {Array.<number>} array An array of numbers
+   * @returns {number} The sum of all numbers in the array
+   */
    function sumAll(array) {
     let sum = 0; 
     for (let number of array) {
@@ -88,6 +93,11 @@ STEP 2.When done reading through the records
      return sum;
    }
 
+  /**
+   * Function that returns the index of the largest number in an array
+   * @param {Array.<number>} array An array of numbers
+   * @returns {number} The index of the largest number in the array
+   */
    function indexOfLargest(array) {
      let indexOfLargest = 0;
      for (let i = 0; i < array.length; i++) {

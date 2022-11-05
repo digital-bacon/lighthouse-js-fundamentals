@@ -49,7 +49,7 @@ argument.
 /**
  * A function that takes in an array of possible voting stations, and 
  * then only returns the names of the stations that are appropriate.
- * @param {Array.<string,number,string} stations Name of venue, capacity, venue type
+ * @param {Array.<string,number,string>} stations Name of venue, capacity, venue type
  * @returns {Array.<string>} With the names of qualified venues
  */
 const chooseStations = function (stations) {

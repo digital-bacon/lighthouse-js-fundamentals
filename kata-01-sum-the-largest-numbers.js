@@ -60,10 +60,10 @@ STEP 2.When done reading through the records
  * @param {Array.<number>} data An array of numbers
  * @returns {number} The sum of the two largest numbers
  */
- const sumLargestNumbers = function(data) {
+ const sumLargestNumbers = function(data = []) {
    let largestNumbers = [];
-   let index = undefined;
-
+   let index = -1;
+  
   // Find the largest number
   index = indexOfLargest(data);
   // Remove the largest number we found and remember it
@@ -112,3 +112,5 @@ STEP 2.When done reading through the records
  console.log(sumLargestNumbers([1, 10]), "=?", 11);
  console.log(sumLargestNumbers([1, 2, 3]), "=?", 5);
  console.log(sumLargestNumbers([10, 4, 34, 6, 92, 2]), "=?", 126);
+ console.log(sumLargestNumbers([2]), "=?", 2);
+ console.log(sumLargestNumbers([]), "=?", 0);

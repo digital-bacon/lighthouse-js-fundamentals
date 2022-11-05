@@ -54,7 +54,7 @@ We need a way to trim whitespace from the string before beginning
 const urlEncode = function(text) {
   let newString = '';
   newString = trimString(text);
-  newString = replaceInString(newString, ' ', '%20');
+  newString = replaceCharacterInString(newString, ' ', '%20');
   return newString;
 
   /**
@@ -83,7 +83,7 @@ const urlEncode = function(text) {
    * @param {string} string String with characters to be replaced
    * @returns {string} A string with the character removed
    */
-  function replaceInString(string, findCharacter, replacementText) {
+  function replaceCharacterInString(string, findCharacter, replacementText) {
     let newString = '';
     for (let i = 0; i < string.length; i++) {
       if (string[i] === findCharacter) {
@@ -94,29 +94,7 @@ const urlEncode = function(text) {
     }
     return newString;
     }
-  // if (text[0] === ' ') text[0] = 'A';
-  // if (text[text.length - 1] === ' ') text[text.length - 1] === '';
-
-  // // A collection of possible UTF-16 characters to replace
-  // const charCodes = {
-  //   32: (input) => '%20' // Space
-  // }
-
-
-  // return replaceAllInString(text);
-
-  // /**
-  //  * Function that returns the sum of all pattern in an array
-  //  * @param {Array.<number>} array An array of pattern
-  //  * @returns {number} The sum of all pattern in the array
-  //  */
-  // function replaceAllInString(string = '', pattern = '', replacement = '') {
-  //   let newString = '';
-  //   for (let i = 0; i < string.length; i++) {
-  //     string.charCodeAt(i) === 32 ? newString += '%20' : newString += string[i];
-  //   }
-  //   return newString;
-  // }
+ 
 };
 
 console.log(urlEncode("Lighthouse Labs"), "=?", "Lighthouse%20Labs")

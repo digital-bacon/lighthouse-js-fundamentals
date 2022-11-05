@@ -28,7 +28,7 @@ console.log(instructorWithLongestName([
 
 
 CONSTRAINTS:
-1. 
+1. If two instructors have the longest name, return the first one.
 
 
 ALGORITHM:
@@ -43,6 +43,30 @@ ALGORITHM:
  */
  const instructorWithLongestName = function(instructors) {
   
+  return instructors[indexOfLongest('name', instructors)];
+
+  /**
+   * Function that returns the index of the object with the longest 
+   * value for a given property name
+   * @param {string} propertyName 
+   * @param {*} arrayOfObjects 
+   * @returns {number} Representing the array index of the object
+   */
+  function indexOfLongest(propertyName = "", arrayOfObjects = []) {
+    let indexOfLongest = 0;
+    // Read the provided collection of objects
+    for (let i = 0; i < arrayOfObjects.length; i++) {
+      // Does this object have the longest property so far?
+      if (
+          arrayOfObjects[i][propertyName].length >= 
+          arrayOfObjects[indexOfLongest][propertyName].length
+          ) {
+        // New longest value found -- remember where to find it
+        indexOfLongest = i; 
+      }
+    }
+    return indexOfLongest;
+  }
 };
 
 console.log(instructorWithLongestName([

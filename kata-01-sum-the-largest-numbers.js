@@ -90,7 +90,7 @@ STEP 2.When done reading through the records
     for (let number of array) {
        sum += number;
      }
-     return sum;
+    return sum;
    }
 
   /**

@@ -37,8 +37,8 @@ ALGORITHM:
 We need a way to add all numbers in a data collection
 - Read each number in the data collection
 - Add each number to the sum of the last
-
-
+We need a way to only sum numbers if they match the given condition
+- use a conditional statement
 */
 
 /**
@@ -47,24 +47,28 @@ We need a way to add all numbers in a data collection
  * @param {string} condition The condition to match
  * @returns {number} The sum of all numbers that match the condition
  */
- const conditionalSum = function(values, condition) {
-
-  return sumAll(values);
+const conditionalSum = function(values, condition) {
+  // A collection of possible conditions supported by this function
+  const conditions = {
+    even: (number) => number % 2 === 0,
+    odd: (number) => number % 2 !== 0
+  }
+  // Return a sum of all numbers that match the condition
+  return sumAll(values, conditions[condition])
 
   /**
    * Function that returns the sum of all numbers in an array
    * @param {Array.<number>} array An array of numbers
    * @returns {number} The sum of all numbers in the array
    */
-   function sumAll(array) {
-    let sum = 0; 
-    for (let number of array) {
-       sum += number;
-     }
+  function sumAll(numbers, callback) {
+    let sum = 0;
+    for (let number of numbers) {
+      if (callback(number)) sum += number;
+      }
     return sum;
-   }
-
- }
+  }
+}
 
 console.log(conditionalSum([1, 2, 3, 4, 5], "even"), "=?", 6)
 console.log(conditionalSum([1, 2, 3, 4, 5], "odd"), "=?", 9)

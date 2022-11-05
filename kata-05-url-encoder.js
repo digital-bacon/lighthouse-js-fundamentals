@@ -51,7 +51,19 @@ ALGORITHM:
  * @returns {Object} String with URL encoding
  */
 const urlEncode = function(text) {
-
+  let newString = '';
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === ' ') {
+      if (i === 0 || i === text.length -1) {
+        newString += '';
+      } else {
+        newString += '%20';
+      }
+    } else {
+      newString += text[i];
+    }
+  }
+  return newString;
 };
 
 console.log(urlEncode("Lighthouse Labs"), "=?", "Lighthouse%20Labs")

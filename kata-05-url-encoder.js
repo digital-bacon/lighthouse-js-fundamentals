@@ -49,7 +49,7 @@ We need a way to trim whitespace from the string before beginning
 /**
  * Function performs URL encoding on a string
  * @param {string} text The text to url encode
- * @returns {Object} String with URL encoding
+ * @returns {string} String with URL encoding
  */
 const urlEncode = function(text) {
   let newString = '';
@@ -125,11 +125,11 @@ const urlEncode = function(text) {
    * Function that replaces a substring with another substring
    * @param {string} string The string to search for the substring
    * @param {string} findText The substring to find
-   * @param {string} replacementText The substring to use as a relacement
+   * @param {string} [replacementText] The substring to use as a relacement
    * @param {boolean} [toggleReplaceAll] Set to false to only replace the first match
    * @returns {string} The new string with replaced substring
    */
-  function replaceInString(string, findText, replacementText, toggleReplaceAll = true) {
+  function replaceInString(string, findText, replacementText = '', toggleReplaceAll = true) {
     let newString = '';
     let subStringLeft = '';
     index = findInString(string, findText);

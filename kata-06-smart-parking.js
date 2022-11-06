@@ -70,7 +70,7 @@ const whereCanIPark = function (spots, vehicle) {
    * @returns {number} The index position where the substring was found
    */
   function findIndexInArray(searchIn, itemToFind) {
-    let index = -1; // returns -1 if substring not found
+    let index = -1; // returns -1 if item not found
     for (let i = 0; i < searchIn.length; i++) {
       if (searchIn[i] === itemToFind) {
         index = i;

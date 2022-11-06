@@ -109,9 +109,9 @@ We need a way to trim whitespace from the string before beginning
     }
   
   /**
-   * Function that finds the index of an item in a string
+   * Function that finds the index of a substring in a string
    * @param {string} searchIn - The string to search
-   * @param {*} itemToFind - The item to find
+   * @param {string} itemToFind - The substring to find
    * @returns {number} The index position where the substring was found
    */
    function findIndexInString(searchIn, itemToFind) {
@@ -148,16 +148,16 @@ We need a way to trim whitespace from the string before beginning
     if (start > from.length - 1) return;
     if (end > from.length) end = from.length;
     for (let i = start; i < end; i++) {
-        if (typeof from === 'string') {
-          output += from[i];
-        } else {
-          output.push(from[i]);
-        }
+      if (typeof from === 'string') {
+        output += from[i];
+      } else {
+        output.push(from[i]);
+      }
     }
     return output;
   }
 
-};
+}
 
 console.log(urlEncode("Lighthouse Labs"), "=?", "Lighthouse%20Labs")
 console.log(urlEncode(" Lighthouse Labs "), "=?", "Lighthouse%20Labs")

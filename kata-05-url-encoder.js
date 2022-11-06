@@ -55,7 +55,6 @@ We need a way to trim whitespace from the string before beginning
   let newString = '';
   newString = trimString(text);
   newString = replaceInString(newString, ' ', '%20', true);
-  console.log(findIndexOf(['cat', 'dog'], 'dog'))
   return newString;
 
   /**
@@ -92,9 +91,9 @@ We need a way to trim whitespace from the string before beginning
       let subStringLeft = '';
       index = findIndexOf(string, findText);
       if (index > -1) {
-        subStringLeft = sliceString(string, 0, index);
+        subStringLeft = slice(string, 0, index);
         // Save the portion of the string we haven't searched in yet
-        string = sliceString(string, index + findText.length);
+        string = slice(string, index + findText.length);
         if (toggleReplaceAll) {
           // Replace all instances of the matched substring
           newString += subStringLeft + replacementText + replaceInString(string, findText, replacementText);
@@ -122,7 +121,7 @@ We need a way to trim whitespace from the string before beginning
         // Find a match to the first letter of @itemToFind
         if (searchIn[i] === itemToFind[0] && searchIn.length - i >= itemToFind.length) {  // First letter matched
           // Look ahead by retrieving text matching the length of @itemToFind
-          lookAhead = sliceString(searchIn, i, i + itemToFind.length);
+          lookAhead = slice(searchIn, i, i + itemToFind.length);
           // Check if the text ahead matches @itemToFind
           if (lookAhead === itemToFind) {
             index = i;
@@ -138,22 +137,26 @@ We need a way to trim whitespace from the string before beginning
   }
 
   /**
-   * Function that returns a substring from a provided string
-   * @param {string} string The string from which to extract a substring
+   * Function that returns a part of a string or array
+   * @param {string | Array} from The string or array from which to slice
    * @param {number} start Indicates where to start slicing (inclusive)
    * @param {number} [end] Indicates where to stop slicing (not inclusive)
-   * @returns {string} The substring that was extracted
+   * @returns {string | Array} The portion that was extracted
    */
-  function sliceString(string, start, end) {
-    let newString = '';
-    if (typeof end === 'undefined') end = string.length;
+  function slice(from, start, end) {
+    let output = from;
+    if (typeof end === 'undefined') end = from.length;
     if (typeof start !== 'number') return;
     if (typeof end !== 'number') return;
-    if (end > string.length) end = string.length;
+    if (end > from.length) end = from.length;
     for (let i = start; i < end; i++) {
-      newString += string[i];
+      if (i === start) {
+        output = from[i];
+      } else {
+        output += from[i];
+      }
     }
-    return newString;
+    return output;
   
   }
 

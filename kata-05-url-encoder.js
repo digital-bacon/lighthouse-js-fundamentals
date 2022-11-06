@@ -89,7 +89,7 @@ We need a way to trim whitespace from the string before beginning
      function replaceInString(string, findText, replacementText = '', toggleReplaceAll = true) {
       let newString = '';
       let subStringLeft = '';
-      index = findIndexOf(string, findText);
+      index = findIndexInString(string, findText);
       if (index > -1) {
         subStringLeft = slice(string, 0, index);
         // Save the portion of the string we haven't searched in yet
@@ -109,28 +109,23 @@ We need a way to trim whitespace from the string before beginning
     }
   
   /**
-   * Function that finds the index of an item in a string or array
-   * @param {string | Array} searchIn - The string or array to search
+   * Function that finds the index of an item in a string
+   * @param {string} searchIn - The string to search
    * @param {*} itemToFind - The item to find
    * @returns {number} The index position where the substring was found
    */
-   function findIndexOf(searchIn, itemToFind) {
+   function findIndexInString(searchIn, itemToFind) {
     let index = -1; // returns -1 if substring not found
     for (let i = 0; i < searchIn.length; i++) {
-      if (typeof searchIn === 'string') {
-        // Find a match to the first letter of @itemToFind
-        if (searchIn[i] === itemToFind[0] && searchIn.length - i >= itemToFind.length) {  // First letter matched
-          // Look ahead by retrieving text matching the length of @itemToFind
-          lookAhead = slice(searchIn, i, i + itemToFind.length);
-          // Check if the text ahead matches @itemToFind
-          if (lookAhead === itemToFind) {
-            index = i;
-            break;
-          };
-        }
-      } else if (searchIn[i] === itemToFind) {
+      // Find a match to the first letter of @itemToFind
+      if (searchIn[i] === itemToFind[0] && searchIn.length - i >= itemToFind.length) {  // First letter matched
+        // Look ahead by retrieving text matching the length of @itemToFind
+        lookAhead = slice(searchIn, i, i + itemToFind.length);
+        // Check if the text ahead matches @itemToFind
+        if (lookAhead === itemToFind) {
           index = i;
           break;
+        };
       }
     }
     return index;

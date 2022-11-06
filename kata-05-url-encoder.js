@@ -159,7 +159,6 @@ We need a way to trim whitespace from the string before beginning
         }
     }
     return output;
-  
   }
 
 };

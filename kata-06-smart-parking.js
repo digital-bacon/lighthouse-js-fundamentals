@@ -1,12 +1,13 @@
 
 /**
- * 
+ * Function that returns the coordinates of an available parking 
+ * spot for a vehicle, or returns false if there is no available spot
  * @param {Array<Array<string>>} spots - An array of parking spots 
  * with each parking row represented by a nested array, and each 
  * parking spot represented by a letter depicting the spot type
  * @param {string} vehicle - The type of vehicle requiring a spot
  * @returns {Array<number,number> | boolean} An array with available 
- * parking spot `[x, y]` coordinates, or `false` if no spots available.
+ * parking spot `[x, y]` coordinates, or `false` if no spots available
  */
 const whereCanIPark = function (spots, vehicle) {
   let parkingLocation;

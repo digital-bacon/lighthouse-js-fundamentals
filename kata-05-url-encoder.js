@@ -55,13 +55,13 @@ const urlEncode = function(text) {
   let newString = '';
   newString = trimString(text);
   newString = replaceCharacterInString(newString, ' ', '%20');
-  console.log(findInString(newString, 'Labs'))
+  // console.log(replaceInString(newString, ' ', '%20'));
   return newString;
 
   /**
    * Function that removes whitespace from the start and end of a string
-   * @param {string} string String with trailing and leading whitespaces
-   * @returns {string} A string with leading and trailing whitespaces removed
+   * @param {string} string String to check for leading/trailing whitespaces
+   * @returns {string} String with leading and trailing whitespaces removed
    */
   function trimString(string) {
     let newString = '';
@@ -96,46 +96,67 @@ const urlEncode = function(text) {
     return newString;
     }
 
-    /**
-     * Function that returns a substring from a provided string
-     * @param {string} string The string from which to extract a substring
-     * @param {number} start Indicates where to start slicing (inclusive)
-     * @param {number} [end] Indicates where to stop slicing (inclusive)
-     * @returns {string} The substring that was extracted
-     */
-    function sliceString(string, start, end) {
-      let newString = '';
-      if (typeof end === 'undefined') end = string.length -1;
-      if (typeof start !== 'number') return;
-      if (typeof end !== 'number') return;
-      if (end > string.length - 1) end = string.length -1;
-      for (let i = start; i <= end; i++) {
-        newString += string[i];
-      }
-      return newString;
-    
+  /**
+   * Function that returns a substring from a provided string
+   * @param {string} string The string from which to extract a substring
+   * @param {number} start Indicates where to start slicing (inclusive)
+   * @param {number} [end] Indicates where to stop slicing (not inclusive)
+   * @returns {string} The substring that was extracted
+   */
+  function sliceString(string, start, end) {
+    let newString = '';
+    if (typeof end === 'undefined') end = string.length;
+    if (typeof start !== 'number') return;
+    if (typeof end !== 'number') return;
+    if (end > string.length) end = string.length;
+    for (let i = start; i < end; i++) {
+      newString += string[i];
     }
-    /**
-     * Function that finds the index of a substring in a string
-     * @param {string} string The string to search for the substring
-     * @param {string} findText The substring to find
-     * @returns {number} The index position where the substring was found
-     */
-    function findInString(string, findText) {
-      let index = -1; // returns -1 if substring not found
-      for (let i = 0; i < string.length; i++) {
-        // Find a match to the first letter of @findText
-        if (string[i] === findText[0] && string.length - i >= findText.length) {  // First letter matched
-          // Look ahead by retrieving text matching the length of @findText
-          lookAhead = sliceString(string, i, i + findText.length - 1);
-          // Check if the text ahead matches @findText
-          if (lookAhead === findText) {
-            index = i;
-            break;
-          };
-        }
+    return newString;
+  
+  }
+
+  /**
+   * Function that finds the index of a substring in a string
+   * @param {string} string The string to search for the substring
+   * @param {string} findText The substring to find
+   * @returns {number} The index position where the substring was found
+   */
+  function findInString(string, findText) {
+    let index = -1; // returns -1 if substring not found
+    for (let i = 0; i < string.length; i++) {
+      // Find a match to the first letter of @findText
+      if (string[i] === findText[0] && string.length - i >= findText.length) {  // First letter matched
+        // Look ahead by retrieving text matching the length of @findText
+        lookAhead = sliceString(string, i, i + findText.length);
+        // Check if the text ahead matches @findText
+        if (lookAhead === findText) {
+          index = i;
+          break;
+        };
       }
-      return index;
+    }
+    return index;
+  }
+     
+  /**
+   * Function that replaces a substring with another substring
+   * @param {string} string The string to search for the substring
+   * @param {string} findText The substring to find
+   * @param {string} replacementText The substring to use as a relacement
+   * @returns {string} The new string with replaced substring
+   */
+  function replaceInString(string, findText, replacementText) {
+    let newString = string;
+    index = findInString(string, findText);
+    let subStringLeft = '';
+    let subStringRight = '';
+    if (index > -1) {
+      subStringLeft = sliceString(string, 0, index);
+      subStringRight = sliceString(string, index + findText.length);
+      newString = subStringLeft + replacementText + subStringRight;
+    }
+    return newString;
     }
 };
 

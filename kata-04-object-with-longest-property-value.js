@@ -38,7 +38,7 @@ ALGORITHM:
 
 /**
  * Function that returns the object with the longest name property value
- * @param {Array,<Object>} instructors An array containing instructor objects
+ * @param {Array.<{name: string}>} instructors An array containing instructor objects
  * @returns {Object} The object with the longest name property value
  */
  const instructorWithLongestName = function(instructors) {
@@ -49,7 +49,7 @@ ALGORITHM:
    * Function that returns the index of the object with the longest 
    * value for a given property name
    * @param {string} propertyName 
-   * @param {Array,<Object>} arrayOfObjects 
+   * @param {Array<Object>} arrayOfObjects 
    * @returns {number} Representing the array index of the object
    */
   function indexOfLongest(propertyName = "", arrayOfObjects = []) {

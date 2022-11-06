@@ -51,10 +51,11 @@ We need a way to trim whitespace from the string before beginning
  * @param {string} text The text to url encode
  * @returns {string} String with URL encoding
  */
-const urlEncode = function(text) {
+ const urlEncode = function(text) {
   let newString = '';
   newString = trimString(text);
   newString = replaceInString(newString, ' ', '%20', true);
+  console.log(findIndexOf(['cat', 'dog'], 'dog'))
   return newString;
 
   /**
@@ -86,10 +87,10 @@ const urlEncode = function(text) {
    * @param {boolean} [toggleReplaceAll] Set to false to only replace the first match
    * @returns {string} The new string with replaced substring
    */
-    function replaceInString(string, findText, replacementText = '', toggleReplaceAll = true) {
+     function replaceInString(string, findText, replacementText = '', toggleReplaceAll = true) {
       let newString = '';
       let subStringLeft = '';
-      index = findInString(string, findText);
+      index = findIndexOf(string, findText);
       if (index > -1) {
         subStringLeft = sliceString(string, 0, index);
         // Save the portion of the string we haven't searched in yet
@@ -109,27 +110,32 @@ const urlEncode = function(text) {
     }
   
   /**
-   * Function that finds the index of a substring in a string
-   * @param {string} string The string to search for the substring
-   * @param {string} findText The substring to find
+   * Function that finds the index of an item in a string or array
+   * @param {string | Array} searchIn The string or array to search
+   * @param {*} itemToFind The item to find
    * @returns {number} The index position where the substring was found
    */
-    function findInString(string, findText) {
-      let index = -1; // returns -1 if substring not found
-      for (let i = 0; i < string.length; i++) {
-        // Find a match to the first letter of @findText
-        if (string[i] === findText[0] && string.length - i >= findText.length) {  // First letter matched
-          // Look ahead by retrieving text matching the length of @findText
-          lookAhead = sliceString(string, i, i + findText.length);
-          // Check if the text ahead matches @findText
-          if (lookAhead === findText) {
+   function findIndexOf(searchIn, itemToFind) {
+    let index = -1; // returns -1 if substring not found
+    for (let i = 0; i < searchIn.length; i++) {
+      if (typeof searchIn === 'string') {
+        // Find a match to the first letter of @itemToFind
+        if (searchIn[i] === itemToFind[0] && searchIn.length - i >= itemToFind.length) {  // First letter matched
+          // Look ahead by retrieving text matching the length of @itemToFind
+          lookAhead = sliceString(searchIn, i, i + itemToFind.length);
+          // Check if the text ahead matches @itemToFind
+          if (lookAhead === itemToFind) {
             index = i;
             break;
           };
         }
+      } else if (searchIn[i] === itemToFind) {
+          index = i;
+          break;
       }
-      return index;
     }
+    return index;
+  }
 
   /**
    * Function that returns a substring from a provided string

@@ -144,17 +144,19 @@ We need a way to trim whitespace from the string before beginning
    * @returns {string | Array} The portion that was extracted
    */
   function slice(from, start, end) {
-    let output = from;
+    let output;
+    if (typeof from === 'string') output = '';
+    if (typeof from === 'object') output = [];
     if (typeof end === 'undefined') end = from.length;
     if (typeof start !== 'number') return;
     if (typeof end !== 'number') return;
     if (end > from.length) end = from.length;
     for (let i = start; i < end; i++) {
-      if (i === start) {
-        output = from[i];
-      } else {
-        output += from[i];
-      }
+        if (typeof from === 'string') {
+          output += from[i];
+        } else {
+          output.push(from[i]);
+        }
     }
     return output;
   

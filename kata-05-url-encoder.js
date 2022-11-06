@@ -55,6 +55,7 @@ const urlEncode = function(text) {
   let newString = '';
   newString = trimString(text);
   newString = replaceCharacterInString(newString, ' ', '%20');
+  console.log(findInString(newString, 'Labs'))
   return newString;
 
   /**
@@ -112,6 +113,29 @@ const urlEncode = function(text) {
         newString += string[i];
       }
       return newString;
+    
+    }
+    /**
+     * Function that finds the index of a substring in a string
+     * @param {string} string The string to search for the substring
+     * @param {string} findText The substring to find
+     * @returns {number} The index position where the substring was found
+     */
+    function findInString(string, findText) {
+      let index = -1; // returns -1 if substring not found
+      for (let i = 0; i < string.length; i++) {
+        // Find a match to the first letter of @findText
+        if (string[i] === findText[0] && string.length - i >= findText.length) {  // First letter matched
+          // Look ahead by retrieving text matching the length of @findText
+          lookAhead = sliceString(string, i, i + findText.length - 1);
+          // Check if the text ahead matches @findText
+          if (lookAhead === findText) {
+            index = i;
+            break;
+          };
+        }
+      }
+      return index;
     }
 };
 

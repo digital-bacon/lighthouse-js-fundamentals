@@ -54,8 +54,7 @@ We need a way to trim whitespace from the string before beginning
 const urlEncode = function(text) {
   let newString = '';
   newString = trimString(text);
-  newString = replaceCharacterInString(newString, ' ', '%20');
-  // console.log(replaceInString(newString, ' ', '%20'));
+  newString = replaceInString(newString, ' ', '%20', true);
   return newString;
 
   /**
@@ -80,23 +79,6 @@ const urlEncode = function(text) {
   }
 
   /**
-   * Function that replaces a character in a string with provided text
-   * @param {string} string String with characters to be replaced
-   * @returns {string} A string with the character removed
-   */
-  function replaceCharacterInString(string, findCharacter, replacementText) {
-    let newString = '';
-    for (let i = 0; i < string.length; i++) {
-      if (string[i] === findCharacter) {
-        newString += replacementText;
-      } else {
-        newString += string[i];
-      }
-    }
-    return newString;
-  }
-
-  /**
    * Function that returns a substring from a provided string
    * @param {string} string The string from which to extract a substring
    * @param {number} start Indicates where to start slicing (inclusive)
@@ -113,6 +95,7 @@ const urlEncode = function(text) {
       newString += string[i];
     }
     return newString;
+  
   }
 
   /**
@@ -143,20 +126,30 @@ const urlEncode = function(text) {
    * @param {string} string The string to search for the substring
    * @param {string} findText The substring to find
    * @param {string} replacementText The substring to use as a relacement
+   * @param {boolean} [toggleReplaceAll] Set to false to only replace the first match
    * @returns {string} The new string with replaced substring
    */
-  function replaceInString(string, findText, replacementText) {
-    let newString = string;
-    index = findInString(string, findText);
+  function replaceInString(string, findText, replacementText, toggleReplaceAll = true) {
+    let newString = '';
     let subStringLeft = '';
-    let subStringRight = '';
+    index = findInString(string, findText);
     if (index > -1) {
       subStringLeft = sliceString(string, 0, index);
-      subStringRight = sliceString(string, index + findText.length);
-      newString = subStringLeft + replacementText + subStringRight;
+      // Save the portion of the string we haven't searched in yet
+      string = sliceString(string, index + findText.length);
+      if (toggleReplaceAll) {
+        // Replace all instances of the matched substring
+        newString += subStringLeft + replacementText + replaceInString(string, findText, replacementText);
+      } else {
+        // Only replace the first instance of the matched substring
+        newString += subStringLeft + replacementText + string;
+      }
+    } else {
+      // No more matches, add unmatched substring to the substring that was changed
+      newString += string;
     }
     return newString;
-  }
+    }
 };
 
 console.log(urlEncode("Lighthouse Labs"), "=?", "Lighthouse%20Labs")

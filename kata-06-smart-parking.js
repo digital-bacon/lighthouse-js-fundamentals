@@ -64,8 +64,8 @@ const whereCanIPark = function (spots, vehicle) {
   }
 
   /**
-   * Function that finds the index of an item in a string or array
-   * @param {string | Array} searchIn - The string or array to search
+   * Function that finds the index of an item in an array
+   * @param {Array} searchIn - The array to search
    * @param {*} itemToFind - The item to find
    * @returns {number} The index position where the substring was found
    */

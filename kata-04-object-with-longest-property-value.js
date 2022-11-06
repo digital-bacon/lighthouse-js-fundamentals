@@ -49,7 +49,7 @@ ALGORITHM:
    * Function that returns the index of the object with the longest 
    * value for a given property name
    * @param {string} propertyName 
-   * @param {Array<Object>} arrayOfObjects 
+   * @param {Array.<{propertyName: string}>} arrayOfObjects 
    * @returns {number} Representing the array index of the object
    */
   function indexOfLongest(propertyName = "", arrayOfObjects = []) {

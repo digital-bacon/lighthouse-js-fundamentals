@@ -94,7 +94,25 @@ const urlEncode = function(text) {
     }
     return newString;
     }
- 
+
+    /**
+     * Function that returns a substring from a provided string
+     * @param {string} string The string from which to extract a substring
+     * @param {number} start Indicates where to start slicing (inclusive)
+     * @param {number} [end] Indicates where to stop slicing (inclusive)
+     * @returns {string} The substring that was extracted
+     */
+    function sliceString(string, start, end) {
+      let newString = '';
+      if (typeof end === 'undefined') end = string.length -1;
+      if (typeof start !== 'number') return;
+      if (typeof end !== 'number') return;
+      if (end > string.length - 1) end = string.length -1;
+      for (let i = start; i <= end; i++) {
+        newString += string[i];
+      }
+      return newString;
+    }
 };
 
 console.log(urlEncode("Lighthouse Labs"), "=?", "Lighthouse%20Labs")

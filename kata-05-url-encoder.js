@@ -48,7 +48,7 @@ We need a way to trim whitespace from the string before beginning
 
 /**
  * Function performs URL encoding on a string
- * @param {string} text The text to url encode
+ * @param {string} text - The text to url encode
  * @returns {string} String with URL encoding
  */
  const urlEncode = function(text) {
@@ -59,7 +59,7 @@ We need a way to trim whitespace from the string before beginning
 
   /**
    * Function that removes whitespace from the start and end of a string
-   * @param {string} string String to check for leading/trailing whitespaces
+   * @param {string} string - String to check for leading/trailing whitespaces
    * @returns {string} String with leading and trailing whitespaces removed
    */
   function trimString(string) {
@@ -80,10 +80,10 @@ We need a way to trim whitespace from the string before beginning
 
   /**
    * Function that replaces a substring with another substring
-   * @param {string} string The string to search for the substring
-   * @param {string} findText The substring to find
-   * @param {string} [replacementText] The substring to use as a relacement
-   * @param {boolean} [toggleReplaceAll] Set to false to only replace the first match
+   * @param {string} string - The string to search for the substring
+   * @param {string} findText - The substring to find
+   * @param {string} [replacementText] - The substring to use as a relacement
+   * @param {boolean} [toggleReplaceAll] - Set to false to only replace the first match
    * @returns {string} The new string with replaced substring
    */
      function replaceInString(string, findText, replacementText = '', toggleReplaceAll = true) {
@@ -110,8 +110,8 @@ We need a way to trim whitespace from the string before beginning
   
   /**
    * Function that finds the index of an item in a string or array
-   * @param {string | Array} searchIn The string or array to search
-   * @param {*} itemToFind The item to find
+   * @param {string | Array} searchIn - The string or array to search
+   * @param {*} itemToFind - The item to find
    * @returns {number} The index position where the substring was found
    */
    function findIndexOf(searchIn, itemToFind) {
@@ -138,9 +138,9 @@ We need a way to trim whitespace from the string before beginning
 
   /**
    * Function that returns a part of a string or array
-   * @param {string | Array} from The string or array from which to slice
-   * @param {number} start Indicates where to start slicing (inclusive)
-   * @param {number} [end] Indicates where to stop slicing (not inclusive)
+   * @param {string | Array} from - The string or array from which to slice
+   * @param {number} start - Indicates where to start slicing (inclusive)
+   * @param {number} [end] - Indicates where to stop slicing (not inclusive)
    * @returns {string | Array} The portion that was extracted
    */
   function slice(from, start, end) {

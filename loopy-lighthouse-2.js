@@ -21,20 +21,23 @@ function loopyLighthouse(range, multiples, words) {
   const replacementWord1 = words[0];
   const replacementWord2 = words[1];
 
-  // Print a list of numbers from rangeStart to the second
+  // Print a list of numbers from `rangeStart` up to and including `rangeEnd`
   for (let number = rangeStart; number <= rangeEnd; number++) {
     switch (true) {
-      // If this number is a multiple of multiple1
+      // If this number is multiple of both multiples, print both words
       case (number % multiple1 === 0 && number % multiple2 === 0):
         console.log(replacementWord1 + replacementWord2);
         break;
+      // If this number is multiple of multiple1, print the matching word
       case (number % multiple1 === 0):
         console.log(replacementWord1);
         break;
+      // If this number is multiple of multiple2, print the matching word
       case (number % multiple2 === 0):
         console.log(replacementWord2);
         break;
-      default: // A number that's not a multiple of 3 or 4.
+      // Print the number without modification
+      default:
         console.log(number);
     }
   }

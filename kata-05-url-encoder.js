@@ -79,6 +79,59 @@ const urlEncode = function(text) {
   }
 
   /**
+   * Function that replaces a substring with another substring
+   * @param {string} string The string to search for the substring
+   * @param {string} findText The substring to find
+   * @param {string} [replacementText] The substring to use as a relacement
+   * @param {boolean} [toggleReplaceAll] Set to false to only replace the first match
+   * @returns {string} The new string with replaced substring
+   */
+    function replaceInString(string, findText, replacementText = '', toggleReplaceAll = true) {
+      let newString = '';
+      let subStringLeft = '';
+      index = findInString(string, findText);
+      if (index > -1) {
+        subStringLeft = sliceString(string, 0, index);
+        // Save the portion of the string we haven't searched in yet
+        string = sliceString(string, index + findText.length);
+        if (toggleReplaceAll) {
+          // Replace all instances of the matched substring
+          newString += subStringLeft + replacementText + replaceInString(string, findText, replacementText);
+        } else {
+          // Only replace the first instance of the matched substring
+          newString += subStringLeft + replacementText + string;
+        }
+      } else {
+        // No more matches, add unmatched substring to the substring that was changed
+        newString += string;
+      }
+      return newString;
+    }
+  
+  /**
+   * Function that finds the index of a substring in a string
+   * @param {string} string The string to search for the substring
+   * @param {string} findText The substring to find
+   * @returns {number} The index position where the substring was found
+   */
+    function findInString(string, findText) {
+      let index = -1; // returns -1 if substring not found
+      for (let i = 0; i < string.length; i++) {
+        // Find a match to the first letter of @findText
+        if (string[i] === findText[0] && string.length - i >= findText.length) {  // First letter matched
+          // Look ahead by retrieving text matching the length of @findText
+          lookAhead = sliceString(string, i, i + findText.length);
+          // Check if the text ahead matches @findText
+          if (lookAhead === findText) {
+            index = i;
+            break;
+          };
+        }
+      }
+      return index;
+    }
+
+  /**
    * Function that returns a substring from a provided string
    * @param {string} string The string from which to extract a substring
    * @param {number} start Indicates where to start slicing (inclusive)
@@ -98,58 +151,6 @@ const urlEncode = function(text) {
   
   }
 
-  /**
-   * Function that finds the index of a substring in a string
-   * @param {string} string The string to search for the substring
-   * @param {string} findText The substring to find
-   * @returns {number} The index position where the substring was found
-   */
-  function findInString(string, findText) {
-    let index = -1; // returns -1 if substring not found
-    for (let i = 0; i < string.length; i++) {
-      // Find a match to the first letter of @findText
-      if (string[i] === findText[0] && string.length - i >= findText.length) {  // First letter matched
-        // Look ahead by retrieving text matching the length of @findText
-        lookAhead = sliceString(string, i, i + findText.length);
-        // Check if the text ahead matches @findText
-        if (lookAhead === findText) {
-          index = i;
-          break;
-        };
-      }
-    }
-    return index;
-  }
-     
-  /**
-   * Function that replaces a substring with another substring
-   * @param {string} string The string to search for the substring
-   * @param {string} findText The substring to find
-   * @param {string} [replacementText] The substring to use as a relacement
-   * @param {boolean} [toggleReplaceAll] Set to false to only replace the first match
-   * @returns {string} The new string with replaced substring
-   */
-  function replaceInString(string, findText, replacementText = '', toggleReplaceAll = true) {
-    let newString = '';
-    let subStringLeft = '';
-    index = findInString(string, findText);
-    if (index > -1) {
-      subStringLeft = sliceString(string, 0, index);
-      // Save the portion of the string we haven't searched in yet
-      string = sliceString(string, index + findText.length);
-      if (toggleReplaceAll) {
-        // Replace all instances of the matched substring
-        newString += subStringLeft + replacementText + replaceInString(string, findText, replacementText);
-      } else {
-        // Only replace the first instance of the matched substring
-        newString += subStringLeft + replacementText + string;
-      }
-    } else {
-      // No more matches, add unmatched substring to the substring that was changed
-      newString += string;
-    }
-    return newString;
-    }
 };
 
 console.log(urlEncode("Lighthouse Labs"), "=?", "Lighthouse%20Labs")

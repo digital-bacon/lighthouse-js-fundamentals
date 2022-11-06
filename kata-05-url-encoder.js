@@ -150,6 +150,7 @@ We need a way to trim whitespace from the string before beginning
     if (typeof end === 'undefined') end = from.length;
     if (typeof start !== 'number') return;
     if (typeof end !== 'number') return;
+    if (start > from.length - 1) return;
     if (end > from.length) end = from.length;
     for (let i = start; i < end; i++) {
         if (typeof from === 'string') {

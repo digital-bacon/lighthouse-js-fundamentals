@@ -94,7 +94,7 @@ const urlEncode = function(text) {
       }
     }
     return newString;
-    }
+  }
 
   /**
    * Function that returns a substring from a provided string
@@ -113,7 +113,6 @@ const urlEncode = function(text) {
       newString += string[i];
     }
     return newString;
-  
   }
 
   /**
@@ -157,7 +156,7 @@ const urlEncode = function(text) {
       newString = subStringLeft + replacementText + subStringRight;
     }
     return newString;
-    }
+  }
 };
 
 console.log(urlEncode("Lighthouse Labs"), "=?", "Lighthouse%20Labs")

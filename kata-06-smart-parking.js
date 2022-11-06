@@ -20,7 +20,7 @@ const whereCanIPark = function (spots, vehicle) {
   for (parkingRow = 0; parkingRow < spots.length; parkingRow++) {
     // Check each spot in this row for a type usable by this vehicle
     for (let spotType of validSpotTypes) {
-      parkingSpot = findIndexOf(spots[parkingRow], spotType.toUpperCase());
+      parkingSpot = findIndexInArray(spots[parkingRow], spotType.toUpperCase());
       if (parkingSpot > -1) { // A spot was found!
         spotWasFound = true;
         break; // Stop looking for a spot in this row
@@ -69,21 +69,10 @@ const whereCanIPark = function (spots, vehicle) {
    * @param {*} itemToFind - The item to find
    * @returns {number} The index position where the substring was found
    */
-  function findIndexOf(searchIn, itemToFind) {
+  function findIndexInArray(searchIn, itemToFind) {
     let index = -1; // returns -1 if substring not found
     for (let i = 0; i < searchIn.length; i++) {
-      if (typeof searchIn === 'string') {
-        // Find a match to the first letter of @itemToFind
-        if (searchIn[i] === itemToFind[0] && searchIn.length - i >= itemToFind.length) {  // First letter matched
-          // Look ahead by retrieving text matching the length of @itemToFind
-          lookAhead = slice(searchIn, i, i + itemToFind.length);
-          // Check if the text ahead matches @itemToFind
-          if (lookAhead === itemToFind) {
-            index = i;
-            break;
-          };
-        }
-      } else if (searchIn[i] === itemToFind) {
+      if (searchIn[i] === itemToFind) {
         index = i;
         break;
       }

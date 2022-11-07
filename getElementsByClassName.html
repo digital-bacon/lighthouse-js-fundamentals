@@ -34,15 +34,11 @@
     */
     const elm = document.getElementsByClassName('name');
     // add only the element text as strings in an array.
-    let arrStrings = [];
-    const toStrings = (elm) => {
-      let arrStrings = [];
-      for (let item of elm) {
-        arrStrings.push(item.innerText);
-      }
-      return arrStrings;
+    let names = [];
+    for (let item of elm) {
+      names.push(item.innerText);
     }
-    console.log(toStrings(elm));
+    alert(names);
   </script>
 </body>
 </html>

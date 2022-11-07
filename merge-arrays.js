@@ -8,7 +8,26 @@ const merge = (...arrays) => {
   let newArray = [...arrays];
   // Convert it to a single dimensional array
   newArray = newArray.flat();
-  return newArray;
+  // Sort the array
+  let sortedArray = [];
+  for (let i = 0; i < newArray.length; i++) {
+    if (sortedArray.length === 0) {
+      sortedArray.push(newArray[i]);
+      continue;
+    } else {
+      for (let n = 0; n < sortedArray.length; n++) {
+        if (sortedArray[n] > newArray[i]) {
+          sortedArray.splice(n, 0, newArray[i]);
+          break;
+        } else if (n === sortedArray.length -1) {
+          sortedArray.push(newArray[i]);
+          break;
+        }
+      }
+    }
+  }
+
+  return sortedArray;
 }
 
 /*

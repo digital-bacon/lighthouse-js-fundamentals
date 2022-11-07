@@ -1,3 +1,10 @@
+/**
+ * Function that repeats an item by a specified number
+ * @param {Array<Array<*,number>>} data - An array of sub arrays, each 
+ * each with two values. The first will be the item to repeat, the 
+ * second will be the amount of times to repeat that item
+ * @returns {*} With the result of the repetition
+ */
 const repeatNumbers = function(data) {
   let output = '';
   // Loop data array

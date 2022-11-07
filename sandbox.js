@@ -8,9 +8,9 @@ const repeatNumbers = function(data) {
   return output;
 };
 
-console.log(repeatNumbers([[1, 10]]));
-console.log(repeatNumbers([[1, 2], [2, 3]]));
-console.log(repeatNumbers([[10, 4], [34, 6], [92, 2]]));
+// console.log(repeatNumbers([[1, 10]]));
+// console.log(repeatNumbers([[1, 2], [2, 3]]));
+// console.log(repeatNumbers([[10, 4], [34, 6], [92, 2]]));
 
 // Recursion
 function repeat(string, repeatCount) { 
@@ -18,4 +18,4 @@ function repeat(string, repeatCount) {
   return string + repeat(string, repeatCount - 1);
 }
 
-console.log(repeat("abc", 3))
+// console.log(repeat("abc", 3))

@@ -4,8 +4,8 @@
  * @returns {number} The volume of the object
  */
 const sphereVolume = function (radius) {
-  // Formula: V=4/3(πr3), or in JS: ((PI * (radius * radius * radius) / 3) * 4)
-  return ((PI * (radius * radius * radius) / 3) * 4)
+  // Formula: V=4/3(πr3), or in JS: ((Math.PI * (radius * radius * radius) / 3) * 4)
+  return ((Math.PI * (radius * radius * radius) / 3) * 4)
 }
 
 /**
@@ -15,8 +15,8 @@ const sphereVolume = function (radius) {
  * @returns {number} The volume of the object
  */
 const coneVolume = function (radius, height) {
-  // Formula: V=1/3(πr2h), or in JS: (((PI * (radius * radius)) * height) / 3)
-  return (((PI * (radius * radius)) * height) / 3)
+  // Formula: V=1/3(πr2h), or in JS: (((Math.PI * (radius * radius)) * height) / 3)
+  return (((Math.PI * (radius * radius)) * height) / 3)
 }
 
 /**
@@ -41,37 +41,26 @@ const prismVolume = function (height, width, depth) {
 const totalVolume = function (solids) {
   let totalVolume = 0;
   for (let solid of solids) {
+    // If this object doesn't have a `volume` property, add one
+    if (solid.hasOwnProperty(solid) === false) {
+      solid.volume = 0;
+    }
+    // Calculate volume for this kind of solid and store it in '.volume'
     switch (solid.type) {
       case 'sphere':
-        totalVolume += sphereVolume(solid.radius);
+        solid.volume = sphereVolume(solid.radius);
         break;
       case 'cone':
-        totalVolume += coneVolume(solid.radius, solid.height);
+        solid.volume = coneVolume(solid.radius, solid.height);
         break;
       case 'prism':
-        totalVolume += prismVolume(solid.height, solid.width, solid.depth);
+        solid.volume = prismVolume(solid.height, solid.width, solid.depth);
         break;
     }
+    // Add to the volume of this solid to the total volume
+    totalVolume += solid.volume;
   }
   return totalVolume;
-}
-
-/**
- * Function that calculates the product of exponent multiplication
- * @param {number} base 
- * @param {number} power 
- * @returns {number} Result of calculations
- */
- function mathPower(base, power) { 
-  let result;
-  if (power === 0) return 1; // Power of 0 always = 1
-  // Perform calculation
-  result = base * mathPower(base, Math.abs(power) - 1);
-  // If `power` is negative, the result is divided by 1
-  if (power < 0) {
-    result = 1 / result;
-  }
-  return result;
 }
 
 // Use the value below whenever you need the value of Pi

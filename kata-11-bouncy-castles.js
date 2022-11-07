@@ -39,7 +39,21 @@ const prismVolume = function (height, width, depth) {
  * @returns {number} The total volume of the objects
  */
 const totalVolume = function (solids) {
-  // Code here? Yup!
+  let totalVolume = 0;
+  for (let solid of solids) {
+    switch (solid.type) {
+      case 'sphere':
+        totalVolume += sphereVolume(solid.radius);
+        break;
+      case 'cone':
+        totalVolume += coneVolume(solid.radius, solid.height);
+        break;
+      case 'prism':
+        totalVolume += prismVolume(solid.height, solid.width, solid.depth);
+        break;
+    }
+  }
+  return totalVolume;
 }
 
 /**
@@ -84,6 +98,7 @@ const duck = [
   smallSphere,
   cone
 ]
+
 
 console.log(4186 < sphereVolume(10) && sphereVolume(10) < 4189);
 console.log(45 < coneVolume(3, 5) && coneVolume(3, 5) < 49);

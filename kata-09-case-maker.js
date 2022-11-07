@@ -6,16 +6,19 @@
 const camelCase = function(input) {
   let newString = '';
   let capitalizeNext = false;
-  // Find spaces, and capitalize next
+  // Find spaces, remove them, and capitalize next letter
   for (let i = 0; i < input.length; i++) {
-    // Find a match to the character in @itemToFind
+    // Space was found
     if (input[i] === ' ') {
       capitalizeNext = true; // Flag next letter for capitalization
+      continue; // Do not add the space to the newString
     } else if (capitalizeNext) {
+      // Add this letter to newString, but capitalize it first
       newString += input[i].toUpperCase();
       capitalizeNext = false; // Reset flag
     } else {
-      newString += input[i];
+    // Add this letter to newString as-is with no changes
+    newString += input[i];
     }
   }
   return newString;

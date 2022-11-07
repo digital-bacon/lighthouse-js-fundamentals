@@ -28,7 +28,8 @@ const coneVolume = function (radius, height) {
  * @returns {number} The volume of the object
  */
 const prismVolume = function (height, width, depth) {
-  // Probably here too!
+  // Formula: V=(wd)h, or in JS: ((width * depth) * height)
+  return ((width * depth) * height)
 }
 
 /**

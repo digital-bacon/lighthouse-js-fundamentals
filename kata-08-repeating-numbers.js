@@ -8,6 +8,8 @@ const repeatNumbers = function(data) {
     for (let y = 0; y < repeatAmount; y++) {
         output += repeatString;
     }
+    // Add a comma if more strings will follow
+    if ((i + 1) < data.length) output += ', ';
   }
   return output;
 };

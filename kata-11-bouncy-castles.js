@@ -5,6 +5,8 @@
  */
 const sphereVolume = function (radius) {
   // Code here!
+  // Formula: V=4/3(πr3), or in JS: ((Math.PI * (radius * radius * radius) / 3) * 4)
+  return ((Math.PI * (radius * radius * radius) / 3) * 4)
 }
 
 /**

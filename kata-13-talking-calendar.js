@@ -14,7 +14,7 @@ const talkingCalendar = function(date) {
     yearValue: function() {return parseInt(this.inputParts()[0])},
     monthValue: function() {return parseInt(this.inputParts()[1])},
     dayValue: function() {return parseInt(this.inputParts()[2])},
-    monthName: function() {return kvMonths[convertedDate.inputParts()[1]]},
+    monthName: function() {return this.kvMonths[convertedDate.inputParts()[1]]},
     daySuffix: function() {
       // Convert and remember the day suffix
       /*
@@ -30,23 +30,22 @@ const talkingCalendar = function(date) {
       // Solve for a day suffix based on array position and remember it
       return kvDaySuffixes[lastDigit];
     },
+    kvMonths: {
+      1: 'January',
+      2: 'February',
+      3: 'March',
+      4: 'April',
+      5: 'May',
+      6: 'June',
+      7: 'July',
+      8: 'August',
+      9: 'September',
+      10: 'October',
+      11: 'November',
+      12: 'December',
+    }
   };
-
-  // We need a data set to reflect month numbers and month names
-  const kvMonths = {
-    1: 'January',
-    2: 'February',
-    3: 'March',
-    4: 'April',
-    5: 'May',
-    6: 'June',
-    7: 'July',
-    8: 'August',
-    9: 'September',
-    10: 'October',
-    11: 'November',
-    12: 'December',
-  }
+  
 
   // We need a list of suffixes for days
   const kvDaySuffixes = {

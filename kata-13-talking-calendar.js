@@ -8,7 +8,21 @@
 const talkingCalendar = function(date) {
   // We need a way to split the date into sections
   let dateParts = date.split('/');
-  console.log(dateParts);
+
+  // We need a way to output the converted result with comma separators
+  let concat = (array, separator) => {
+    let output = '';
+    for (item in array) {
+      output += array[item];
+      // Add a separator
+      if (item < array.length - 1) {
+        output += separator;
+      }
+    }
+    return output;
+  }
+  console.log(concat(dateParts, ','));
+  
 };
 
 talkingCalendar("2017/12/02");

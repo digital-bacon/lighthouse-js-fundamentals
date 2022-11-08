@@ -41,6 +41,10 @@ const talkingCalendar = function(date) {
   // rd: 3, 23, 33, 43... (last digit is 3)
   // th: all others
 
+  // Get the last digit of the day value
+  let lastDigit = dateParts[2][dateParts[2].length - 1];
+  console.log (lastDigit);
+
   // We need to match month number in dateParts to month name in months
   let monthName = months[parseInt(dateParts[1]) - 1]
   console.log(`the month name is ${monthName}`);

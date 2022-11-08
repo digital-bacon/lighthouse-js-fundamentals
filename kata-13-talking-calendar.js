@@ -9,6 +9,23 @@ const talkingCalendar = function(date) {
   // We need a way to split the date into sections
   let dateParts = date.split('/');
 
+  // We need a list of months
+  let months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
+  console.log(months);
+
   // We need a way to output the converted result with comma separators
   console.log(concat(dateParts, ','));
 

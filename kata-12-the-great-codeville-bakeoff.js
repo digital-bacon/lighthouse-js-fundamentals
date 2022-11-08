@@ -1,7 +1,7 @@
 /**
- * Function that returns the name of a recipe that can be made with 
- * ingredients on hand. Receives a list of ingredients found at two
- * bakery locations, as well as a recipe list
+ * Function that receives a list of recipes and ingredients available 
+ * from two bakeries, and returns the name of a recipe that can be 
+ * made with ingredients on hand.
  * @param {Array<string>} bakeryA - A collection of ingredients found 
  * at this location
  * @param {Array<string>} bakeryB - A collection of ingredients found 

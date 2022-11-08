@@ -14,7 +14,7 @@ const talkingCalendar = function(date) {
     yearValue: function() {return parseInt(this.inputParts()[0])},
     monthValue: function() {return parseInt(this.inputParts()[1])},
     dayValue: function() {return parseInt(this.inputParts()[2])},
-    monthName: '',
+    monthName: function() {return kvMonths[convertedDate.inputParts()[1]]},
     daySuffix: function() {
       // Convert and remember the day suffix
       /*
@@ -56,13 +56,8 @@ const talkingCalendar = function(date) {
     4: 'th',
   }
   
-  
-  
-  // Convert and remember the month name
-  convertedDate.monthName = kvMonths[convertedDate.inputParts()[1]];
-
   // We need a way to output the converted result with comma separators
-  console.log(`${convertedDate.monthName}, ${convertedDate.dayValue()}${convertedDate.daySuffix()}, ${convertedDate.yearValue()}`);
+  console.log(`${convertedDate.monthName()}, ${convertedDate.dayValue()}${convertedDate.daySuffix()}, ${convertedDate.yearValue()}`);
   
 };
 

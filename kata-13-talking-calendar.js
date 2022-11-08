@@ -28,7 +28,7 @@ const talkingCalendar = function(date) {
       let lastDigit = this.dayValue().toString();
       lastDigit = lastDigit[lastDigit.length - 1];
       // Solve for a day suffix based on array position and remember it
-      return kvDaySuffixes[lastDigit];
+      return this.kvDaySuffixes[lastDigit];
     },
     kvMonths: {
       1: 'January',
@@ -43,17 +43,14 @@ const talkingCalendar = function(date) {
       10: 'October',
       11: 'November',
       12: 'December',
-    }
+    },
+    kvDaySuffixes: {
+      1: 'st',
+      2: 'nd',
+      3: 'rd',
+      4: 'th',
+    },
   };
-  
-
-  // We need a list of suffixes for days
-  const kvDaySuffixes = {
-    1: 'st',
-    2: 'nd',
-    3: 'rd',
-    4: 'th',
-  }
   
   // We need a way to output the converted result with comma separators
   console.log(`${convertedDate.monthName()}, ${convertedDate.dayValue()}${convertedDate.daySuffix()}, ${convertedDate.yearValue()}`);

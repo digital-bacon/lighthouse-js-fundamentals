@@ -35,6 +35,12 @@ const talkingCalendar = function(date) {
   ]
   console.log(daySuffixes);
 
+  // Identify a pattern of which day suffixes apply to date values
+  // st: 1, 21, 31, 41... (last digit is 1)
+  // nd: 2, 22, 32, 42... (last digit is 2)
+  // rd: 3, 23, 33, 43... (last digit is 3)
+  // th: all others
+
   // We need to match month number in dateParts to month name in months
   let monthName = months[parseInt(dateParts[1]) - 1]
   console.log(`the month name is ${monthName}`);

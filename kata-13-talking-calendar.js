@@ -6,9 +6,12 @@
  * @returns {string} The converted date in spoken date format
  */
 const talkingCalendar = function(date) {
-  // Your code here
+  // We need a way to split the date into sections
+  let dateParts = date.split('/');
+  console.log(dateParts);
 };
 
+talkingCalendar("2017/12/02");
 // console.log(talkingCalendar("2017/12/02"), '=?', 'December 2nd, 2017');
 // console.log(talkingCalendar("2007/11/11"), '=?', 'November 11th, 2007');
 // console.log(talkingCalendar("1987/08/24"), '=?', 'August 24th, 1987');

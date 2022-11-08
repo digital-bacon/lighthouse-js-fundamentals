@@ -31,16 +31,16 @@ const talkingCalendar = function(date) {
     9: 'September',
     10: 'October',
     11: 'November',
-    12: 'December'
+    12: 'December',
   }
 
   // We need a list of suffixes for days
-  let daySuffixes = [
-    'st',
-    'nd',
-    'rd',
-    'th'
-  ]
+  const kvDaySuffixes = {
+    1: 'st',
+    2: 'nd',
+    3: 'rd',
+    4: 'th',
+  }
   
   // Save the day, month, and year values
   convertedDate.dayValue = parseInt(dateParts[2]);
@@ -59,7 +59,7 @@ const talkingCalendar = function(date) {
   let lastDigit = convertedDate.dayValue.toString();
   lastDigit = lastDigit[lastDigit.length - 1];
   // Solve for a day suffix based on array position and remember it
-  convertedDate.daySuffix = daySuffixes[lastDigit - 1];
+  convertedDate.daySuffix = kvDaySuffixes[lastDigit];
   
   // Convert and remember the month name
   convertedDate.monthName = kvMonths[dateParts[1]];

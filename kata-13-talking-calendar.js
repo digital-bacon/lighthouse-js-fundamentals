@@ -61,14 +61,17 @@ const talkingCalendar = function(date) {
   convertedDate.monthName = months[dateParts[1] - 1];
 
   // Apply a day suffix based on array position
-  convertedDate.daySuffix = daySuffixes[lastDigit + 1];
+  convertedDate.daySuffix = daySuffixes[lastDigit - 1];
 
   // We need a way to output the converted result with comma separators
   console.log(`${convertedDate.monthName}, ${convertedDate.dayValue}${convertedDate.daySuffix}, ${convertedDate.yearValue}`);
   
 };
 
+talkingCalendar("2017/12/01");
 talkingCalendar("2017/12/02");
+talkingCalendar("2017/12/03");
+talkingCalendar("2017/12/04");
 // console.log(talkingCalendar("2017/12/02"), '=?', 'December 2nd, 2017');
 // console.log(talkingCalendar("2007/11/11"), '=?', 'November 11th, 2007');
 // console.log(talkingCalendar("1987/08/24"), '=?', 'August 24th, 1987');

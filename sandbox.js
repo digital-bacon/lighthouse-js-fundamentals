@@ -33,6 +33,30 @@ function mathPower(base, power) {
   return result;
 }
 
-console.log(mathPower(2, 1));
-console.log(mathPower(2, 3));
-console.log(mathPower(2, -2));
+// console.log(mathPower(2, 1));
+// console.log(mathPower(2, 3));
+// console.log(mathPower(2, -2));
+
+/**
+ * Function that returns the index of the last time an item occurs in an array
+ * @param {Array<*>} arrayToSearch The array to check
+ * @param {*} itemToFind The item to find in the array
+ * @returns {number} Index of the last time the item occurs in the array
+ */
+ function lastIndexOf(arr, value) {
+  let index = -1;
+
+  for(let i=0; i < arr.length; i++) {
+    if(arr[i] === value) {
+      index = i;
+    }
+  }
+  return index;
+}
+
+// Test cases
+console.log(lastIndexOf([ 0, 1, 4, 1, 2 ], 1), "=?", 3);
+console.log(lastIndexOf([ 0, 1, 4, 1, 2 ], 2), "=?", 4);
+console.log(lastIndexOf([ 0, 1, 4, 1, 2 ], 3), "=?", -1);
+console.log(lastIndexOf([ 5, 5, 5 ], 5), "=?", 2);
+console.log(lastIndexOf([], 3), "=?", -1);

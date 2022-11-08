@@ -4,7 +4,7 @@ const chooseRecipe = function(bakeryA, bakeryB, recipes) {
     recipeName: '',
     bakeryA: [],
     bakeryB: [],
-    pickup: [],
+    needIngredient: [],
   }
 
   for (let recipe in recipes) {
@@ -12,31 +12,31 @@ const chooseRecipe = function(bakeryA, bakeryB, recipes) {
     shoppingList.recipeName = recipes[recipe].name;
     shoppingList.bakeryA = [];
     shoppingList.bakeryB = [];
-    shoppingList.pickup = recipes[recipe].ingredients;
+    shoppingList.needIngredient = recipes[recipe].ingredients;
 
-    for (let ingredient in shoppingList.pickup) {
-      localIndex = bakeryA.indexOf(shoppingList.pickup[ingredient]);
+    for (let ingredient in shoppingList.needIngredient) {
+      localIndex = bakeryA.indexOf(shoppingList.needIngredient[ingredient]);
       if (localIndex > -1) { // Ingredient found at Bakery A!
-        shoppingList.bakeryA.push(shoppingList.pickup[ingredient]);
-        shoppingList.pickup.splice(ingredient, 1);
+        shoppingList.bakeryA.push(shoppingList.needIngredient[ingredient]);
+        shoppingList.needIngredient.splice(ingredient, 1);
       }
     }
 
-    for (let ingredient in shoppingList.pickup) {
-      localIndex = bakeryB.indexOf(shoppingList.pickup[ingredient]);
+    for (let ingredient in shoppingList.needIngredient) {
+      localIndex = bakeryB.indexOf(shoppingList.needIngredient[ingredient]);
       if (localIndex > -1) { // Ingredient found at Bakery A!
-        shoppingList.bakeryB.push(shoppingList.pickup[ingredient]);
-        shoppingList.pickup.splice(ingredient, 1);
+        shoppingList.bakeryB.push(shoppingList.needIngredient[ingredient]);
+        shoppingList.needIngredient.splice(ingredient, 1);
       }
     }
 
-    if (shoppingList.pickup.length === 0) {
+    if (shoppingList.needIngredient.length === 0) {
       break;
     }
 
   }
 
-  return shoppingList.pickup.length === 0 ? shoppingList.recipeName : '';
+  return shoppingList.needIngredient.length === 0 ? shoppingList.recipeName : '';
 
 
    /**
@@ -97,10 +97,10 @@ console.log(chooseRecipe(bakeryA, bakeryB, recipes));
 
 /*
 
-We need a way to find the index of an item in an array (bakery ingredient arrays)`
+We needIngredient a way to find the index of an item in an array (bakery ingredient arrays)`
   - findIndexInArray()
     - returns -1 if not found
     - returns index # of matched item if found
-We need a way to 
+We needIngredient a way to 
 
 */

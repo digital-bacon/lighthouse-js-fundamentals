@@ -10,7 +10,9 @@ const talkingCalendar = function(date) {
   let dateParts = date.split('/');
 
   // We need a way to output the converted result with comma separators
-  let concat = (array, separator) => {
+  console.log(concat(dateParts, ','));
+
+  function concat(array, separator) {
     let output = '';
     for (item in array) {
       output += array[item];
@@ -21,7 +23,6 @@ const talkingCalendar = function(date) {
     }
     return output;
   }
-  console.log(concat(dateParts, ','));
   
 };
 

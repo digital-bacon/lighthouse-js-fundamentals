@@ -11,10 +11,11 @@ const talkingCalendar = function(date) {
 
   // Add a way to store the converted date
   const convertedDate = {
-    monthName: '',
-    dayValue: 0,
-    daySuffix: '',
     yearValue: 0,
+    monthValue: 0,
+    dayValue: 0,
+    monthName: '',
+    daySuffix: '',
   };
 
   // Save the day and year values

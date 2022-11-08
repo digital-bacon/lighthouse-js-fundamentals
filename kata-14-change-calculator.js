@@ -5,6 +5,7 @@
  * @returns {{denominations: number}}
  */
 const calculateChange = function(total, cash) {
+  
   // A way to solve how many times a number can fit in another
   function getQuotient(dividend, divisor, includeRemainder = true) {
     let result = dividend / divisor;
@@ -23,6 +24,10 @@ const calculateChange = function(total, cash) {
     5: "nickel",
     1: "penny",
   }
+
+  // Calculate the total change required in cents
+  const changeTotal = cash - total;
+  console.log(changeTotal);
 
 };
 

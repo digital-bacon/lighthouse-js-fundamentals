@@ -45,6 +45,10 @@ const talkingCalendar = function(date) {
   let lastDigit = parseInt(dateParts[2][dateParts[2].length - 1]);
   console.log (lastDigit);
 
+  // Apply a day suffix based on array position
+  let daySuffix = daySuffixes[lastDigit + 1];
+  console.log(daySuffix);
+
   // We need to match month number in dateParts to month name in months
   let monthName = months[parseInt(dateParts[1]) - 1]
   console.log(`the month name is ${monthName}`);

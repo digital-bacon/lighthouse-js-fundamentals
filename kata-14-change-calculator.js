@@ -26,7 +26,7 @@ const calculateChange = function(total, cash) {
   let changeRemaining = changeTotal;
   
   // Retrieve denomination types to array
-  let denominations = Object.keys(kvDenominations);
+  let denominations = Object.keys(kvDenominations).reverse();
 
   // Solve for the valid denomination types for the change required
   for (let denomination in denominations) {

@@ -18,11 +18,6 @@ const talkingCalendar = function(date) {
     daySuffix: '',
   };
 
-  // Save the day, month, and year values
-  convertedDate.dayValue = parseInt(dateParts[2]);
-  convertedDate.monthValue = parseInt(dateParts[1]);
-  convertedDate.yearValue = parseInt(dateParts[0]);
-
   // We need a list of months
   let months = [
     'January',
@@ -47,9 +42,7 @@ const talkingCalendar = function(date) {
     'th'
   ]
 
-  // Convert and remember the month name
-  convertedDate.monthName = months[dateParts[1] - 1];
-
+  
   // Identify a pattern of which day suffixes apply to date values
   // st: 1, 21, 31, 41... (last digit is 1)
   // nd: 2, 22, 32, 42... (last digit is 2)
@@ -58,6 +51,14 @@ const talkingCalendar = function(date) {
 
   // Get the last digit of the day value
   let lastDigit = parseInt(dateParts[2][dateParts[2].length - 1]);
+
+  // Save the day, month, and year values
+  convertedDate.dayValue = parseInt(dateParts[2]);
+  convertedDate.monthValue = parseInt(dateParts[1]);
+  convertedDate.yearValue = parseInt(dateParts[0]);
+
+  // Convert and remember the month name
+  convertedDate.monthName = months[dateParts[1] - 1];
 
   // Apply a day suffix based on array position
   convertedDate.daySuffix = daySuffixes[lastDigit + 1];

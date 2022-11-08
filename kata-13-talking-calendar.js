@@ -15,7 +15,21 @@ const talkingCalendar = function(date) {
     monthValue: function() {return parseInt(this.inputParts()[1])},
     dayValue: function() {return parseInt(this.inputParts()[2])},
     monthName: '',
-    daySuffix: '',
+    daySuffix: function() {
+      // Convert and remember the day suffix
+      /*
+      Identify a pattern of which day suffixes apply to date values
+        st: 1, 21, 31, 41... (last digit is 1)
+        nd: 2, 22, 32, 42... (last digit is 2)
+        rd: 3, 23, 33, 43... (last digit is 3)
+        th: all others
+      */
+      // Get the last digit of the day value
+      let lastDigit = this.dayValue().toString();
+      lastDigit = lastDigit[lastDigit.length - 1];
+      // Solve for a day suffix based on array position and remember it
+      return kvDaySuffixes[lastDigit];
+    },
   };
 
   // We need a data set to reflect month numbers and month names
@@ -42,25 +56,13 @@ const talkingCalendar = function(date) {
     4: 'th',
   }
   
-  // Convert and remember the day suffix
-  /*
-  Identify a pattern of which day suffixes apply to date values
-    st: 1, 21, 31, 41... (last digit is 1)
-    nd: 2, 22, 32, 42... (last digit is 2)
-    rd: 3, 23, 33, 43... (last digit is 3)
-    th: all others
-  */
-  // Get the last digit of the day value
-  let lastDigit = convertedDate.dayValue().toString();
-  lastDigit = lastDigit[lastDigit.length - 1];
-  // Solve for a day suffix based on array position and remember it
-  convertedDate.daySuffix = kvDaySuffixes[lastDigit];
+  
   
   // Convert and remember the month name
   convertedDate.monthName = kvMonths[convertedDate.inputParts()[1]];
 
   // We need a way to output the converted result with comma separators
-  console.log(`${convertedDate.monthName}, ${convertedDate.dayValue()}${convertedDate.daySuffix}, ${convertedDate.yearValue()}`);
+  console.log(`${convertedDate.monthName}, ${convertedDate.dayValue()}${convertedDate.daySuffix()}, ${convertedDate.yearValue()}`);
   
 };
 

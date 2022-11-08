@@ -9,6 +9,14 @@ const talkingCalendar = function(date) {
   // We need a way to split the date into sections
   let dateParts = date.split('/');
 
+  // Add a way to store the converted date
+  const convertedDate = {
+    monthName: '',
+    dayValue: 0,
+    daySuffix: '',
+    yearValue: 0,
+  };
+
   // We need a list of months
   let months = [
     'January',
@@ -24,8 +32,7 @@ const talkingCalendar = function(date) {
     'November',
     'December'
   ]
-  console.log(months);
-  
+
   // We need a list of suffixes for days
   let daySuffixes = [
     'st',
@@ -33,7 +40,7 @@ const talkingCalendar = function(date) {
     'rd',
     'th'
   ]
-  console.log(daySuffixes);
+  convertedDate += daySuffixes;
 
   // Identify a pattern of which day suffixes apply to date values
   // st: 1, 21, 31, 41... (last digit is 1)

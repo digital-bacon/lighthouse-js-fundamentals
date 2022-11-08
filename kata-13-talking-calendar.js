@@ -18,8 +18,9 @@ const talkingCalendar = function(date) {
     daySuffix: '',
   };
 
-  // Save the day and year values
+  // Save the day, month, and year values
   convertedDate.dayValue = parseInt(dateParts[2]);
+  convertedDate.monthValue = parseInt(dateParts[1]);
   convertedDate.yearValue = parseInt(dateParts[0]);
   console.log(convertedDate);
 

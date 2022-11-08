@@ -22,7 +22,6 @@ const talkingCalendar = function(date) {
   convertedDate.dayValue = parseInt(dateParts[2]);
   convertedDate.monthValue = parseInt(dateParts[1]);
   convertedDate.yearValue = parseInt(dateParts[0]);
-  console.log(convertedDate);
 
   // We need a list of months
   let months = [
@@ -64,19 +63,7 @@ const talkingCalendar = function(date) {
   convertedDate.daySuffix = daySuffixes[lastDigit + 1];
 
   // We need a way to output the converted result with comma separators
-  console.log(concat(dateParts, ','));
-
-  function concat(array, separator) {
-    let output = '';
-    for (item in array) {
-      output += array[item];
-      // Add a separator
-      if (item < array.length - 1) {
-        output += separator;
-      }
-    }
-    return output;
-  }
+  console.log(`${convertedDate.monthName}, ${convertedDate.dayValue}${convertedDate.daySuffix}, ${convertedDate.yearValue}`);
   
 };
 

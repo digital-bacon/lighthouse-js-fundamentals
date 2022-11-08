@@ -33,7 +33,7 @@ const talkingCalendar = function(date) {
       3: 'rd',
       4: 'th',
     },
-    this.inputDate = date.toString(),
+    this.inputDate = inputDate.toString(),
     this.inputParts = this.inputDate.split('/'),
     this.yearValue = parseInt(this.inputParts[0]),
     this.monthValue = parseInt(this.inputParts[1]),
@@ -46,13 +46,26 @@ const talkingCalendar = function(date) {
           st: 1, 21, 31, 41... (last digit is 1)
           nd: 2, 22, 32, 42... (last digit is 2)
           rd: 3, 23, 33, 43... (last digit is 3)
-          th: all others
+          th: all others, or if it's a 'teen' number
         */
-        // Get the last digit of the day value
-        let lastDigit = this.dayValue.toString();
-        lastDigit = lastDigit[lastDigit.length - 1];
-        // Solve for a day suffix based on array position and remember it
-        return this.kvDaySuffixes[lastDigit];
+        // Convert the day value to a string, so we can work with it
+        let dayValueAsString = this.dayValue.toString();
+        let kvDaySuffixKey = 0;
+        // If the number was larger than 9, check if it's a teen number
+        if (dayValueAsString.length > 1) {
+          // Retrieve the last two digits from the 
+          dayValueAsString = dayValueAsString.slice(-2);
+          // Check if the number is a 'teen' number
+          if (parseInt(dayValueAsString) - 10 && parseInt(dayValueAsString) < 20) {
+            // This is a teen number
+            kvDaySuffixKey = 4;
+          };
+        };
+        if (kvDaySuffixKey === 0) {
+          dayValueAsString = dayValueAsString.slice(-1);
+          kvDaySuffixKey = parseInt(dayValueAsString);
+        }
+        return this.kvDaySuffixes[kvDaySuffixKey];
       },
       this.daySuffix = this.getDaySuffix()
   };

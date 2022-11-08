@@ -1,6 +1,6 @@
 const chooseRecipe = function(bakeryA, bakeryB, recipes) {
 
-  const recipeInventory = {
+  const shoppingList = {
     recipeName: '',
     bakeryA: [],
     bakeryB: [],
@@ -9,34 +9,34 @@ const chooseRecipe = function(bakeryA, bakeryB, recipes) {
 
   for (let recipe in recipes) {
     let localIndex = -1;
-    recipeInventory.recipeName = recipes[recipe].name;
-    recipeInventory.bakeryA = [];
-    recipeInventory.bakeryB = [];
-    recipeInventory.pickup = recipes[recipe].ingredients;
+    shoppingList.recipeName = recipes[recipe].name;
+    shoppingList.bakeryA = [];
+    shoppingList.bakeryB = [];
+    shoppingList.pickup = recipes[recipe].ingredients;
 
-    for (let ingredient in recipeInventory.pickup) {
-      localIndex = bakeryA.indexOf(recipeInventory.pickup[ingredient]);
+    for (let ingredient in shoppingList.pickup) {
+      localIndex = bakeryA.indexOf(shoppingList.pickup[ingredient]);
       if (localIndex > -1) { // Ingredient found at Bakery A!
-        recipeInventory.bakeryA.push(recipeInventory.pickup[ingredient]);
-        recipeInventory.pickup.splice(ingredient, 1);
+        shoppingList.bakeryA.push(shoppingList.pickup[ingredient]);
+        shoppingList.pickup.splice(ingredient, 1);
       }
     }
 
-    for (let ingredient in recipeInventory.pickup) {
-      localIndex = bakeryB.indexOf(recipeInventory.pickup[ingredient]);
+    for (let ingredient in shoppingList.pickup) {
+      localIndex = bakeryB.indexOf(shoppingList.pickup[ingredient]);
       if (localIndex > -1) { // Ingredient found at Bakery A!
-        recipeInventory.bakeryB.push(recipeInventory.pickup[ingredient]);
-        recipeInventory.pickup.splice(ingredient, 1);
+        shoppingList.bakeryB.push(shoppingList.pickup[ingredient]);
+        shoppingList.pickup.splice(ingredient, 1);
       }
     }
 
-    if (recipeInventory.pickup.length === 0) {
+    if (shoppingList.pickup.length === 0) {
       break;
     }
 
   }
 
-  return recipeInventory.pickup.length === 0 ? recipeInventory.recipeName : '';
+  return shoppingList.pickup.length === 0 ? shoppingList.recipeName : '';
 
 
    /**

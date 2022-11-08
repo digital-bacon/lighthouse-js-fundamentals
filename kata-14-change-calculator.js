@@ -27,7 +27,9 @@ const calculateChange = function(total, cash) {
 
   // Calculate the total change required in cents
   const changeTotal = cash - total;
-  console.log(changeTotal);
+  
+  // Track the total change remaining
+  let changeRemaining = changeTotal;
 
 };
 

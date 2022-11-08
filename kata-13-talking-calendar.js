@@ -40,7 +40,10 @@ const talkingCalendar = function(date) {
     'rd',
     'th'
   ]
-  convertedDate += daySuffixes;
+
+  // Convert and remember the month name
+  convertedDate.monthName = months[dateParts[1] - 1];
+  console.log(convertedDate);
 
   // Identify a pattern of which day suffixes apply to date values
   // st: 1, 21, 31, 41... (last digit is 1)

@@ -25,10 +25,20 @@ const talkingCalendar = function(date) {
     'December'
   ]
   console.log(months);
+  
+  // We need a list of suffixes for days
+  let daySuffixes = [
+    'st',
+    'nd',
+    'rd',
+    'th'
+  ]
+  console.log(daySuffixes);
 
   // We need to match month number in dateParts to month name in months
   let monthName = months[parseInt(dateParts[1]) - 1]
   console.log(`the month name is ${monthName}`);
+
 
   // We need a way to output the converted result with comma separators
   console.log(concat(dateParts, ','));

@@ -6,14 +6,14 @@
  * @returns {string} The converted date in spoken date format
  */
 const talkingCalendar = function(date) {
-  // We need a way to split the date into sections
-  let dateParts = date.split('/');
 
   // Add a way to store the converted date
   const convertedDate = {
-    yearValue: 0,
-    monthValue: 0,
-    dayValue: 0,
+    inputDate: date.toString(),
+    inputParts: function() {return this.inputDate.split('/')},
+    yearValue: function() {return parseInt(this.inputParts()[0])},
+    monthValue: function() {return parseInt(this.inputParts()[1])},
+    dayValue: function() {return parseInt(this.inputParts()[2])},
     monthName: '',
     daySuffix: '',
   };
@@ -42,11 +42,6 @@ const talkingCalendar = function(date) {
     4: 'th',
   }
   
-  // Save the day, month, and year values
-  convertedDate.dayValue = parseInt(dateParts[2]);
-  convertedDate.monthValue = parseInt(dateParts[1]);
-  convertedDate.yearValue = parseInt(dateParts[0]);
-  
   // Convert and remember the day suffix
   /*
   Identify a pattern of which day suffixes apply to date values
@@ -56,16 +51,16 @@ const talkingCalendar = function(date) {
     th: all others
   */
   // Get the last digit of the day value
-  let lastDigit = convertedDate.dayValue.toString();
+  let lastDigit = convertedDate.dayValue().toString();
   lastDigit = lastDigit[lastDigit.length - 1];
   // Solve for a day suffix based on array position and remember it
   convertedDate.daySuffix = kvDaySuffixes[lastDigit];
   
   // Convert and remember the month name
-  convertedDate.monthName = kvMonths[dateParts[1]];
+  convertedDate.monthName = kvMonths[convertedDate.inputParts()[1]];
 
   // We need a way to output the converted result with comma separators
-  console.log(`${convertedDate.monthName}, ${convertedDate.dayValue}${convertedDate.daySuffix}, ${convertedDate.yearValue}`);
+  console.log(`${convertedDate.monthName}, ${convertedDate.dayValue()}${convertedDate.daySuffix}, ${convertedDate.yearValue()}`);
   
 };
 

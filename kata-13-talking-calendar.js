@@ -7,8 +7,9 @@
  */
 const talkingCalendar = function(date) {
 
-  const convertedDate = new SpokenDate(date);
-  console.log(convertedDate);
+  const spokenDate = new SpokenDate(date);
+  // We need a way to output the converted result with comma separators
+  return (`${spokenDate.monthName}, ${spokenDate.dayValue}${spokenDate.daySuffix}, ${spokenDate.yearValue}`);
 
   // An object that receives a date, and converts it to spoken format
   function SpokenDate(inputDate) {
@@ -55,17 +56,9 @@ const talkingCalendar = function(date) {
       },
       this.daySuffix = this.getDaySuffix()
   };
-
-  
-  // We need a way to output the converted result with comma separators
-  // console.log(`${convertedDate.monthName}, ${convertedDate.dayValue}${convertedDate.daySuffix}, ${convertedDate.yearValue}`);
   
 };
 
-talkingCalendar("2017/12/01");
-// talkingCalendar("2017/12/02");
-// talkingCalendar("2017/12/03");
-// talkingCalendar("2017/12/04");
-// console.log(talkingCalendar("2017/12/02"), '=?', 'December 2nd, 2017');
-// console.log(talkingCalendar("2007/11/11"), '=?', 'November 11th, 2007');
-// console.log(talkingCalendar("1987/08/24"), '=?', 'August 24th, 1987');
+console.log(talkingCalendar("2017/12/02"), '=?', 'December 2nd, 2017');
+console.log(talkingCalendar("2007/11/11"), '=?', 'November 11th, 2007');
+console.log(talkingCalendar("1987/08/24"), '=?', 'August 24th, 1987');

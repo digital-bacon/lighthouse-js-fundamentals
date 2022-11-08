@@ -10,7 +10,20 @@ const calculateChange = function(total, cash) {
     let result = dividend / divisor;
     return includeRemainder ? result : Math.floor(result);
   }
-  console.log(getQuotient(213, 200, true))
+  
+  // Add currency denominations and their value in cents
+  const kvDenominations = {
+    2000: "twentyDollar",
+    1000: "tenDollar",
+    500: "fiveDollar",
+    200: "twoDollar",
+    100: "oneDollar",
+    25: "quarter",
+    10: "dime",
+    5: "nickel",
+    1: "penny",
+  }
+
 };
 
 console.log(calculateChange(1787, 2000));

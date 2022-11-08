@@ -41,27 +41,28 @@ const talkingCalendar = function(date) {
     'rd',
     'th'
   ]
-
   
-  // Identify a pattern of which day suffixes apply to date values
-  // st: 1, 21, 31, 41... (last digit is 1)
-  // nd: 2, 22, 32, 42... (last digit is 2)
-  // rd: 3, 23, 33, 43... (last digit is 3)
-  // th: all others
-
-  // Get the last digit of the day value
-  let lastDigit = parseInt(dateParts[2][dateParts[2].length - 1]);
-
   // Save the day, month, and year values
   convertedDate.dayValue = parseInt(dateParts[2]);
   convertedDate.monthValue = parseInt(dateParts[1]);
   convertedDate.yearValue = parseInt(dateParts[0]);
-
+  
+  // Convert and remember the day suffix
+  /*
+  Identify a pattern of which day suffixes apply to date values
+    st: 1, 21, 31, 41... (last digit is 1)
+    nd: 2, 22, 32, 42... (last digit is 2)
+    rd: 3, 23, 33, 43... (last digit is 3)
+    th: all others
+  */
+  // Get the last digit of the day value
+  let lastDigit = convertedDate.dayValue.toString();
+  lastDigit = lastDigit[lastDigit.length - 1];
+  // Solve for a day suffix based on array position and remember it
+  convertedDate.daySuffix = daySuffixes[lastDigit - 1];
+  
   // Convert and remember the month name
   convertedDate.monthName = months[dateParts[1] - 1];
-
-  // Apply a day suffix based on array position
-  convertedDate.daySuffix = daySuffixes[lastDigit - 1];
 
   // We need a way to output the converted result with comma separators
   console.log(`${convertedDate.monthName}, ${convertedDate.dayValue}${convertedDate.daySuffix}, ${convertedDate.yearValue}`);

@@ -17,6 +17,11 @@ const talkingCalendar = function(date) {
     yearValue: 0,
   };
 
+  // Save the day and year values
+  convertedDate.dayValue = parseInt(dateParts[2]);
+  convertedDate.yearValue = parseInt(dateParts[0]);
+  console.log(convertedDate);
+
   // We need a list of months
   let months = [
     'January',
@@ -55,7 +60,6 @@ const talkingCalendar = function(date) {
 
   // Apply a day suffix based on array position
   convertedDate.daySuffix = daySuffixes[lastDigit + 1];
-  console.log(convertedDate);
 
   // We need a way to output the converted result with comma separators
   console.log(concat(dateParts, ','));

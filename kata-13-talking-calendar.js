@@ -42,13 +42,12 @@ const talkingCalendar = function(date) {
   // th: all others
 
   // Get the last digit of the day value
-  let lastDigit = dateParts[2][dateParts[2].length - 1];
+  let lastDigit = parseInt(dateParts[2][dateParts[2].length - 1]);
   console.log (lastDigit);
 
   // We need to match month number in dateParts to month name in months
   let monthName = months[parseInt(dateParts[1]) - 1]
   console.log(`the month name is ${monthName}`);
-
 
   // We need a way to output the converted result with comma separators
   console.log(concat(dateParts, ','));

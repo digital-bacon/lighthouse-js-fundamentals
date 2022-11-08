@@ -8,15 +8,15 @@ const calculateChange = function(total, cash) {
   
   // Add currency denominations and their value in cents
   const kvDenominations = {
-    twentyDollar: 2000,
-    tenDollar: 1000,
-    fiveDollar: 500,
-    twoDollar: 200,
-    oneDollar: 100,
-    quarter: 25,
-    dime: 10,
-    nickel: 5,
-    penny: 1,
+    2000: "twentyDollar",
+    1000: "tenDollar",
+    500: "fiveDollar",
+    200: "twoDollar",
+    100: "oneDollar",
+    25: "quarter",
+    10: "dime",
+    5: "nickel",
+    1: "penny",
   }
 
   // Calculate the total change required in cents
@@ -24,10 +24,16 @@ const calculateChange = function(total, cash) {
   
   // Add variable to track the total change remaining
   let changeRemaining = changeTotal;
+  
+  // Retrieve denomination types to array
+  let denominations = Object.keys(kvDenominations);
 
-  // Retrieve the denomination types
-  Object.keys(kvDenominations)
-
+  // Solve for the valid denomination types for the change required
+  for (let denomination in denominations) {
+    if (denominations[denomination] <= changeRemaining) {
+      console.log(denominations[denomination]);
+    }
+  }
 
 };
 

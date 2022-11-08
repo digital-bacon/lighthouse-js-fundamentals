@@ -5,7 +5,12 @@
  * @returns {{denominations: number}}
  */
 const calculateChange = function(total, cash) {
-  // Your code here
+  // A way to solve how many times a number can fit in another
+  function getQuotient(dividend, divisor, includeRemainder = true) {
+    let result = dividend / divisor;
+    return includeRemainder ? result : Math.floor(result);
+  }
+  console.log(getQuotient(213, 200, true))
 };
 
 console.log(calculateChange(1787, 2000));

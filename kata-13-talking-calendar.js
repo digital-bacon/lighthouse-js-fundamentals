@@ -11,7 +11,10 @@ const talkingCalendar = function(date) {
   // We need a way to output the converted result with comma separators
   return (`${spokenDate.monthName}, ${spokenDate.dayValue}${spokenDate.daySuffix}, ${spokenDate.yearValue}`);
 
-  // An object that receives a date, and converts it to spoken format
+  /**
+   * Constructor function that receives a date, and parses it to spoken values
+   * @param {string} inputDate - Formatted YYYY/MM/DD date as a string
+   */
   function SpokenDate(inputDate) {
     this.kvMonths = {
       1: 'January',

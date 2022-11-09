@@ -33,6 +33,17 @@ function mathPower(base, power) {
   return result;
 }
 
+const result = (output, expected) => {
+  if (output === expected) {
+    console.log(`\x1b[32mTEST PASSED\n\x1b[36mresult:\t${output}\n\x1b[0mexpected:\t${expected}`);
+  } else {
+    console.log(`\x1b[33mTEST FAILED\n\x1b[36mresult\t\t${output}\n\x1b[0mexpected:\t${expected}`);
+  }
+}
+
+result("apples", "oranges");
+result([1, 2, 3], [1, 3]);
+
 // console.log(mathPower(2, 1));
 // console.log(mathPower(2, 3));
 // console.log(mathPower(2, -2));

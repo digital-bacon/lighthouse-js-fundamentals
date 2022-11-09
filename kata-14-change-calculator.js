@@ -19,6 +19,19 @@ const calculateChange = function(total, cash) {
     1: "penny",
   }
 
+  // Add an object to hold the result of making change
+  const makeChange = {
+    twentyDollar: 0,
+    tenDollar: 0,
+    fiveDollar: 0,
+    twoDollar: 0,
+    oneDollar: 0,
+    quarter: 0,
+    dime: 0,
+    nickel: 0,
+    penny: 0,
+  }
+
   // Calculate the total change required in cents
   const changeTotal = cash - total;
   
@@ -31,9 +44,10 @@ const calculateChange = function(total, cash) {
   // Solve for the valid denomination types for the change required
   for (let denomination in denominations) {
     if (denominations[denomination] <= changeRemaining) {
-      console.log(denominations[denomination]);
+      
     }
   }
+
 
 };
 

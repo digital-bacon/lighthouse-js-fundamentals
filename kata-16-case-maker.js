@@ -86,6 +86,13 @@ const titleCase = function(input) {
   return newString;
 };
 
+const vowelCase = function(input) {
+  let newString = input.trim();
+  const regex = /[aeiou]/gi;
+  newString = input.replace(regex, (input) => input.toUpperCase());
+  return newString;
+};
+
 
 
 console.log(camelCase("this is a string", "camel"));
@@ -93,3 +100,4 @@ console.log(pascalCase("this is a string", "pascal"));
 console.log(snakeCase("this is a string", "snake"));
 console.log(kebabCase("this is a string", "kebab"));
 console.log(titleCase("this is a string", "title"));
+console.log(vowelCase("this is a string", "vowel"));

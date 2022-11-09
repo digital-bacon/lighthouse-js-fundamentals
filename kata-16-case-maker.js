@@ -21,14 +21,12 @@ const pascalCase = function(input) {
   let newString = input.trim();
   /*
   matches a pattern:
-   - finds a space
-   - followed by any a-z char
+   - if the beginning of the string ^ or | alternatively, space \s
+   - is followed by any alphabetical character
    - g for global search (find all)
-   - i for case insensitive
   */
-  const regex = /\s[a-z]/gi;
+  const regex = /(^|\s)[a-z]/g;
   newString = input.replace(regex, (input) => input.toUpperCase().replace(/ /gi, ''));
-  newString = newString[0].toUpperCase() + newString.slice(1);
   return newString;
 };
 
@@ -80,9 +78,14 @@ const kebabCase = function(input) {
 
 const titleCase = function(input) {
   let newString = input.trim();
-  const regex = /\s[a-z]/g;
+   /*
+  matches a pattern:
+   - if the beginning of the string ^ or | alternatively, space \s
+   - is followed by any alphabetical character
+   - g for global search (find all)
+  */
+  const regex = /(^|\s)[a-z]/g;
   newString = input.replace(regex, (input) => input.toUpperCase());
-  newString = newString[0].toUpperCase() + newString.slice(1);
   return newString;
 };
 

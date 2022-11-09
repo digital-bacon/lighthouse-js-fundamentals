@@ -8,6 +8,10 @@ const makeCase = function(input, cases) {
         regex = /[a-z]/g;
         newString = newString.replace(regex, (newString) => newString.toUpperCase());
         break;
+      case "lower":
+        regex = /[A-Z]/g;
+        newString = newString.replace(regex, (newString) => newString.toLowerCase());
+        break;
       case "camel":
         regex = /(\s)[a-z]/g;
         newString = newString.replace(regex, (newString) => newString.toUpperCase().replace(/ /gi, ''));
@@ -167,7 +171,8 @@ const consonantCase = function(input) {
 // console.log(makeCase("this is a string", "title"))
 // console.log(makeCase("this is a string", "vowel"))
 // console.log(makeCase("this is a string", "consonant"))
-console.log(makeCase("this is a string", "upper"))
+// console.log(makeCase("this is a string", "upper"))
+console.log(makeCase("THIS IS A STRING", "lower"))
 // console.log(makeCase("this is a string", ["upper", "snake"]))
 
 

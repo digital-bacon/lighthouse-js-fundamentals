@@ -4,7 +4,10 @@
  * @returns {<{key: string, value: string}>} key value pairs
  */
 const urlDecode = function(text) {
-  // Put your solution here
+  // In case someone included a ? at the start, let's remove it
+  if (text[0] === "?") text = text.slice(1);
+  
+  return text;
 };
 
 console.log(urlDecode("duck=rubber"));

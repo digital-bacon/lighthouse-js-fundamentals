@@ -1,5 +1,6 @@
 /**
- * 
+ * Function that suggests the most efficient denominations to make 
+ * change following a transaction
  * @param {number} total - Total transaction value in cents
  * @param {number} cash - Total payment received in cents
  * @returns {{denominations: number}}
@@ -9,6 +10,12 @@ const calculateChange = function(total, cash) {
   const makeChange = new MakeChange(total, cash);
   return makeChange.changeSuggested;
 
+  /**
+   * Constructor function that receives a transaction amount and 
+   * payment received, and parses suggested change
+   * @param {number} chargeTotal - Total transaction value in cents
+   * @param {number} paymentReceived - Total payment received in cents
+   */
   function MakeChange(chargeTotal, paymentReceived) {
     this.chargeTotal = chargeTotal,
     this.paymentReceived = paymentReceived,
@@ -26,22 +33,28 @@ const calculateChange = function(total, cash) {
       penny: 1,
     },
     this.suggestChange = function() {
-        // Solve for the valid denomination types for the change required
-        // Retrieve denomination types to array
-        let denominations = Object.keys(this.kvDenominations);
+        // Solve to make suggested change in order of priority in `kvDenominations`
+        // To remember the suggested change
         const suggestion = {};
-        for (let denomination of denominations) {
+        // Only suggest change if change is required
+        if (this.changeRemaining <= 0) return suggestion;
+        // Checks each denomination type from `kvDenominations`
+        for (let denomination of Object.keys(this.kvDenominations)) {
+          // Will remember the total value of this denomination type
           let denominationValue = this.kvDenominations[denomination];
+          // To remember the total number of this denomination to dispense
           let denominationCount = 0;
+          // Denominations larger than `changeRemaining` are not considered
           if (denominationValue <= this.changeRemaining) {
+            // How many of this denomination type can be suggested?
             denominationCount = this.changeRemaining / denominationValue;
+            // We can't suggest a part of a currency denomination, only accept counts > 1
             if (denominationCount >= 1) {
-              // Denomination type can be used
+              // Ensure the suggested count of this denomination is a whole number
               denominationCount = Math.floor(denominationCount);
-              console.log(denominationCount);
-              // Save the number of this denomination to makeChange
+              // Add this denomination suggestion and count to our suggested change
               suggestion[`${denomination}`] = denominationCount;
-              // Reduce changeRemaining by value given by this denomination
+              // Reduce changeRemaining the change we just suggested
               this.changeRemaining -= denominationCount * denominationValue;
             };
           }

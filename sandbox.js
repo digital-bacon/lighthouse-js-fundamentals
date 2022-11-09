@@ -1,3 +1,9 @@
+// Recursion to repeat a string
+const repeat = function(string, repeatCount) { 
+  if (repeatCount === 0) return string;
+  return string + repeat(string, repeatCount - 1);
+}
+
 const repeatNumbers = function(data) {
   let output = '';
   for (let item in data) {
@@ -11,12 +17,6 @@ const repeatNumbers = function(data) {
 console.log(repeatNumbers([[1, 10]]));
 console.log(repeatNumbers([[1, 2], [2, 3]]));
 console.log(repeatNumbers([[10, 4], [34, 6], [92, 2]]));
-
-// Recursion to repeat a string
-function repeat(string, repeatCount) { 
-  if (repeatCount === 0) return string;
-  return string + repeat(string, repeatCount - 1);
-}
 
 // console.log(repeat("abc", 3));
 

@@ -68,3 +68,19 @@ const result = (output, expected) => {
 // console.log(lastIndexOf([ 0, 1, 4, 1, 2 ], 3), "=?", -1);
 // console.log(lastIndexOf([ 5, 5, 5 ], 5), "=?", 2);
 // console.log(lastIndexOf([], 3), "=?", -1);
+
+
+// let array = [
+//   [0, 0, 0, 0, 0, 1, 0, 0],
+//   [0, 0, 0, 0, 0, 0, 0, 0],
+//   [0, 0, 0, 0, 0, 0, 0, 0],
+//   [0, 0, 0, 0, 0, 0, 0, 0],
+//   [0, 0, 0, 0, 0, 0, 0, 0],
+//   [1, 0, 0, 0, 0, 0, 0, 0],
+//   [0, 0, 0, 0, 0, 0, 0, 0],
+//   [0, 0, 0, 0, 0, 0, 0, 0]
+// ];
+// // Output arrays on a single line
+// console.log(JSON.stringify(array));
+// // Output arrays in a table
+// console.table(array);

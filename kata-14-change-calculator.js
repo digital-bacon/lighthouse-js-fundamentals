@@ -37,28 +37,29 @@ const calculateChange = function(total, cash) {
         // To remember the suggested change
         const suggestion = {};
         // Only suggest change if change is required
-        if (this.changeRemaining <= 0) return suggestion;
-        // Checks each denomination type from `kvDenominations`
-        for (let denomination of Object.keys(this.kvDenominations)) {
-          // Will remember the total value of this denomination type
-          let denominationValue = this.kvDenominations[denomination];
-          // To remember the total number of this denomination to dispense
-          let denominationCount = 0;
-          // Denominations larger than `changeRemaining` are not considered
-          if (denominationValue <= this.changeRemaining) {
-            // How many of this denomination type can be suggested?
-            denominationCount = this.changeRemaining / denominationValue;
-            // We can't suggest a part of a currency denomination, only accept counts > 1
-            if (denominationCount >= 1) {
-              // Ensure the suggested count of this denomination is a whole number
-              denominationCount = Math.floor(denominationCount);
-              // Add this denomination suggestion and count to our suggested change
-              suggestion[`${denomination}`] = denominationCount;
-              // Reduce changeRemaining the change we just suggested
-              this.changeRemaining -= denominationCount * denominationValue;
+        if (this.changeRemaining > 0) {
+          // Checks each denomination type from `kvDenominations`
+          for (let denomination of Object.keys(this.kvDenominations)) {
+            // Will remember the total value of this denomination type
+            let denominationValue = this.kvDenominations[denomination];
+            // To remember the total number of this denomination to dispense
+            let denominationCount = 0;
+            // Denominations larger than `changeRemaining` are not considered
+            if (denominationValue <= this.changeRemaining) {
+              // How many of this denomination type can be suggested?
+              denominationCount = this.changeRemaining / denominationValue;
+              // We can't suggest a part of a currency denomination, only accept counts > 1
+              if (denominationCount >= 1) {
+                // Ensure the suggested count of this denomination is a whole number
+                denominationCount = Math.floor(denominationCount);
+                // Add this denomination suggestion and count to our suggested change
+                suggestion[`${denomination}`] = denominationCount;
+                // Reduce changeRemaining the change we just suggested
+                this.changeRemaining -= denominationCount * denominationValue;
+              };
             };
-          }
-        }
+          };
+        };
         return suggestion;
       },
       this.changeSuggested = this.suggestChange()

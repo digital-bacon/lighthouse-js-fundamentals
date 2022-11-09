@@ -80,7 +80,7 @@ const kebabCase = function(input) {
 
 const titleCase = function(input) {
   let newString = input.trim();
-  const regex = /\s[a-z]/gi;
+  const regex = /\s[a-z]/g;
   newString = input.replace(regex, (input) => input.toUpperCase());
   newString = newString[0].toUpperCase() + newString.slice(1);
   return newString;
@@ -88,7 +88,7 @@ const titleCase = function(input) {
 
 const vowelCase = function(input) {
   let newString = input.trim();
-  const regex = /[aeiou]/gi;
+  const regex = /[aeiou]/g;
   newString = input.replace(regex, (input) => input.toUpperCase());
   return newString;
 };

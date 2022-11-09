@@ -20,7 +20,7 @@ const makeCase = function(input, cases) {
   /**
    * Function that converts a string to a case format
    * @param {string} input - The string to convert
-   * @param {string} cases - A case type
+   * @param {string} caseType - A case type
    * @returns {string} - The result of the conversion
    */
   const convertToCase = (input, caseType) => {

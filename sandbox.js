@@ -42,12 +42,8 @@ const result = (output, expected) => {
 }
 
 
-result("apples", "oranges");
-result([1, 2, 3], [1, 3]);
-
-// console.log(mathPower(2, 1));
-// console.log(mathPower(2, 3));
-// console.log(mathPower(2, -2));
+// result("apples", "oranges");
+// result([1, 2, 3], [1, 3]);
 
 /**
  * Function that returns the index of the last time an item occurs in an array

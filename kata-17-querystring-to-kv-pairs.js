@@ -4,9 +4,11 @@
  * @returns {<{key: string, value: string}>} key value pairs
  */
 const urlDecode = function(text) {
+  // In case someone included whitespace before or after, remove it
+  text = text.trim();
   // In case someone included a ? at the start, let's remove it
   if (text[0] === "?") text = text.slice(1);
-  
+    
   return text;
 };
 

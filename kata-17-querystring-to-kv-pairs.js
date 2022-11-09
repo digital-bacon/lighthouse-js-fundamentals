@@ -8,7 +8,11 @@ const urlDecode = function(text) {
   text = text.trim();
   // In case someone included a ? at the start, let's remove it
   if (text[0] === "?") text = text.slice(1);
-    
+  // Find the key value pairs and move them into an array
+  let kvPairs = [];
+  kvPairs = text.split('&');
+  console.log(kvPairs);
+
   return text;
 };
 

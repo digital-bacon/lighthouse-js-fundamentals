@@ -8,6 +8,9 @@ const urlDecode = function(text) {
   text = text.trim();
   // In case someone included a ? at the start, let's remove it
   if (text[0] === "?") text = text.slice(1);
+  // Decode the given URL
+  // Replace any occurence of `%20` with ` `
+  text = text.replace(/%20{1}/g, ' ')
   // Create a collection of key value pairs and populate it
   const kvQuerystring = {};
   for (let kv of text.split('&')) {

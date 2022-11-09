@@ -54,15 +54,22 @@ const makeCase = function(input, cases) {
   return newString;
 }
 
-console.log(makeCase("this is a string", "camel"))
-console.log(makeCase("this is a string", "pascal"))
-console.log(makeCase("this is a string", "snake"))
-console.log(makeCase("this is a string", "kebab"))
-console.log(makeCase("this is a string", "title"))
-console.log(makeCase("this is a string", "vowel"))
-console.log(makeCase("this is a string", "consonant"))
-console.log(makeCase("this is a string", "upper"))
-console.log(makeCase("THIS IS A STRING", "lower"))
 // console.log(makeCase("this is a string", ["upper", "snake"]))
 
+const result = (output, expected) => {
+  if (output === expected) {
+    console.log(`\x1b[32mTEST PASSED\n\x1b[36mresult:\t\t${output}\n\x1b[0mexpected:\t${expected}\n----------`);
+  } else {
+    console.log(`\x1b[33mTEST FAILED\n\x1b[36mresult\t\t${output}\n\x1b[0mexpected:\t${expected}\n----------`);
+  }
+}
 
+result(makeCase("this is a string", "camel"), "thisIsAString")
+result(makeCase("this is a string", "pascal"), "ThisIsAString")
+result(makeCase("this is a string", "snake"), "this_is_a_string")
+result(makeCase("this is a string", "kebab"), "this-is-a-string")
+result(makeCase("this is a string", "title"), "This Is A String")
+result(makeCase("this is a string", "vowel"), "thIs Is A strIng")
+result(makeCase("this is a string", "consonant"), "THiS iS a STRiNG")
+result(makeCase("this is a string", "upper"), "THIS IS A STRING")
+result(makeCase("THIS IS A STRING", "lower"), "this is a string")

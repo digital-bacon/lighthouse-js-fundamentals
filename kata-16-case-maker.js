@@ -17,23 +17,7 @@ const makeCase = function(input, cases) {
   casePriority.push("upper")
   casePriority.push("lower")
 
-  // We don't want leading or trailing whitespace
-  let newString = input.trim();
-  
-  // Convert requested cases to an array so we can loop throught them
-  if (Array.isArray(cases) === false) cases = [cases];
-
-  // Process cases in the order of priority outlined in `casePriority`
-  for (const priority of casePriority) {
-    for (const caseType of cases) {
-      if (caseType === priority) {
-        // Perform the case conversion
-        newString = convertToCase(newString, caseType);
-      }
-    }
-  };
-
-  function convertToCase(input, caseType) {
+  const convertToCase = (input, caseType) => {
     let regex;
     switch(caseType) {
       case "camel":
@@ -79,6 +63,23 @@ const makeCase = function(input, cases) {
     };
     return input;
   }
+  
+  // We don't want leading or trailing whitespace
+  let newString = input.trim();
+  
+  // Convert requested cases to an array so we can loop through them
+  if (Array.isArray(cases) === false) cases = [cases];
+
+  // Process cases in the order of priority outlined in `casePriority`
+  for (const priority of casePriority) {
+    for (const caseType of cases) {
+      if (caseType === priority) {
+        // Perform the case conversion
+        newString = convertToCase(newString, caseType);
+      }
+    }
+  };
+
   return newString;
 };
 

@@ -50,12 +50,15 @@ const calculateChange = function(total, cash) {
       if (denominationCount >= 1) {
         // Denomination type can be used
         denominationCount = Math.floor(denominationCount);
-        console.log(denominationCount);
+        // Save the number of this denomination to makeChange
+        makeChange[denomination] = denominationCount;
+        // Reduce changeRemaining by value given by this denomination
+        changeRemaining -= denominationCount * denominationValue;
       };
     }
   }
 
-  //console.log(makeChange);
+  console.log(makeChange);
 
   // Object.prototype.toString()
 

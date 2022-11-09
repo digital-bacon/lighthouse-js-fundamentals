@@ -8,12 +8,14 @@ const urlDecode = function(text) {
   text = text.trim();
   // In case someone included a ? at the start, let's remove it
   if (text[0] === "?") text = text.slice(1);
-  // Find the key value pairs and move them into an array
-  let kvPairs = [];
-  kvPairs = text.split('&');
-  console.log(kvPairs);
+  // Create a collection of key value pairs and populate it
+  const kvQuerystring = {};
+  for (let kv of text.split('&')) {
+    const splitPair = kv.split('=');
+    kvQuerystring[splitPair[0]] = splitPair[1];
+  }
 
-  return text;
+  return kvQuerystring;
 };
 
 console.log(urlDecode("duck=rubber"));

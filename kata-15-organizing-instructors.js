@@ -26,6 +26,8 @@ const organizeInstructors = function(instructors) {
         if (sorted.hasOwnProperty(instructor.course) === false) {
           sorted[`${instructor.course}`] = []; // Add the course
         };
+        // List this instructor among this course's instructors
+        sorted[`${instructor.course}`].push(instructor.name);
       }
       return sorted;
     },

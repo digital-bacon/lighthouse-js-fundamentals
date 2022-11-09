@@ -4,33 +4,83 @@
  * @returns {string} The converted string
  */
  const camelCase = function(input) {
-  let newString = '';
-  let trimmed = input.trim(); // Remove leading and trailing spaces
-  // Store each word in a collection for easier reference
-  let words = trimmed.split(' ');
-  // Check each word in the collection
-  for (let word in words) {
-    // Don't do anything with the first word
-    if (parseInt(word) > 0) {
-      // Drop spaces
-      if (words[word] === ' ') {
-        words.splice(word, 1);
-        continue;
-      } else {
-        // Make this word uppercase
-        words[word] = words[word][0].toUpperCase() + words[word].slice(1)
-      }
-    }
-    // Export the words that we've converted
-    newString += words[word];
-  }
+  let newString = input.trim();
+  /*
+  matches a pattern:
+   - finds a space
+   - followed by any a-z char
+   - g for global search (find all)
+   - i for case insensitive
+  */
+  const regex = /\s[a-z]/gi;
+  newString = input.replace(regex, (input) => input.toUpperCase().replace(/ /gi, ''));
   return newString;
 };
 
-console.log(camelCase("this is a string"));
+const pascalCase = function(input) {
+  let newString = input.trim();
+  /*
+  matches a pattern:
+   - finds a space
+   - followed by any a-z char
+   - g for global search (find all)
+   - i for case insensitive
+  */
+  const regex = /\s[a-z]/gi;
+  newString = input.replace(regex, (input) => input.toUpperCase().replace(/ /gi, ''));
+  newString = newString[0].toUpperCase() + newString.slice(1);
+  return newString;
+};
 
-// const p = 'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?';
+const snakeCase = function(input) {
+  // Replace all non-alphabetical characters 
+  // Then replace all spaces with an underscore
+  let newString = input.trim();
+  /*
+  matches a pattern:
+   - finds any character not matching alphabetical or space
+   - g for global search (find all)
+   - i for case insensitive
+  */
+  let regex = /[^a-z\s]/gi;
+  newString = input.replace(regex, '');
+  /*
+  matches a pattern:
+   - finds any space
+   - g for global search (find all)
+   - i for case insensitive
+  */
+  regex = /\s/gi;
+  newString = newString.replace(regex, '_');
+  return newString;
+};
 
-// const regex = /[^a-z]/gi;
-// console.log(p.replace(regex, (string) => string.toUpperCase().replace(/[^a-z]/gi, '')));
-// // expected output: "The quick brown fox jumps over the lazy ferret. If the dog reacted, was it really lazy?"
+const kebabCase = function(input) {
+  // Replace all non-alphabetical characters 
+  // Then replace all spaces with an underscore
+  let newString = input.trim();
+  /*
+  matches a pattern:
+   - finds any character not matching alphabetical or space
+   - g for global search (find all)
+   - i for case insensitive
+  */
+  let regex = /[^a-z\s]/gi;
+  newString = input.replace(regex, '');
+  /*
+  matches a pattern:
+   - finds any space
+   - g for global search (find all)
+   - i for case insensitive
+  */
+  regex = /\s/gi;
+  newString = newString.replace(regex, '-');
+  return newString;
+};
+
+
+
+console.log(camelCase("this is a string", "camel"));
+console.log(pascalCase("this is a string", "pascal"));
+console.log(snakeCase("this is a string", "pascal"));
+console.log(kebabCase("this is a string", "kebab"));

@@ -4,6 +4,10 @@ const makeCase = function(input, cases) {
   if (Array.isArray(cases) === false) cases = [cases];
   for (let thisCase of cases) {
     switch(thisCase) {
+      case "upper":
+        regex = /[a-z]/g;
+        newString = newString.replace(regex, (newString) => newString.toUpperCase());
+        break;
       case "camel":
         regex = /(\s)[a-z]/g;
         newString = newString.replace(regex, (newString) => newString.toUpperCase().replace(/ /gi, ''));
@@ -156,13 +160,14 @@ const consonantCase = function(input) {
 // console.log(consonantCase("this is a string", "consonant"));
 // console.log(makeCase("this is a string", ["upper", "snake"]));
 
-console.log(makeCase("this is a string", "camel"))
-console.log(makeCase("this is a string", "pascal"))
-console.log(makeCase("this is a string", "snake"))
-console.log(makeCase("this is a string", "kebab"))
-console.log(makeCase("this is a string", "title"))
-console.log(makeCase("this is a string", "vowel"))
-console.log(makeCase("this is a string", "consonant"))
+// console.log(makeCase("this is a string", "camel"))
+// console.log(makeCase("this is a string", "pascal"))
+// console.log(makeCase("this is a string", "snake"))
+// console.log(makeCase("this is a string", "kebab"))
+// console.log(makeCase("this is a string", "title"))
+// console.log(makeCase("this is a string", "vowel"))
+// console.log(makeCase("this is a string", "consonant"))
+console.log(makeCase("this is a string", "upper"))
 // console.log(makeCase("this is a string", ["upper", "snake"]))
 
 

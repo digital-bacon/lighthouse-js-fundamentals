@@ -17,6 +17,12 @@ const makeCase = function(input, cases) {
   casePriority.push("upper")
   casePriority.push("lower")
 
+  /**
+   * Function that converts a string to a case format
+   * @param {string} input - The string to convert
+   * @param {string} cases - A case type
+   * @returns {string} - The result of the conversion
+   */
   const convertToCase = (input, caseType) => {
     let regex;
     switch(caseType) {

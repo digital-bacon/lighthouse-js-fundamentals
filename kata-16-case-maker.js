@@ -7,12 +7,11 @@
   let newString = input.trim();
   /*
   matches a pattern:
-   - finds a space
-   - followed by any a-z char
+   - if a space \s
+   - is followed by any alphabetical character
    - g for global search (find all)
-   - i for case insensitive
   */
-  const regex = /\s[a-z]/gi;
+   const regex = /(\s)[a-z]/g;
   newString = input.replace(regex, (input) => input.toUpperCase().replace(/ /gi, ''));
   return newString;
 };

@@ -64,8 +64,23 @@ const generateBoard = (whiteQueen, blackQueen) => {
  */
 const queenThreat = (generatedBoard) => {
 
-  const coordinatesPlayer = [0, 5];
-  const coordinatesQueen = [5, 0];
+  // When speaking of array indexes, use [x, y] instead of [0, 1]
+  const x = 0;
+  const y = 1;
+
+  // Get the location of players on the board
+  const playerPositions = []
+  for (let row = 0; row < generatedBoard.length; row ++) {
+    for (let column = 0; column < generatedBoard[row].length; column ++) {
+      if (generatedBoard[row][column] === 1) {
+        playerPositions.push([row, column]);
+      }
+    };
+  };
+  
+  // Assume only two players on the board, player and queen
+  const coordinatesPlayer = playerPositions[0];
+  const coordinatesQueen = playerPositions[1];
   
   const analyzeThreat = new AnalyzeThreat('queen', coordinatesQueen, coordinatesPlayer);
 

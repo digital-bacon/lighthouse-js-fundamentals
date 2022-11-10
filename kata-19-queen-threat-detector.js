@@ -63,7 +63,17 @@ const generateBoard = (whiteQueen, blackQueen) => {
  * @returns {boolean} The result of the analysis
  */
 const queenThreat = (generatedBoard) => {
-
+  /*
+  * Any player matching this pattern is a threat, 
+  * where x and y represent coordinates
+  *   - players are on the same row
+  *     (player1.x === player2.x)
+  *   - players are on the same column
+  *     (player1.y === player2.y)
+  *   - player coordinates are equal in sum
+  *     ((player1.x + player1.y) === (player2.x + player2.y))
+  */
+  
 }
 
 let whiteQueen = [0, 5];

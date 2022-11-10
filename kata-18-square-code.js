@@ -20,6 +20,12 @@ const squareCode = function(message) {
   for (let i = 1; i <= charactersPerRow; i++) {
     messageAcrossRows.push([]);
   }
+  // Populate the rows by filling them equally from top to bottom
+  for (let i = 0; i < message.length; i+= charactersPerRow) {
+    for (let y = 0; y < charactersPerRow; y ++) {
+      messageAcrossRows[y].push(message[i + y]);
+    }
+  }
 
   return messageAcrossRows;
 };

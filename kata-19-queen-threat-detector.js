@@ -86,6 +86,13 @@ const queenThreat = (generatedBoard) => {
 
   return analyzeThreat.opponent.canAttack;
 
+  /**
+   * Function that creates an object with player threat information
+   * @param {string} opponentType - the game piece of the opponent
+   * @param {Array<number, number} opponentCoordinates - the location of the opponent
+   * @param {Array<number, number} playerCoordinates - the location of the player
+   * @returns {<Object>} Object with player threat information
+   */
   function AnalyzeThreat(opponentType, opponentCoordinates, playerCoordinates) {
     this.player = {
       x: playerCoordinates[0],

@@ -66,9 +66,9 @@ const queenThreat = (generatedBoard) => {
   /*
   * Any player matching this pattern is a threat, 
   * where x and y represent coordinates
-  *   - players are on the same row
+  *   - queens are on the same row
   *     (queen1.x === queen2.x)
-  *   - players are on the same column
+  *   - queens are on the same column
   *     (queen1.y === queen2.y)
   *   - player coordinates are equal in sum
   *     ((queen1.x + queen1.y) === (queen2.x + queen2.y))
@@ -77,7 +77,7 @@ const queenThreat = (generatedBoard) => {
   const queen2 = [0, 0];
   const x = 0;
   const y = 1;
-  // players are on the same row
+  // queens are on the same row
   if (queen1[x] === queen2[x]) {
     console.log('Queens are on the same row!')
   }

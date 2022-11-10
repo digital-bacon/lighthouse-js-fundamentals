@@ -75,6 +75,8 @@ const queenThreat = (generatedBoard) => {
   */
   const queen1 = [0, 1];
   const queen2 = [5, 0];
+  const x = 0;
+  const y = 1;
 
 }
 

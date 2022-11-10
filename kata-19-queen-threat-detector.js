@@ -74,12 +74,16 @@ const queenThreat = (generatedBoard) => {
   *     ((queen1.x + queen1.y) === (queen2.x + queen2.y))
   */
   const queen1 = [0, 1];
-  const queen2 = [0, 0];
+  const queen2 = [3, 1];
   const x = 0;
   const y = 1;
   // queens are on the same row
   if (queen1[x] === queen2[x]) {
     console.log('Queens are on the same row!')
+  }
+  // queens are on the same column
+  if (queen1[y] === queen2[y]) {
+    console.log('Queens are on the same column!')
   }
 
 }

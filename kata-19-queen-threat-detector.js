@@ -12,9 +12,15 @@ const generateBoard = (whiteQueen, blackQueen) => {
   for (let row = 0; row < 8; row ++) {
     gameBoard.push([]);
     for (let column = 0; column < 8; column ++) {
-      gameBoard[row].push(0);
-    }
-  }
+      if (whiteQueen[0] === row && whiteQueen[1] === column) {
+        gameBoard[row].push(1);
+      } else if (blackQueen[0] === row && blackQueen[1] === column) {
+        gameBoard[row].push(1);
+      } else {
+        gameBoard[row].push(0);
+      };
+    };
+  };
   return gameBoard;
 }
 

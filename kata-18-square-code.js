@@ -8,13 +8,25 @@ const squareCode = function(message) {
   In Square Code, the spaces are removed from the english text and 
   the characters are written into a square (or rectangle).
   */
+  // Add a way to remember the encoded message
+  let encodedMessage = '';
   // Remove spaces
   message = message.replace(/\s{1}/g, '');
-  return message;
+  // Determine how many rows and characters per row to form a square
+  const charactersPerRow = Math.round(Math.sqrt(message.length));
+  // Add a way to store the message in rows
+  let messageInRows = [];
+  // Split the message into rows
+  for (let i = 0; i < message.length; i+=3) {
+    messageInRows.push(message.slice(i, (i + 3)));
+  }
+
+  return messageInRows;
 };
 
+
 // Expected output: clu hlt io  
-result(squareCode("chill out"),`clu hlt io `);
+result(squareCode("chill out"),`clu hlt io`);
 
 // Expected output: fto ehg ee dd
 result(squareCode("feed the dog"),`fto ehg ee dd`);

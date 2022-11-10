@@ -1,4 +1,37 @@
 /**
+ * Function that tests for deep equality in array values
+ * @param  {...Array} array 
+ * @returns {boolean}
+ */
+const arrayEquality = (...array) => {
+  let result = true;
+  let firstElement = array.shift(array[0]);
+  // If the first value is an array, evaluate all others as arrays
+  if (Array.isArray(firstElement)) {
+    for (let arrayIndex in array) {
+      for (let firstElementIndex in firstElement) {
+        if (firstElement[firstElementIndex] !== array[arrayIndex][firstElementIndex]) {
+          result = false;
+          break;
+        }
+      }
+      if (result === false) break;
+    }
+  // Evaluate all others as primitives
+  } else {
+    for (let arrayIndex in array) {
+      if (firstElement !== array[arrayIndex]) {
+        result = false;
+        break;
+      }
+    }
+  }
+  return result;
+}
+
+console.log(arrayEquality(1, 1))
+
+/**
  * Function that generates a chess board as an 8 x 8 array. Queen 
  * locations are denoted with a value of `1` and all others `0`
  * @param {Array<number, number} whiteQueen - location as `[x, y]`

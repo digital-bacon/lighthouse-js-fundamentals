@@ -73,8 +73,8 @@ const queenThreat = (generatedBoard) => {
   *   - queens are on the same diagonal
   *     ((queen1.x + queen1.y) === (queen2.x + queen2.y))
   */
-  const queen1 = [3, 3];
-  const queen2 = [6, 0];
+  const queen1 = [0, 5];
+  const queen2 = [5, 0];
   const x = 0;
   const y = 1;
   // queens are on the same row
@@ -102,15 +102,15 @@ console.log(queenThreat(generatedBoard));
 EXPECTED OUTPUT:
 
 [
+  [0, 0, 0, 0, 0, 1, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
   [1, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 1],
   [0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0]
 ]
-false
+true
 
 */

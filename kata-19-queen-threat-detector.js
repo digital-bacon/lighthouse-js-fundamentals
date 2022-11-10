@@ -63,34 +63,45 @@ const generateBoard = (whiteQueen, blackQueen) => {
  * @returns {boolean} The result of the analysis
  */
 const queenThreat = (generatedBoard) => {
-  /*
-  * Any player matching this pattern is a threat, 
-  * where x and y represent coordinates
-  *   - queens are on the same row
-  *     (queen1.x === queen2.x)
-  *   - queens are on the same column
-  *     (queen1.y === queen2.y)
-  *   - queens are on the same diagonal
-  *     ((queen1.x + queen1.y) === (queen2.x + queen2.y))
-  */
-  const queen1 = [0, 5];
-  const queen2 = [5, 0];
-  const x = 0;
-  const y = 1;
-  // queens are on the same row
-  if (queen1[x] === queen2[x]) {
-    return true;
-  };
-  // queens are on the same column
-  if (queen1[y] === queen2[y]) {
-    return true;
-  };
-  // queens are on the same diagonal
-  if ((queen1[x]+ queen1[y]) === (queen2[x] + queen2[y])) {
-    return true;
+
+  const coordinatesPlayer = [0, 5];
+  const coordinatesQueen = [5, 0];
+  
+  const analyzeThreat = new AnalyzeThreat('queen', coordinatesQueen, coordinatesPlayer);
+
+  return analyzeThreat.opponent.canAttack;
+
+  function AnalyzeThreat(opponentType, opponentCoordinates, playerCoordinates) {
+    this.player = {
+      x: playerCoordinates[0],
+      y: playerCoordinates[1]
+    },
+    this.attackSets = {
+      queen: ['same diagonal', 'same row', 'same column'],
+    }
+    this.opponent = {
+      x: opponentCoordinates[0],
+      y: opponentCoordinates[1],
+      type: opponentType,
+    },
+    this.getAttackSet = (playerType) => {return this.attackSets[playerType]},
+    this.canBeAttackedBy = (type) => {
+      for (const attack of this.attackSets[type]) {
+        switch (attack) {
+          case ('same diagonal'):
+            if (this.player.x === this.opponent.x) return true;
+          case ('same row'):
+            if (this.player.x === this.opponent.x) return true;
+          case ('same column'):
+            if ((this.player.x + this.player.y) === (this.opponent.x + this.opponent.y)) return true;
+        };
+      };
+      return false;
+    },
+    this.opponent.canAttack = this.canBeAttackedBy(opponentType)
   };
 
-}
+};
 
 let whiteQueen = [0, 5];
 let blackQueen = [5, 0];

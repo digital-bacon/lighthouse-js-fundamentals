@@ -7,7 +7,15 @@
  * locations marked
  */
 const generateBoard = (whiteQueen, blackQueen) => {
-
+  // Generate an 8 x 8 game board
+  let gameBoard = [];
+  for (let row = 0; row < 8; row ++) {
+    gameBoard.push([]);
+    for (let column = 0; column < 8; column ++) {
+      gameBoard[row].push(0);
+    }
+  }
+  return gameBoard;
 }
 
 /**

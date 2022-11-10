@@ -79,15 +79,15 @@ const queenThreat = (generatedBoard) => {
   const y = 1;
   // queens are on the same row
   if (queen1[x] === queen2[x]) {
-    console.log('Queens are on the same row!')
+    return true;
   };
   // queens are on the same column
   if (queen1[y] === queen2[y]) {
-    console.log('Queens are on the same column!')
+    return true;
   };
   // queens are on the same diagonal
   if ((queen1[x]+ queen1[y]) === (queen2[x] + queen2[y])) {
-    console.log('Queens are on the same diagonal!')
+    return true;
   };
 
 }

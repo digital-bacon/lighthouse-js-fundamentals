@@ -70,21 +70,25 @@ const queenThreat = (generatedBoard) => {
   *     (queen1.x === queen2.x)
   *   - queens are on the same column
   *     (queen1.y === queen2.y)
-  *   - player coordinates are equal in sum
+  *   - queens are on the same diagonal
   *     ((queen1.x + queen1.y) === (queen2.x + queen2.y))
   */
-  const queen1 = [0, 1];
-  const queen2 = [3, 1];
+  const queen1 = [3, 3];
+  const queen2 = [6, 0];
   const x = 0;
   const y = 1;
   // queens are on the same row
   if (queen1[x] === queen2[x]) {
     console.log('Queens are on the same row!')
-  }
+  };
   // queens are on the same column
   if (queen1[y] === queen2[y]) {
     console.log('Queens are on the same column!')
-  }
+  };
+  // queens are on the same diagonal
+  if ((queen1[x]+ queen1[y]) === (queen2[x] + queen2[y])) {
+    console.log('Queens are on the same diagonal!')
+  };
 
 }
 

@@ -67,7 +67,7 @@ const talkingCalendar = function(date) {
         if (kvDaySuffixKey === 0) {
           dayValueAsString = dayValueAsString.slice(-1);
           kvDaySuffixKey = parseInt(dayValueAsString);
-        }
+        };
         return this.kvDaySuffixes[kvDaySuffixKey];
       },
       this.daySuffix = this.getDaySuffix()

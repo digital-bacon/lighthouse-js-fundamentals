@@ -36,7 +36,21 @@ const blocksAway = function(directions) {
 
   // Follow the directions provided, and see where we end up
   for (let i = 0; i < turns.length; i++) {
-    console.log(`turn: ${turns[i]}, distance: ${distances[i]}`);
+    switch (cabDirection) {
+      case 'North':
+        cabDirection = turns[i] === 'left' ? 'West' : 'East';
+        break;
+      case 'East':
+        cabDirection = turns[i] === 'left' ? 'North' : 'South';
+        break;
+      case 'South':
+        cabDirection = turns[i] === 'left' ? 'East' : 'West';
+        break;
+      case 'West':
+        cabDirection = turns[i] === 'left' ? 'South' : 'North';
+        break;
+    }
+    console.log(`turn: ${turns[i]}, distance: ${distances[i]}, direction: ${cabDirection}`);
   }
   
   // Report blocks away

@@ -6,14 +6,10 @@
  * @param {boolean} [gameOver] - Gameplay ends when true 
  * @returns {Function} Returns recursively until gameOver is true
  */
-const numberGuessingGame = (question, solution, recordedGuesses = [], gameOver = false) => {
+const numberGuessingGame = (question, solution, recordedGuesses = []) => {
   // Message to show as a result of this round
   let roundMessage = '';
-  
-  // If the game is over, return the result of gameplay
-  if (gameOver) {
-    return;
-  };
+
   if (typeof question === 'undefined' || question === '') question = 'Guess a number (1-100): '
   // If no solution was provided, generate a number between 1 and 100
   if (typeof solution === 'undefined') solution = Math.floor(Math.random() * 100) + 1;
@@ -46,7 +42,8 @@ const numberGuessingGame = (question, solution, recordedGuesses = [], gameOver =
       // Is the number correct?
       if (answer === solution) {
         roundMessage += `You got it! You took ${totalGuesses + 1} attempt${(totalGuesses + 1) > 1 ? 's' : ''}! `;
-        gameOver = true;
+        console.log(roundMessage);
+        return;
       } else if (answer < solution) {
         roundMessage += 'Too Low! Try again! ';
       } else if (answer > solution) {
@@ -56,14 +53,10 @@ const numberGuessingGame = (question, solution, recordedGuesses = [], gameOver =
   };
 
   // Let the player know the result of this round
-  if (gameOver === false) {
-    console.log (`${roundMessage} Or type (quit) to exit`);
-  } else {
-    console.log (`${roundMessage}`)
-  };
+  console.log (`${roundMessage} Or type (quit) to exit`);
 
   // Repeat play until the game is over
-  return numberGuessingGame(question, solution, recordedGuesses, gameOver);
+  return numberGuessingGame(question, solution, recordedGuesses);
 };
 
 // Play the game!

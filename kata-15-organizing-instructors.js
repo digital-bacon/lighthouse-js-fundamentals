@@ -15,7 +15,7 @@ const organizeInstructors = function(instructors) {
     };
     // List this instructor among this course's instructors
     sorted[instructor.course].push(instructor.name);
-  }
+  };
   return sorted;
 };
 

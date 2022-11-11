@@ -84,3 +84,15 @@ const result = (output, expected) => {
 // console.log(JSON.stringify(array));
 // // Output arrays in a table
 // console.table(array);
+
+
+// Abstraction
+const formula = () => {
+  return 2 + 2;
+}
+
+const calculate = (logic) => {
+  return logic();
+}
+
+console.log(calculate(formula))

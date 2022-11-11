@@ -22,6 +22,9 @@ const blocksAway = function(directions) {
   let cabDirection = 'North'
   // To remember taxi cab travel distance from start point
   let blocksAway = {};
+  // Use human readable coordinate references for array indexes [0, 1]
+  const x = 0;
+  const y = 1;
 
   // Transcribe the directions into two lists: turns, and distances
   let turns = []
@@ -51,7 +54,22 @@ const blocksAway = function(directions) {
         cabDirection = turns[i] === 'left' ? 'South' : 'North';
         break;
     }
-    console.log(`turn: ${turns[i]}, distance: ${distances[i]}, direction: ${cabDirection}`);
+    // Calculate cab location after travel
+    switch (cabDirection) {
+      case 'North':
+        cabPosition[y] -= distances[i];
+        break;
+      case 'East':
+        cabPosition[x] += distances[i];
+        break;
+      case 'South':
+        cabPosition[y] += distances[i];
+        break;
+      case 'West':
+        cabPosition[x] -= distances[i];
+        break;
+    }
+    console.log(`turn: ${turns[i]}, distance: ${distances[i]}, direction: ${cabDirection}, cabPosition: ${cabPosition}`);
   }
   
   // Report blocks away

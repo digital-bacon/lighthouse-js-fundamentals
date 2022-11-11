@@ -89,7 +89,7 @@ const blocksAway = function(directions) {
     keyName = "West";
   };
   // Remember the reference direction and measure in blocks
-  blocksAway[keyName] = Math.abs(cabPositionStart[x] - cabPositionCurrent[x]);
+  blocksAway[keyName.toLowerCase()] = Math.abs(cabPositionStart[x] - cabPositionCurrent[x]);
 
   // Reference as North/South
   if (cabPositionStart[y] >= cabPositionCurrent[y]) {
@@ -98,17 +98,74 @@ const blocksAway = function(directions) {
     keyName = "South";
   };
   // Remember the reference direction and measure in blocks
-  blocksAway[keyName] = Math.abs(cabPositionStart[y] - cabPositionCurrent[y]);
+  blocksAway[keyName.toLowerCase()] = Math.abs(cabPositionStart[y] - cabPositionCurrent[y]);
 
   // Report blocks away
   return blocksAway;
 };
 
-console.log(blocksAway(["right", 2, "left", 3, "left", 1]));
-console.log(blocksAway(["left", 1, "right", 1, "left", 1, "right", 1, "left", 1, "right", 1]));
-console.log(blocksAway(["left", 3, "right", 1, "right", 3, "right", 1]));
 
-// Expected output:
-// {east: 1, north: 3}
-// {east: 3, north: 3}
-// {east: 0, north: 0}
+// Expected output: {east: 1, north: 3}
+result(
+  parseResult(
+    deepEqual(
+      blocksAway(["right", 2, "left", 3, "left", 1]
+      ), {east: 1, north: 3}
+    ), true, `{east: 1, north: 3}`
+  ), `{east: 1, north: 3}`
+);
+
+// Expected output: {east: 3, north: 3}
+result(
+  parseResult(
+    deepEqual(
+      blocksAway(["left", 1, "right", 1, "left", 1, "right", 1, "left", 1, "right", 1]
+      ), {east: 3, north: 3}
+    ), true, `{east: 3, north: 3}`
+  ), `{east: 3, north: 3}`
+);
+
+// Expected output: {east: 0, north: 0}
+result(
+  parseResult(
+    deepEqual(
+      blocksAway(["left", 3, "right", 1, "right", 3, "right", 1]
+      ), {east: 0, north: 0}
+    ), true, `{east: 0, north: 0}`
+  ), `{east: 0, north: 0}`
+);
+
+function result(output, expected) {
+  if (output === expected) {
+    console.log(`\n\x1b[32mTEST PASSED\n\x1b[36mresult:\n\x1b[0m`, output, `\n\x1b[36mexpected:\x1b[0m\n`, expected, `\n\n----------`);
+  } else {
+    console.log(`\n\x1b[33mTEST FAILED\n\x1b[36mresult:\n\x1b[0m`, output, `\n\x1b[36mexpected:\x1b[0m\n`, expected, `\n\n----------`);
+  };
+};
+
+function parseResult(result, expectation, output) {
+  if (result === expectation) return output;
+};
+
+function deepEqual(object1, object2) {
+  const keys1 = Object.keys(object1);
+  const keys2 = Object.keys(object2);
+  if (keys1.length !== keys2.length) {
+    return false;
+  };
+  for (const key of keys1) {
+    const val1 = object1[key];
+    const val2 = object2[key];
+    const areObjects = isObject(val1) && isObject(val2);
+    if (
+      areObjects && !deepEqual(val1, val2) ||
+      !areObjects && val1 !== val2
+    ) {
+      return false;
+    };
+  };
+  return true;
+};
+function isObject(object) {
+  return object != null && typeof object === 'object';
+};

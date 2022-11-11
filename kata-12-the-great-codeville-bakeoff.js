@@ -60,8 +60,8 @@ const chooseRecipe = function(bakeryA, bakeryB, recipes) {
   for (let list of shoppingLists) {
     if (list.needIngredients.length === 0) {
       canMakeRecipes.push(list.recipeName);
-    }
-  }
+    };
+  };
   
   // Return the name of a recipe we can make with ingredients on hand
   return canMakeRecipes.length > 0 ? canMakeRecipes[0] : '';
@@ -111,14 +111,4 @@ recipes = [
     }
 ];
 
-console.log(chooseRecipe(bakeryA, bakeryB, recipes));
-
-/*
-
-We needIngredients a way to find the index of an item in an array (bakery ingredient arrays)`
-  - findIndexInArray()
-    - returns -1 if not found
-    - returns index # of matched item if found
-We needIngredients a way to 
-
-*/
+console.log(chooseRecipe(bakeryA, bakeryB, recipes))

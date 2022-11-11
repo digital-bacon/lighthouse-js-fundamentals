@@ -25,17 +25,29 @@ const numberGuessingGame = (question, solution, recordedGuesses = [], gameOver =
 
   // Validate player answer
   if (parseInt(answer) === NaN) {
-    roundMessage = 'Not a number! Try again!';
+    roundMessage = 'Not a number! Try again! ';
   } else {
     answer = parseInt(answer);
     // Remember the player's answer if it's not the same as the last
     const totalGuesses = recordedGuesses.length;
-    if (totalGuesses > 0 && answer !== recordedGuesses[totalGuesses - 1]) {
+    if (totalGuesses > 0 && answer === recordedGuesses[totalGuesses - 1]) {
+      // Answer is not unique -- let the player know
+      roundMessage += 'Already Guessed! ';
+    } else {
+      // Answer is unique, remember it!
       recordedGuesses.push(answer);
+      // Is the number correct?
+      if (answer === solution) {
+        roundMessage += `You got it! You took ${totalGuesses + 1} attempt${(totalGuesses + 1) > 1 ? 's' : ''}! `;
+      } else if (answer < solution) {
+        roundMessage += 'Too Low!';
+      } else if (answer > solution) {
+        roundMessage += 'Too High!';
+      };
     }
   }
-  console.log(recordedGuesses)
+  console.log(roundMessage)
 
 }
 
-numberGuessingGame('', 15, [1, 22]);
+numberGuessingGame('', 15);

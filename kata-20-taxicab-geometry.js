@@ -5,7 +5,7 @@
  * @param {Array<number,number>} coordinates With inital [x, y] coordinates
  * @returns {Array<number,number>} With the [x, y] coordinates after all movements have been calculated
  */
- const calcGridMovement = (direction, distance = 1, coordinates = [0, 0]) => {
+ const calculateGridMovement = (direction, distance = 1, coordinates = [0, 0]) => {
   // Use human readable coordinate references for array indexes [0, 1]
   const x = 0;
   const y = 1;
@@ -77,7 +77,7 @@ const blocksAway = function(directions) {
 
   // Calculate new cab position after travel
   for (let i = 0; i < turns.length; i++) {
-    cabPositionCurrent = calcGridMovement(turns[i], distances[i], cabPositionCurrent);
+    cabPositionCurrent = calculateGridMovement(turns[i], distances[i], cabPositionCurrent);
   };
 
   // Calculate the blocks away from the start position

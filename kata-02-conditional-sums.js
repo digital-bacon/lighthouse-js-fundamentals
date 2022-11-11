@@ -54,23 +54,23 @@ const conditionalSum = function(values, condition) {
     odd: (number) => number % 2 !== 0
   }
   // Return a sum of all numbers that match the condition
-  return sumAll(values, conditions[condition])
-
-  /**
-   * Function that returns the sum of all numbers in an array
-   * @param {Array.<number>} array An array of numbers
-   * @returns {number} The sum of all numbers in the array
-   */
-  function sumAll(numbers, callback) {
-    let sum = 0;
-    for (let number of numbers) {
-      if (callback(number)) sum += number;
-      }
-    return sum;
-  }
+  return sumAll(values, conditions[condition]);
 }
 
-console.log(conditionalSum([1, 2, 3, 4, 5], "even"), "=?", 6)
-console.log(conditionalSum([1, 2, 3, 4, 5], "odd"), "=?", 9)
-console.log(conditionalSum([13, 88, 12, 44, 99], "even"), "=?", 144)
-console.log(conditionalSum([], "odd"), "=?", 0)
+console.log(conditionalSum([1, 2, 3, 4, 5], "even"), "=?", 6);
+console.log(conditionalSum([1, 2, 3, 4, 5], "odd"), "=?", 9);
+console.log(conditionalSum([13, 88, 12, 44, 99], "even"), "=?", 144);
+console.log(conditionalSum([], "odd"), "=?", 0);
+
+/**
+ * Function that returns the sum of all numbers in an array
+ * @param {Array.<number>} array An array of numbers
+ * @returns {number} The sum of all numbers in the array
+ */
+ function sumAll(numbers, callback) {
+  let sum = 0;
+  for (let number of numbers) {
+    if (callback(number)) sum += number;
+    }
+  return sum;
+}

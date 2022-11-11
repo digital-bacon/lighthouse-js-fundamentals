@@ -61,6 +61,9 @@ const numberGuessingGame = (question, solution, recordedGuesses = [], gameOver =
     console.log (`${roundMessage}`)
   }
 
+  // Repeat play until the game is over
+  return numberGuessingGame(question, solution, recordedGuesses, gameOver);
+
 }
 
 numberGuessingGame();

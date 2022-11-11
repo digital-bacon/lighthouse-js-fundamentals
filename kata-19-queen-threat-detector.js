@@ -52,7 +52,7 @@ const generateBoard = (whiteQueen, blackQueen) => {
     };
   };
   return gameBoard;
-}
+};
 
 /**
  * Function that receives a chess board with queen locations marked 
@@ -74,7 +74,7 @@ const queenThreat = (generatedBoard) => {
     for (let column = 0; column < generatedBoard[row].length; column ++) {
       if (generatedBoard[row][column] === 1) {
         playerPositions.push([row, column]);
-      }
+      };
     };
   };
   
@@ -100,7 +100,7 @@ const queenThreat = (generatedBoard) => {
     },
     this.attackSets = {
       queen: ['same diagonal', 'same row', 'same column'],
-    }
+    },
     this.opponent = {
       x: opponentCoordinates[0],
       y: opponentCoordinates[1],

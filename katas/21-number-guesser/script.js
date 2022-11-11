@@ -52,20 +52,19 @@ const numberGuessingGame = (question, solution, recordedGuesses = [], gameOver =
       } else if (answer > solution) {
         roundMessage += 'Too High! Try again! ';
       };
-    }
-  }
+    };
+  };
 
   // Let the player know the result of this round
   if (gameOver === false) {
     console.log (`${roundMessage} Or type (quit) to exit`);
   } else {
     console.log (`${roundMessage}`)
-  }
+  };
 
   // Repeat play until the game is over
   return numberGuessingGame(question, solution, recordedGuesses, gameOver);
-
-}
+};
 
 // Play the game!
 numberGuessingGame();

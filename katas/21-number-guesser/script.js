@@ -21,33 +21,46 @@ const numberGuessingGame = (question, solution, recordedGuesses = [], gameOver =
   let prompt = require("prompt-sync")();
 
   // Prompt the player for a response with a question
-  let answer = prompt(question + solution);
+  console.log (`${question}`);
+  let answer = prompt('> ');
+
+  // Give the user a way to quit playing!
+  if (answer === 'quit') return;
+
+  // Convert the answer to a number
+  answer = parseInt(answer);
 
   // Validate player answer
-  if (parseInt(answer) === NaN) {
+  if (Number.isNaN(answer)) {
     roundMessage = 'Not a number! Try again! ';
   } else {
-    answer = parseInt(answer);
     // Remember the player's answer if it's not the same as the last
     const totalGuesses = recordedGuesses.length;
     if (totalGuesses > 0 && answer === recordedGuesses[totalGuesses - 1]) {
       // Answer is not unique -- let the player know
-      roundMessage += 'Already Guessed! ';
+      roundMessage += 'Already Guessed! Try again!';
     } else {
       // Answer is unique, remember it!
       recordedGuesses.push(answer);
       // Is the number correct?
       if (answer === solution) {
         roundMessage += `You got it! You took ${totalGuesses + 1} attempt${(totalGuesses + 1) > 1 ? 's' : ''}! `;
+        gameOver = true;
       } else if (answer < solution) {
-        roundMessage += 'Too Low!';
+        roundMessage += 'Too Low! Try again! ';
       } else if (answer > solution) {
-        roundMessage += 'Too High!';
+        roundMessage += 'Too High! Try again! ';
       };
     }
   }
-  console.log(roundMessage)
+
+  // Let the player know the result of this round
+  if (gameOver === false) {
+    console.log (`${roundMessage} Or type (quit) to exit`);
+  } else {
+    console.log (`${roundMessage}`)
+  }
 
 }
 
-numberGuessingGame('', 15);
+numberGuessingGame();

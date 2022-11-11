@@ -60,10 +60,10 @@ STEP 2.When done reading through the records
  * @param {Array.<number>} data An array of numbers
  * @returns {number} The sum of the two largest numbers
  */
- const sumLargestNumbers = function(data = []) {
-   let largestNumbers = [];
-   let index = -1;
-  
+const sumLargestNumbers = function(data = []) {
+  let largestNumbers = [];
+  let index = -1;
+
   // Find the largest number
   index = indexOfLargest(data);
   // Remove the largest number we found and remember it
@@ -74,43 +74,47 @@ STEP 2.When done reading through the records
   // Remove the largest number we found and remember it
   largestNumbers.push(data.splice(index, 1));
 
-   // Make the array single dimensional, so we can work on it
-   largestNumbers = largestNumbers.flat();
+  // Make the array single dimensional, so we can work on it
+  largestNumbers = largestNumbers.flat();
 
-   // Add up all the values in the array
-   return sumAll(largestNumbers);
+  // Add up all the values in the array
+  return sumAll(largestNumbers);
+}
 
-  /**
-   * Function that returns the sum of all numbers in an array
-   * @param {Array.<number>} array An array of numbers
-   * @returns {number} The sum of all numbers in the array
-   */
-   function sumAll(array) {
-    let sum = 0; 
-    for (let number of array) {
-       sum += number;
-     }
-    return sum;
-   }
 
-  /**
-   * Function that returns the index of the largest number in an array
-   * @param {Array.<number>} array An array of numbers
-   * @returns {number} The index of the largest number in the array
-   */
-   function indexOfLargest(array) {
-     let indexOfLargest = 0;
-     for (let i = 0; i < array.length; i++) {
-       if (array[i] >= array[indexOfLargest]) {
-         indexOfLargest = i; // Remember where this largest number can be found.
-       }
-     }
-     return indexOfLargest;
-   }
- }
+console.log(sumLargestNumbers([1, 10]), "=?", 11);
+console.log(sumLargestNumbers([1, 2, 3]), "=?", 5);
+console.log(sumLargestNumbers([10, 4, 34, 6, 92, 2]), "=?", 126);
+console.log(sumLargestNumbers([2]), "=?", 2);
+console.log(sumLargestNumbers([]), "=?", 0);
 
- console.log(sumLargestNumbers([1, 10]), "=?", 11);
- console.log(sumLargestNumbers([1, 2, 3]), "=?", 5);
- console.log(sumLargestNumbers([10, 4, 34, 6, 92, 2]), "=?", 126);
- console.log(sumLargestNumbers([2]), "=?", 2);
- console.log(sumLargestNumbers([]), "=?", 0);
+/**
+ * Function that returns the sum of all numbers in an array
+ * @param {Array.<number>} array An array of numbers
+ * @returns {number} The sum of all numbers in the array
+ */
+function sumAll(array) {
+  let sum = 0; 
+  for (const number of array) {
+    sum += number;
+  };
+  return sum;
+}
+
+/**
+ * Function that returns the index of the largest number in an array
+ * @param {Array.<number>} array An array of numbers
+ * @returns {number} The index of the largest number in the array
+ */
+  function indexOfLargest(array) {
+    let indexOfLargest = 0;
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] >= array[indexOfLargest]) {
+        indexOfLargest = i; // Remember where this largest number can be found.
+      };
+    };
+    return indexOfLargest;
+
+  }
+
+  

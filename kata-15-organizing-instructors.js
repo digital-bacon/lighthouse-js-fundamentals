@@ -6,33 +6,17 @@
  * @returns {{course: Array<string>}} Courses with names of instructors
  */
 const organizeInstructors = function(instructors) {
-  
-  const sortedInstructors = new SortInstructors(instructors);
-  return sortedInstructors.sortedByCourse;
-  
-  /**
-   * Constructor function that receives a transaction amount and 
-   * payment received, and parses suggested change
-   * @param {Array<{name: string, course: string}>} instructors - Instructor 
-   * names and the course they teach
-   */
-   function SortInstructors(instructors) {
-    this.sortByCourse = function() {
-      // Add a way to remember the sorted records
-      const sorted = {};
-      // Look at each instructor record
-      for (const instructor of instructors) {
-       // Does this course already exist in the sorted collection?
-        if (sorted.hasOwnProperty(instructor.course) === false) {
-          sorted[`${instructor.course}`] = []; // Add the course
-        };
-        // List this instructor among this course's instructors
-        sorted[`${instructor.course}`].push(instructor.name);
-      }
-      return sorted;
-    },
-    this.sortedByCourse = this.sortByCourse()
-  };
+  // To collect sorted records
+  const sorted = {};
+  for (const instructor of instructors) {
+    // Does this course already exist in the sorted collection?
+    if (sorted.hasOwnProperty(instructor.course) === false) {
+      sorted[instructor.course] = []; // Add the course
+    };
+    // List this instructor among this course's instructors
+    sorted[instructor.course].push(instructor.name);
+  }
+  return sorted;
 };
 
 console.log(organizeInstructors([

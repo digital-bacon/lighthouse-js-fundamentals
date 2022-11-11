@@ -34,7 +34,18 @@ const blocksAway = function(directions) {
     }
   }
 
-  // 
+  // Follow the directions provided, and see where we end up
+  for (let i = 0; i < turns.length; i++) {
+    console.log(`turn: ${turns[i]}, distance: ${distances[i]}`);
+  }
+  // Create a set of rules for travel
+  /*
+  if turn === 'left'
+    if cabDirectionOfMovement === 'North'
+      cabDirectionOfMovement === 'West'
+    if cabDirectionOfMovement === 'North'
+    
+  */
   
   // Report blocks away
   return blocksAway;

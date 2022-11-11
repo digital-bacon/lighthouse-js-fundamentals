@@ -32,6 +32,10 @@ const prismVolume = function (height, width, depth) {
   return ((width * depth) * height);
 };
 
+const calculate = (logic, ...args) => {
+  return logic(...args);
+}
+
 /**
  * Function that calculates total volume of provided solids/shapes 
  * as objects
@@ -89,7 +93,9 @@ const duck = [
 ];
 
 
-console.log(4186 < sphereVolume(10) && sphereVolume(10) < 4189);
-console.log(45 < coneVolume(3, 5) && coneVolume(3, 5) < 49);
-console.log(prismVolume(3, 4, 5) === 60);
-console.log(272000 < totalVolume(duck) && totalVolume(duck) < 275000);
+//console.log(4186 < sphereVolume(10) && sphereVolume(10) < 4189);
+
+console.log(4186 < calculate(sphereVolume, 10) && calculate(sphereVolume, 10) < 4189);
+console.log(45 < calculate(coneVolume, 3, 5) && calculate(coneVolume, 3, 5) < 49);
+console.log(calculate(prismVolume, 3, 4, 5) === 60);
+console.log(272000 < calculate(totalVolume, duck) && calculate(totalVolume, duck) < 275000);

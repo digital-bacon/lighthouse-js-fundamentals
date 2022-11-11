@@ -14,28 +14,28 @@ const whereCanIPark = function (spots, vehicle) {
   let parkingSpot; // The x coordinate of available parking spot
   let parkingRow; // The y coordinate of available parking spot
   let spotWasFound = false;
-  let validSpotTypes = getSpotTypes(vehicle);
+  const validSpotTypes = getSpotTypes(vehicle);
 
   // Look row-by-row for the first parking spot for this vehicle
   for (parkingRow = 0; parkingRow < spots.length; parkingRow++) {
     // Check each spot in this row for a type usable by this vehicle
-    for (let spotType of validSpotTypes) {
+    for (const spotType of validSpotTypes) {
       parkingSpot = findIndexInArray(spots[parkingRow], spotType.toUpperCase());
       if (parkingSpot > -1) { // A spot was found!
         spotWasFound = true;
         break; // Stop looking for a spot in this row
-      }
-    }
+      };
+    };
     if (spotWasFound) {
       // Remember where we found the parking location
       parkingLocation = [];
       parkingLocation.push(parkingSpot); // The x coordinate
       parkingLocation.push(parkingRow); // The y coordinate
       break; // Stop searching parking rows for spots
-    }
-  }
+    };
+  };
   if (typeof parkingLocation === 'undefined') parkingLocation = false;
-  return parkingLocation
+  return parkingLocation;
 
   /**
    * 
@@ -61,24 +61,7 @@ const whereCanIPark = function (spots, vehicle) {
         // no spot matches
     }
     return spotTypes;
-  }
-
-  /**
-   * Function that finds the index of an item in an array
-   * @param {Array} searchIn - The array to search
-   * @param {*} itemToFind - The item to find
-   * @returns {number} The index position where the substring was found
-   */
-  function findIndexInArray(searchIn, itemToFind) {
-    let index = -1; // returns -1 if item not found
-    for (let i = 0; i < searchIn.length; i++) {
-      if (searchIn[i] === itemToFind) {
-        index = i;
-        break;
-      }
-    }
-    return index;
-  }
+  };
 };
 
 console.log(whereCanIPark(
@@ -115,4 +98,21 @@ console.log(whereCanIPark(
     ['S', 'r', 'S', 'M', 'm', 'S']
   ],
   'motorcycle'
-))
+));
+
+ /**
+   * Function that finds the index of an item in an array
+   * @param {Array} searchIn - The array to search
+   * @param {*} itemToFind - The item to find
+   * @returns {number} The index position where the substring was found
+   */
+  function findIndexInArray(searchIn, itemToFind) {
+    let index = -1; // returns -1 if item not found
+    for (let i = 0; i < searchIn.length; i++) {
+      if (searchIn[i] === itemToFind) {
+        index = i;
+        break;
+      }
+    }
+    return index;
+  }

@@ -7,11 +7,14 @@
 const randomNumber = (min, max) => Math.floor(Math.random() * max) + min;
 
 const numberGuessingGame = (question, solution, recordedGuesses = [], gameOver = false) => {
+  // Message to show as a result of this round
+  let roundMessage = '';
+  
   // If the game is over, return the result of gameplay
   if (gameOver) {
     return;
   };
-  if (typeof question === 'undefined') question = 'Guess a number (1-100): '
+  if (typeof question === 'undefined' || question === '') question = 'Guess a number (1-100): '
   if (typeof solution === 'undefined') solution = randomNumber(1, 100);
   
   // Required to allow reading input from the command line
@@ -21,8 +24,18 @@ const numberGuessingGame = (question, solution, recordedGuesses = [], gameOver =
   let answer = prompt(question + solution);
 
   // Validate player answer
-  if (parseInt(answer) === NaN) console.log('Not a number! Try again!');
+  if (parseInt(answer) === NaN) {
+    roundMessage = 'Not a number! Try again!';
+  } else {
+    answer = parseInt(answer);
+    // Remember the player's answer if it's not the same as the last
+    const totalGuesses = recordedGuesses.length;
+    if (totalGuesses > 0 && answer !== recordedGuesses[totalGuesses - 1]) {
+      recordedGuesses.push(answer);
+    }
+  }
+  console.log(recordedGuesses)
 
 }
 
-numberGuessingGame();
+numberGuessingGame('', 15, [1, 22]);

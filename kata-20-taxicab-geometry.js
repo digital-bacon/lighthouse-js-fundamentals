@@ -1,3 +1,23 @@
+/**
+ * Function that returns final position after a movement on an x, y grid
+ * @param {string} direction - Cardinal directions of travel
+ * @param {Array<number>} distance - Distance to move on the grid
+ * @param {Array<number,number>} coordinates With inital [x, y] coordinates
+ * @returns {Array<number,number>} With the [x, y] coordinates after all movements have been calculated
+ */
+ const calcGridMovement = (direction, distance = 1, coordinates = [0, 0]) => {
+  // Use human readable coordinate references for array indexes [0, 1]
+  const x = 0;
+  const y = 1;
+  switch (true) {
+  case (direction.toLowerCase() === 'north') : coordinates[y] -= distance; break; // Move north.
+  case (direction.toLowerCase() === 'south') : coordinates[y] += distance; break; // Move south.
+  case (direction.toLowerCase() === 'east') : coordinates[x] += distance; break; // Move east.
+  case (direction.toLowerCase() === 'west') : coordinates[x] -= distance; break; // Move west.
+  default: break;
+  }
+  return coordinates;
+}
 
 /**
  * Function that calculates the distance a cab is from it's starting 
@@ -35,40 +55,30 @@ const blocksAway = function(directions) {
   // !! Design constraint !! Removing allows omnidirectional travel
   if (turns[0] === 'left') cabDirection = 'East';
 
-  // Follow the directions provided, and see where we end up
-  for (let i = 0; i < turns.length; i++) {
-    // Change cab direction when turning
+  // Follow the directions and calculate cab movement
+  for (let turn in turns) {
+    // Convert turns from left/right to cardinal directions
     switch (cabDirection) {
       case 'North':
-        cabDirection = turns[i] === 'left' ? 'West' : 'East';
+        turns[turn] = turns[turn] === 'left' ? 'West' : 'East';
         break;
       case 'East':
-        cabDirection = turns[i] === 'left' ? 'North' : 'South';
+        turns[turn] = turns[turn] === 'left' ? 'North' : 'South';
         break;
       case 'South':
-        cabDirection = turns[i] === 'left' ? 'East' : 'West';
+        turns[turn] = turns[turn] === 'left' ? 'East' : 'West';
         break;
       case 'West':
-        cabDirection = turns[i] === 'left' ? 'South' : 'North';
-        break;
-    }
-    // Calculate cab location after travel
-    switch (cabDirection) {
-      case 'North':
-        cabPositionCurrent[y] -= distances[i];
-        break;
-      case 'East':
-        cabPositionCurrent[x] += distances[i];
-        break;
-      case 'South':
-        cabPositionCurrent[y] += distances[i];
-        break;
-      case 'West':
-        cabPositionCurrent[x] -= distances[i];
+        turns[turn] = turns[turn] === 'left' ? 'South' : 'North';
         break;
     };
-
+    cabDirection = turns[turn];
   };
+
+  // Calculate new cab position after travel
+  for (let i = 0; i < turns.length; i++) {
+    cabPositionCurrent = calcGridMovement(turns[i], distances[i], cabPositionCurrent);
+  }
 
   // Calculate the blocks away from the start position
   // Reference as East/West

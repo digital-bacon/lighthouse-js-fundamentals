@@ -1,9 +1,3 @@
-let prompt = require("prompt-sync")();
-
-// code below (replace this example)
-let answer = prompt("Guess a number: ");
-console.log("You answered: " + answer);
-
 /**
  * Function that generates a random number within a range
  * @param {number} min - The minimum number to return
@@ -12,4 +6,13 @@ console.log("You answered: " + answer);
  */
 const randomNumber = (min, max) => Math.floor(Math.random() * max) + min;
 
-console.log(randomNumber(10, 25));
+const numberGuessingGame = (question, solution, recordedGuesses = [], guessesAllowed) => {
+  if (typeof question === "undefined") question = "Guess a number (1-100): "
+  if (typeof solution === "undefined") solution = randomNumber(1, 100);
+  // Prompt the user for a response with a question
+  let prompt = require("prompt-sync")();
+  let answer = prompt(question);
+  console.log(`You answered: ${answer}`);
+}
+
+numberGuessingGame();

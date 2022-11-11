@@ -6,13 +6,19 @@
  */
 const randomNumber = (min, max) => Math.floor(Math.random() * max) + min;
 
-const numberGuessingGame = (question, solution, recordedGuesses = [], guessesAllowed) => {
-  if (typeof question === "undefined") question = "Guess a number (1-100): "
-  if (typeof solution === "undefined") solution = randomNumber(1, 100);
-  // Prompt the user for a response with a question
+const numberGuessingGame = (question, solution, recordedGuesses = []) => {
+  if (typeof question === 'undefined') question = 'Guess a number (1-100): '
+  if (typeof solution === 'undefined') solution = randomNumber(1, 100);
+  
+  // Required to allow reading input from the command line
   let prompt = require("prompt-sync")();
-  let answer = prompt(question);
-  console.log(`You answered: ${answer}`);
+
+  // Prompt the player for a response with a question
+  let answer = prompt(question + solution);
+
+  // Validate player answer
+  if (parseInt(answer) === NaN) console.log('Not a number! Try again!');
+
 }
 
 numberGuessingGame();

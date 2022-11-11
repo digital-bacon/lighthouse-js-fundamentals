@@ -15,6 +15,7 @@ Array [5, 6]
 */
 
 const blocksAway = function(directions) {
+  
   // To remember taxi cab position
   let cabPosition = [0, 6]
   // To remember taxi cab direction of movement
@@ -24,6 +25,19 @@ const blocksAway = function(directions) {
   // To remember taxi cab travel distance from start point
   let blocksAway = {};
 
+  // Transcribe the directions into two lists: turns, and distances
+  let turns = []
+  let distances = []
+  for (const direction in directions) {
+    if (direction % 2) {
+      distances.push(directions[direction]);
+    } else {
+      turns.push(directions[direction]);
+    }
+  }
+  console.log(turns);
+  console.log(distances);
+  
   // Report blocks away
   return blocksAway;
 };

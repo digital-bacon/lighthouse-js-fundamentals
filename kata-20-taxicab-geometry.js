@@ -36,6 +36,7 @@ const blocksAway = function(directions) {
 
   // Follow the directions provided, and see where we end up
   for (let i = 0; i < turns.length; i++) {
+    // Change cab direction when turning
     switch (cabDirection) {
       case 'North':
         cabDirection = turns[i] === 'left' ? 'West' : 'East';

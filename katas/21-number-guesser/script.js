@@ -1,11 +1,11 @@
 /**
- * Function that generates a random number within a range
- * @param {number} min - The minimum number to return
- * @param {number} max - The maximum number to return
- * @returns {number} The random number that was generated
+ * Function that plays a number guessing game in the console
+ * @param {string} [question] - The question to ask the player
+ * @param {number} [solution] - The correct answer
+ * @param {Array<number>} [recordedGuesses] - A record of player guesses
+ * @param {boolean} [gameOver] - Gameplay ends when true 
+ * @returns {Function} Returns recursively until gameOver is true
  */
-const randomNumber = (min, max) => Math.floor(Math.random() * max) + min;
-
 const numberGuessingGame = (question, solution, recordedGuesses = [], gameOver = false) => {
   // Message to show as a result of this round
   let roundMessage = '';
@@ -15,7 +15,8 @@ const numberGuessingGame = (question, solution, recordedGuesses = [], gameOver =
     return;
   };
   if (typeof question === 'undefined' || question === '') question = 'Guess a number (1-100): '
-  if (typeof solution === 'undefined') solution = randomNumber(1, 100);
+  // If no solution was provided, generate a number between 1 and 100
+  if (typeof solution === 'undefined') solution = Math.floor(Math.random() * 100) + 1;;
   
   // Required to allow reading input from the command line
   let prompt = require("prompt-sync")();
@@ -66,4 +67,5 @@ const numberGuessingGame = (question, solution, recordedGuesses = [], gameOver =
 
 }
 
+// Play the game!
 numberGuessingGame();

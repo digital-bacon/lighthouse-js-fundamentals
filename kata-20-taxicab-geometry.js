@@ -10,12 +10,12 @@
   const x = 0;
   const y = 1;
   switch (true) {
-  case (direction.toLowerCase() === 'north') : coordinates[y] -= distance; break; // Move north.
-  case (direction.toLowerCase() === 'south') : coordinates[y] += distance; break; // Move south.
-  case (direction.toLowerCase() === 'east') : coordinates[x] += distance; break; // Move east.
-  case (direction.toLowerCase() === 'west') : coordinates[x] -= distance; break; // Move west.
-  default: break;
-  }
+    case (direction.toLowerCase() === 'north') : coordinates[y] -= distance; break; // Move north.
+    case (direction.toLowerCase() === 'south') : coordinates[y] += distance; break; // Move south.
+    case (direction.toLowerCase() === 'east') : coordinates[x] += distance; break; // Move east.
+    case (direction.toLowerCase() === 'west') : coordinates[x] -= distance; break; // Move west.
+    default: break;
+  };
   return coordinates;
 }
 
@@ -29,7 +29,7 @@
 const blocksAway = function(directions) {
   
   // To remember starting taxi cab position
-  let cabPositionStart = [6, 0]
+  let cabPositionStart = [6, 0];
   // To remember current taxi cab position
   let cabPositionCurrent = cabPositionStart.slice();
   // To remember taxi cab direction of movement
@@ -41,15 +41,15 @@ const blocksAway = function(directions) {
   const y = 1;
 
   // Transcribe the directions into two lists: turns, and distances
-  let turns = []
-  let distances = []
+  let turns = [];
+  let distances = [];
   for (const direction in directions) {
     if (direction % 2) {
       distances.push(directions[direction]);
     } else {
       turns.push(directions[direction]);
-    }
-  }
+    };
+  };
 
   // Ensure the cab only travels East or North
   // !! Design constraint !! Removing allows omnidirectional travel
@@ -78,7 +78,7 @@ const blocksAway = function(directions) {
   // Calculate new cab position after travel
   for (let i = 0; i < turns.length; i++) {
     cabPositionCurrent = calcGridMovement(turns[i], distances[i], cabPositionCurrent);
-  }
+  };
 
   // Calculate the blocks away from the start position
   // Reference as East/West
@@ -87,7 +87,7 @@ const blocksAway = function(directions) {
     keyName = "East";
   } else {
     keyName = "West";
-  }
+  };
   // Remember the reference direction and measure in blocks
   blocksAway[keyName] = Math.abs(cabPositionStart[x] - cabPositionCurrent[x]);
 
@@ -96,7 +96,7 @@ const blocksAway = function(directions) {
     keyName = "North";
   } else {
     keyName = "South";
-  }
+  };
   // Remember the reference direction and measure in blocks
   blocksAway[keyName] = Math.abs(cabPositionStart[y] - cabPositionCurrent[y]);
 

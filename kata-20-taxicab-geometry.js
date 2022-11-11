@@ -1,19 +1,11 @@
-/*
 
-Movements:
-Left = turn counter-clockwise
-Right = turn clockwise
-1 block = 1 grid space
-
-Constraints:
-1. The driver always starts in the same position, SW corner of grid
-2. The output will always be East and North from start.
-
-Array [5, 6]
-
-
-*/
-
+/**
+ * Function that calculates the distance a cab is from it's starting 
+ * point when provided with directions for travel
+ * @param {Array<string, number>} directions - A list of turns and 
+ * travel distances for a cab
+ * @returns {<string: number>}
+ */
 const blocksAway = function(directions) {
   
   // To remember starting taxi cab position
@@ -75,7 +67,7 @@ const blocksAway = function(directions) {
         cabPositionCurrent[x] -= distances[i];
         break;
     };
-    
+
   };
 
   // Calculate the blocks away from the start position

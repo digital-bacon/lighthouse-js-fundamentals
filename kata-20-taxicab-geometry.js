@@ -19,7 +19,7 @@ const blocksAway = function(directions) {
   // To remember taxi cab position
   let cabPosition = [0, 6]
   // To remember taxi cab direction of movement
-  let cabDirectionOfMovement = 'North'
+  let cabDirection = 'North'
   // To remember taxi cab travel distance from start point
   let blocksAway = {};
 
@@ -38,14 +38,6 @@ const blocksAway = function(directions) {
   for (let i = 0; i < turns.length; i++) {
     console.log(`turn: ${turns[i]}, distance: ${distances[i]}`);
   }
-  // Create a set of rules for travel
-  /*
-  if turn === 'left'
-    if cabDirectionOfMovement === 'North'
-      cabDirectionOfMovement === 'West'
-    if cabDirectionOfMovement === 'North'
-    
-  */
   
   // Report blocks away
   return blocksAway;

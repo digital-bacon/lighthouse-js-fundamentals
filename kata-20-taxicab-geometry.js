@@ -16,8 +16,10 @@ Array [5, 6]
 
 const blocksAway = function(directions) {
   
-  // To remember taxi cab position
-  let cabPosition = [0, 6]
+  // To remember starting taxi cab position
+  let cabPositionStart = [0, 6]
+  // To remember current taxi cab position
+  let cabPositionCurrent = cabPositionStart.slice();
   // To remember taxi cab direction of movement
   let cabDirection = 'North'
   // To remember taxi cab travel distance from start point
@@ -57,20 +59,19 @@ const blocksAway = function(directions) {
     // Calculate cab location after travel
     switch (cabDirection) {
       case 'North':
-        cabPosition[y] -= distances[i];
+        cabPositionCurrent[y] -= distances[i];
         break;
       case 'East':
-        cabPosition[x] += distances[i];
+        cabPositionCurrent[x] += distances[i];
         break;
       case 'South':
-        cabPosition[y] += distances[i];
+        cabPositionCurrent[y] += distances[i];
         break;
       case 'West':
-        cabPosition[x] -= distances[i];
+        cabPositionCurrent[x] -= distances[i];
         break;
-    }
-    console.log(`turn: ${turns[i]}, distance: ${distances[i]}, direction: ${cabDirection}, cabPosition: ${cabPosition}`);
-  }
+    };
+  };
   
   // Report blocks away
   return blocksAway;

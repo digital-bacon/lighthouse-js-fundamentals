@@ -21,7 +21,7 @@ const organizeInstructors = function(instructors) {
       // Add a way to remember the sorted records
       const sorted = {};
       // Look at each instructor record
-      for (let instructor of instructors) {
+      for (const instructor of instructors) {
        // Does this course already exist in the sorted collection?
         if (sorted.hasOwnProperty(instructor.course) === false) {
           sorted[`${instructor.course}`] = []; // Add the course

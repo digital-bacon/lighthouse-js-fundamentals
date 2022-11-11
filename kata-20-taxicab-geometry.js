@@ -21,7 +21,7 @@ const blocksAway = function(directions) {
   // To remember current taxi cab position
   let cabPositionCurrent = cabPositionStart.slice();
   // To remember taxi cab direction of movement
-  let cabDirection = 'North'
+  let cabDirection = 'North';
   // To remember taxi cab travel distance from start point
   let blocksAway = {};
   // Use human readable coordinate references for array indexes [0, 1]
@@ -38,6 +38,10 @@ const blocksAway = function(directions) {
       turns.push(directions[direction]);
     }
   }
+
+  // Ensure the cab only travels East or North
+  // !! Design constraint !! Removing allows omnidirectional travel
+  if (turns[0] === 'left') cabDirection = 'East';
 
   // Follow the directions provided, and see where we end up
   for (let i = 0; i < turns.length; i++) {
@@ -71,28 +75,28 @@ const blocksAway = function(directions) {
         cabPositionCurrent[x] -= distances[i];
         break;
     };
-    // console.log(`turn: ${turns[i]}, distance: ${distances[i]}, direction: ${cabDirection}, cabPositionCurrent: ${cabPositionCurrent}`);
+    
   };
 
   // Calculate the blocks away from the start position
   // Reference as East/West
   let keyName = '';
-  if (cabPositionStart[x] < cabPositionCurrent[x]) {
+  if (cabPositionStart[x] <= cabPositionCurrent[x]) {
     keyName = "East";
   } else {
     keyName = "West";
   }
-  // Remember the reference direction
-  blocksAway[keyName] = 0;
+  // Remember the reference direction and measure in blocks
+  blocksAway[keyName] = Math.abs(cabPositionStart[x] - cabPositionCurrent[x]);
 
   // Reference as North/South
-  if (cabPositionStart[y] < cabPositionCurrent[y]) {
-    keyName = "South";
-  } else {
+  if (cabPositionStart[y] >= cabPositionCurrent[y]) {
     keyName = "North";
+  } else {
+    keyName = "South";
   }
-  // Remember the reference direction
-  blocksAway[keyName] = 0;
+  // Remember the reference direction and measure in blocks
+  blocksAway[keyName] = Math.abs(cabPositionStart[y] - cabPositionCurrent[y]);
 
   // Report blocks away
   return blocksAway;

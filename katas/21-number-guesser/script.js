@@ -16,7 +16,7 @@ const numberGuessingGame = (question, solution, recordedGuesses = [], gameOver =
   };
   if (typeof question === 'undefined' || question === '') question = 'Guess a number (1-100): '
   // If no solution was provided, generate a number between 1 and 100
-  if (typeof solution === 'undefined') solution = Math.floor(Math.random() * 100) + 1;;
+  if (typeof solution === 'undefined') solution = Math.floor(Math.random() * 100) + 1;
   
   // Required to allow reading input from the command line
   let prompt = require("prompt-sync")();

@@ -23,7 +23,7 @@
     }
     // Export the words that we've converted
     newString += words[word];
-  }
+  };
   return newString;
 };
 

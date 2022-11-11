@@ -7,15 +7,15 @@
  */
 const makeCase = function(input, cases) {
   const casePriority = []
-  casePriority.push("camel") 
-  casePriority.push("pascal") 
-  casePriority.push("snake") 
-  casePriority.push("kebab") 
-  casePriority.push("title")
-  casePriority.push("vowel")
-  casePriority.push("consonant")
-  casePriority.push("upper")
-  casePriority.push("lower")
+  casePriority.push("camel");
+  casePriority.push("pascal");
+  casePriority.push("snake");
+  casePriority.push("kebab");
+  casePriority.push("title");
+  casePriority.push("vowel");
+  casePriority.push("consonant");
+  casePriority.push("upper");
+  casePriority.push("lower");
 
   /**
    * Function that converts a string to a case format
@@ -68,7 +68,7 @@ const makeCase = function(input, cases) {
         break;
     };
     return input;
-  }
+  };
   
   // We don't want leading or trailing whitespace
   let newString = input.trim();
@@ -82,8 +82,8 @@ const makeCase = function(input, cases) {
       if (caseType === priority) {
         // Perform the case conversion
         newString = convertToCase(newString, caseType);
-      }
-    }
+      };
+    };
   };
 
   return newString;
@@ -94,8 +94,8 @@ const result = (output, expected) => {
     console.log(`\x1b[32mTEST PASSED\n\x1b[36mresult:\t\t${output}\n\x1b[0mexpected:\t${expected}\n----------`);
   } else {
     console.log(`\x1b[33mTEST FAILED\n\x1b[36mresult\t\t${output}\n\x1b[0mexpected:\t${expected}\n----------`);
-  }
-}
+  };
+};
 
 result(makeCase("this is a string", "camel"), "thisIsAString")
 result(makeCase("this is a string", "pascal"), "ThisIsAString")

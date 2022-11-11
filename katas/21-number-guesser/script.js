@@ -6,7 +6,11 @@
  */
 const randomNumber = (min, max) => Math.floor(Math.random() * max) + min;
 
-const numberGuessingGame = (question, solution, recordedGuesses = []) => {
+const numberGuessingGame = (question, solution, recordedGuesses = [], gameOver = false) => {
+  // If the game is over, return the result of gameplay
+  if (gameOver) {
+    return;
+  };
   if (typeof question === 'undefined') question = 'Guess a number (1-100): '
   if (typeof solution === 'undefined') solution = randomNumber(1, 100);
   

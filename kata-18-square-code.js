@@ -19,23 +19,23 @@ const squareCode = function(message) {
   // Add an appropriate number of empty rows for our encoded message
   for (let i = 1; i <= charactersPerRow; i++) {
     messageAcrossRows.push([]);
-  }
+  };
   // Populate the rows by filling them equally from top to bottom
   for (let i = 0; i < message.length; i+= charactersPerRow) {
     for (let y = 0; y < charactersPerRow; y ++) {
       messageAcrossRows[y].push(message[i + y]);
-    }
-  }
+    };
+  };
   // Extract the encoded message into a string
   for (const row in messageAcrossRows) {
     for (const character in messageAcrossRows[row]) {
       if (typeof messageAcrossRows[row][character] === "undefined") {
         continue;
-      }
+      };
       encodedMessage += messageAcrossRows[row][character];
-    }
+    };
     encodedMessage += ' ';
-  }
+  };
   // Trim trailing whitespace
   encodedMessage = encodedMessage.trim();
 
@@ -56,5 +56,5 @@ function result(output, expected) {
     console.log(`\n\x1b[32mTEST PASSED\n\x1b[36mresult:\n\x1b[0m`, output, `\n\x1b[36mexpected:\x1b[0m\n`, expected, `\n\n----------`);
   } else {
     console.log(`\n\x1b[33mTEST FAILED\n\x1b[36mresult:\n\x1b[0m`, output, `\n\x1b[36mexpected:\x1b[0m\n`, expected, `\n\n----------`);
-  }
-}
+  };
+};

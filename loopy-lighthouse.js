@@ -16,22 +16,28 @@ By print, we are referring to console.log.
 
 */
 
+
+const multipleOf = (multiple, number) => {
+  // ie: (3, 9) => true, while (4, 9) => false
+  return number % multiple == 0 ? true : false;
+};
+
+const evaluate = (logic, ...args) => {
+  return logic(...args);
+}
+
 // Print numbers from 100 to 200, inclusive.
 // If the number is a multiple of 3, print the string "Loopy" instead of the number.
 // If the number is a multiple of 4, print the string "Lighthouse" instead of the number.
 // If the number is a multiple of both 3 and 4, print the string "LoopyLighthouse" instead of the number.
 for (let i = 100; i <= 200; i++) {
-  switch (true) {
-  case ((i % 3 === 0) && (i % 4 === 0)): // A number that's a multiple of 3 and 4.
+  if (evaluate(multipleOf, 3, i) && evaluate(multipleOf, 4, i)) {
     console.log("LoopyLighthouse");
-    break;
-  case (i % 3 === 0): // A number that's a multiple of 3.
+  } else if (evaluate(multipleOf, 3, i)) {
     console.log("Loopy");
-    break;
-  case (i % 4 === 0): // A number that's a multiple of 4.
+  } else if (evaluate(multipleOf, 4, i)) {
     console.log("Lighthouse");
-    break;
-  default: // A number that's not a multiple of 3 or 4.
+  } else {
     console.log(i);
   }
 }

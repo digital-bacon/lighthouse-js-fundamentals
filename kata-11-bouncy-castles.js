@@ -24,23 +24,13 @@ const volumeCalculations = {
  * @returns {number} The total volume of the objects
  */
 const totalVolume = function (solids) {
-  let totalVolume = 0;
-  for (const solid of solids) {
-    // If this object doesn't have a `volume` property, add one
-    if (solid.hasOwnProperty(solid) === false) solid.volume = 0;
-    
-    // Calculate volume for this kind of solid and store it in '.volume'
-    const volume = (type) => {
-      if (type === 'sphere') return volumeCalculations[solid.type](solid.radius);
-      if (type === 'cone') return volumeCalculations[solid.type](solid.radius, solid.height);
-      if (type === 'prism')  return volumeCalculations[solid.type](solid.height, solid.width, solid.depth);
-    }
-    solid.volume = volume(solid.type);
-
-    // Add to the volume of this solid to the total volume
-    totalVolume += solid.volume;
-  };
-  return totalVolume;
+  let total = solids.reduce((subTotal, solid) => {
+    subTotal += solid.type === 'sphere' ? volumeCalculations[solid.type](solid.radius) : 0;
+    subTotal += solid.type === 'cone' ? volumeCalculations[solid.type](solid.radius, solid.height) : 0;
+    subTotal += solid.type === 'prism' ? volumeCalculations[solid.type](solid.height, solid.width, solid.depth) : 0;
+    return subTotal;
+  }, 0);
+  return total;
 };
 
 // Use the value below whenever you need the value of Pi
@@ -67,9 +57,6 @@ const duck = [
   smallSphere,
   cone
 ];
-
-
-//console.log(4186 < sphereVolume(10) && sphereVolume(10) < 4189);
 
 console.log(4186 < calculate(sphereVolume, 10) && calculate(sphereVolume, 10) < 4189);
 console.log(45 < calculate(coneVolume, 3, 5) && calculate(coneVolume, 3, 5) < 49);

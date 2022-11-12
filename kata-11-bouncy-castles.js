@@ -1,36 +1,21 @@
-/**
- * Function that calculates volume of a sphere, given radius
- * @param {number} radius The radius of the object
- * @returns {number} The volume of the object
- */
-const sphereVolume = function (radius) {
-  // Formula: V=4/3(πr3), or in JS: ((Math.PI * (radius * radius * radius) / 3) * 4)
-  return ((Math.PI * (radius * radius * radius) / 3) * 4);
-};
+const sphereVolume = (radius) => 
+ (Math.PI * (Math.pow(radius, 3)) / 3) * 4;
 
-/**
- * Function that calculates volume of a cone, given radius and height
- * @param {number} radius The radius of the object
- * @param {number} height The height of the object
- * @returns {number} The volume of the object
- */
-const coneVolume = function (radius, height) {
-  // Formula: V=1/3(πr2h), or in JS: (((Math.PI * (radius * radius)) * height) / 3)
-  return (((Math.PI * (radius * radius)) * height) / 3);
-};
+const coneVolume = (radius, height) => 
+ ((Math.PI * (Math.pow(radius, 2))) * height) / 3;
 
-/**
- * Function that calculates volume of a prism, given height, width, 
- * and depth
- * @param {number} height The height of the object
- * @param {number} width The width of the object
- * @param {number} depth The depth of the object
- * @returns {number} The volume of the object
- */
-const prismVolume = function (height, width, depth) {
-  // Formula: V=(wd)h, or in JS: ((width * depth) * height)
-  return ((width * depth) * height);
-};
+const prismVolume = (height, width, depth) => 
+  (width * depth) * height;
+
+const calculate = (logic, ...args) => {
+  return logic(...args);
+}
+
+const volumeCalculations = {
+  cone: (...args) => calculate(coneVolume, ...args),
+  prism: (...args) => calculate(prismVolume, ...args),
+  sphere: (...args) => calculate(sphereVolume, ...args),
+}
 
 /**
  * Function that calculates total volume of provided solids/shapes 
@@ -40,23 +25,18 @@ const prismVolume = function (height, width, depth) {
  */
 const totalVolume = function (solids) {
   let totalVolume = 0;
-  for (let solid of solids) {
+  for (const solid of solids) {
     // If this object doesn't have a `volume` property, add one
-    if (solid.hasOwnProperty(solid) === false) {
-      solid.volume = 0;
-    };
+    if (solid.hasOwnProperty(solid) === false) solid.volume = 0;
+    
     // Calculate volume for this kind of solid and store it in '.volume'
-    switch (solid.type) {
-      case 'sphere':
-        solid.volume = sphereVolume(solid.radius);
-        break;
-      case 'cone':
-        solid.volume = coneVolume(solid.radius, solid.height);
-        break;
-      case 'prism':
-        solid.volume = prismVolume(solid.height, solid.width, solid.depth);
-        break;
-    };
+    const volume = (type) => {
+      if (type === 'sphere') return volumeCalculations[solid.type](solid.radius);
+      if (type === 'cone') return volumeCalculations[solid.type](solid.radius, solid.height);
+      if (type === 'prism')  return volumeCalculations[solid.type](solid.height, solid.width, solid.depth);
+    }
+    solid.volume = volume(solid.type);
+
     // Add to the volume of this solid to the total volume
     totalVolume += solid.volume;
   };
@@ -89,7 +69,9 @@ const duck = [
 ];
 
 
-console.log(4186 < sphereVolume(10) && sphereVolume(10) < 4189);
-console.log(45 < coneVolume(3, 5) && coneVolume(3, 5) < 49);
-console.log(prismVolume(3, 4, 5) === 60);
-console.log(272000 < totalVolume(duck) && totalVolume(duck) < 275000);
+//console.log(4186 < sphereVolume(10) && sphereVolume(10) < 4189);
+
+console.log(4186 < calculate(sphereVolume, 10) && calculate(sphereVolume, 10) < 4189);
+console.log(45 < calculate(coneVolume, 3, 5) && calculate(coneVolume, 3, 5) < 49);
+console.log(calculate(prismVolume, 3, 4, 5) === 60);
+console.log(272000 < calculate(totalVolume, duck) && calculate(totalVolume, duck) < 275000);

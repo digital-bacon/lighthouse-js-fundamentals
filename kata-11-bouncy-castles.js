@@ -7,9 +7,7 @@ const coneVolume = (radius, height) =>
 const prismVolume = (height, width, depth) => 
   (width * depth) * height;
 
-const calculate = (logic, ...args) => {
-  return logic(...args);
-}
+const calculate = (logic, ...args) => logic(...args);
 
 const volumeCalculations = {
   cone: (...args) => calculate(coneVolume, ...args),
@@ -24,13 +22,12 @@ const volumeCalculations = {
  * @returns {number} The total volume of the objects
  */
 const totalVolume = function (solids) {
-  let total = solids.reduce((subTotal, solid) => {
-    subTotal += solid.type === 'sphere' ? volumeCalculations[solid.type](solid.radius) : 0;
+  return solids.reduce((subTotal, solid) => {
     subTotal += solid.type === 'cone' ? volumeCalculations[solid.type](solid.radius, solid.height) : 0;
     subTotal += solid.type === 'prism' ? volumeCalculations[solid.type](solid.height, solid.width, solid.depth) : 0;
+    subTotal += solid.type === 'sphere' ? volumeCalculations[solid.type](solid.radius) : 0;
     return subTotal;
   }, 0);
-  return total;
 };
 
 // Use the value below whenever you need the value of Pi

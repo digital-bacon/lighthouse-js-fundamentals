@@ -5,7 +5,7 @@
  */
 const sphereVolume = function (radius) {
   // Formula: V=4/3(πr3), or in JS: ((Math.PI * (radius * radius * radius) / 3) * 4)
-  return ((Math.PI * (radius * radius * radius) / 3) * 4);
+  return ((Math.PI * (Math.pow(radius, 3)) / 3) * 4);
 };
 
 /**
@@ -16,7 +16,7 @@ const sphereVolume = function (radius) {
  */
 const coneVolume = function (radius, height) {
   // Formula: V=1/3(πr2h), or in JS: (((Math.PI * (radius * radius)) * height) / 3)
-  return (((Math.PI * (radius * radius)) * height) / 3);
+  return (((Math.PI * (Math.pow(radius, 2))) * height) / 3);
 };
 
 /**

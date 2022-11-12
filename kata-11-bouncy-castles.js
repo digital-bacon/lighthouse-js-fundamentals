@@ -10,9 +10,9 @@ const prismVolume = (height, width, depth) =>
 const calculate = (logic, ...args) => logic(...args);
 
 const volumeCalculations = {
-  cone: (...args) => calculate(coneVolume, ...args),
-  prism: (...args) => calculate(prismVolume, ...args),
-  sphere: (...args) => calculate(sphereVolume, ...args),
+  cone: (...args) => calculate(coneVolume, ...args), // ...args: radius, height
+  prism: (...args) => calculate(prismVolume, ...args), // ...args: height, width, depth
+  sphere: (...args) => calculate(sphereVolume, ...args), // ...args: radius
 }
 
 /**

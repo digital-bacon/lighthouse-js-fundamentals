@@ -30,9 +30,6 @@ const totalVolume = function (solids) {
   }, 0);
 };
 
-// Use the value below whenever you need the value of Pi
-const PI = 3.14159 ;
-
 const largeSphere = {
   type: 'sphere',
   radius: 40

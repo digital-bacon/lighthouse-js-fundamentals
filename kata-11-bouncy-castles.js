@@ -9,12 +9,6 @@ const prismVolume = (height, width, depth) =>
 
 const calculate = (logic, ...args) => logic(...args);
 
-const volumeCalculations = {
-  cone: (...args) => calculate(coneVolume, ...args), // ...args: radius, height
-  prism: (...args) => calculate(prismVolume, ...args), // ...args: height, width, depth
-  sphere: (...args) => calculate(sphereVolume, ...args), // ...args: radius
-}
-
 /**
  * Function that calculates total volume of provided solids/shapes 
  * as objects
@@ -23,9 +17,9 @@ const volumeCalculations = {
  */
 const totalVolume = function (solids) {
   return solids.reduce((subTotal, solid) => {
-    subTotal += solid.type === 'cone' ? volumeCalculations[solid.type](solid.radius, solid.height) : 0;
-    subTotal += solid.type === 'prism' ? volumeCalculations[solid.type](solid.height, solid.width, solid.depth) : 0;
-    subTotal += solid.type === 'sphere' ? volumeCalculations[solid.type](solid.radius) : 0;
+    if (solid.type === 'cone') subTotal += calculate(coneVolume, solid.radius, solid.height);
+    if (solid.type === 'prism') subTotal += calculate(prismVolume, solid.height, solid.width, solid.depth);
+    if (solid.type === 'sphere') subTotal += calculate(sphereVolume, solid.radius);
     return subTotal;
   }, 0);
 };

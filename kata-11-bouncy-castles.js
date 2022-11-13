@@ -1,13 +1,12 @@
-const sphereVolume = (radius) => 
- (Math.PI * (Math.pow(radius, 3)) / 3) * 4;
-
-const coneVolume = (radius, height) => 
- ((Math.PI * (Math.pow(radius, 2))) * height) / 3;
-
-const prismVolume = (height, width, depth) => 
-  (width * depth) * height;
-
 const calculate = (logic, ...args) => logic(...args);
+
+const volumeFormulas = {
+  sphere: (radius) => (Math.PI * (Math.pow(radius, 3)) / 3) * 4,
+  cone: (radius, height) => ((Math.PI * (Math.pow(radius, 2))) * height) / 3,
+  prism: (height, width, depth) => (width * depth) * height,
+}
+
+const calculateVolume = (solidType, ...args) => (calculate(volumeFormulas[solidType], ...args))
 
 /**
  * Function that calculates total volume of provided solids/shapes 
@@ -15,11 +14,11 @@ const calculate = (logic, ...args) => logic(...args);
  * @param {Array<object>} solids Array collection of shape objects
  * @returns {number} The total volume of the objects
  */
-const totalVolume = function (solids) {
+const totalVolume = (solids) => {
   return solids.reduce((subTotal, solid) => {
-    if (solid.type === 'cone') subTotal += calculate(coneVolume, solid.radius, solid.height);
-    if (solid.type === 'prism') subTotal += calculate(prismVolume, solid.height, solid.width, solid.depth);
-    if (solid.type === 'sphere') subTotal += calculate(sphereVolume, solid.radius);
+    if (solid.type === 'cone') subTotal += calculateVolume(solid.type, solid.radius, solid.height);
+    if (solid.type === 'prism') subTotal += calculateVolume(solid.type, solid.height, solid.width, solid.depth);
+    if (solid.type === 'sphere') subTotal += calculateVolume(solid.type, solid.radius);
     return subTotal;
   }, 0);
 };
@@ -46,7 +45,7 @@ const duck = [
   cone
 ];
 
-console.log(4186 < calculate(sphereVolume, 10) && calculate(sphereVolume, 10) < 4189);
-console.log(45 < calculate(coneVolume, 3, 5) && calculate(coneVolume, 3, 5) < 49);
-console.log(calculate(prismVolume, 3, 4, 5) === 60);
-console.log(272000 < calculate(totalVolume, duck) && calculate(totalVolume, duck) < 275000);
+console.log(4186 < calculateVolume('sphere', 10) && calculateVolume('sphere', 10) < 4189);
+console.log(45 < calculateVolume('cone', 3, 5) && calculateVolume('cone', 3, 5) < 49);
+console.log(calculateVolume('prism', 3, 4, 5) === 60);
+console.log(272000 < totalVolume(duck) && totalVolume(duck) < 275000);

@@ -86,19 +86,19 @@ const result = (output, expected) => {
 // console.table(array);
 
 
-// Try throw and catch!
-function getRectArea(width, height) {
-  if (isNaN(width) || isNaN(height)) {
-    throw 'Parameter is not a number!';
-  }
-}
+// // Try throw and catch!
+// function getRectArea(width, height) {
+//   if (isNaN(width) || isNaN(height)) {
+//     throw 'Parameter is not a number!';
+//   }
+// }
 
-try {
-  getRectArea(3, 'A');
-} catch (e) {
-  console.error(e);
-  // expected output: "Parameter is not a number!"
-}
+// try {
+//   getRectArea(3, 'A');
+// } catch (e) {
+//   console.error(e);
+//   // expected output: "Parameter is not a number!"
+// }
 
 
 
@@ -107,7 +107,7 @@ const randomNumber = (min, max) => Math.floor(Math.random() * max) + min;
 const randomIndexFrom = (array) => randomNumber(0, array.length);
 
 const moveToLastIndex = (indexOfItem, array) => {
-  array = array.push(...array.splice(indexOfItem, 1)); // Move to the end of the array
+  array.push(...array.splice(indexOfItem, 1)); // Move to the end of the array
   return array;
 }
 

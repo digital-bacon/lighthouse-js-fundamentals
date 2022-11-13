@@ -99,3 +99,12 @@ try {
   console.error(e);
   // expected output: "Parameter is not a number!"
 }
+
+
+
+const randomNumber = (min, max) => Math.floor(Math.random() * max) + min;
+
+const randomIndexFrom = (array) => randomNumber(0, array.length);
+const candidates = ['b', 'd', 'f', 'k', 'm', 'n'];
+
+console.log(randomIndexFrom(candidates));

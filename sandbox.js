@@ -105,6 +105,13 @@ try {
 const randomNumber = (min, max) => Math.floor(Math.random() * max) + min;
 
 const randomIndexFrom = (array) => randomNumber(0, array.length);
-const candidates = ['b', 'd', 'f', 'k', 'm', 'n'];
 
-console.log(randomIndexFrom(candidates));
+const moveToLastIndex = (indexOfItem, array) => {
+  array = array.push(...array.splice(indexOfItem, 1)); // Move to the end of the array
+  return array;
+}
+
+let candidates = ['b', 'd', 'f', 'k', 'm', 'n'];
+
+// console.log(randomIndexFrom(candidates));
+console.log(moveToLastIndex(2, candidates))

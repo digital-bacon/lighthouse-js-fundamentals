@@ -10,7 +10,7 @@ const organizeInstructors = function(instructors) {
   const sorted = {};
   for (const instructor of instructors) {
     // Does this course already exist in the sorted collection?
-    if (sorted.hasOwnProperty(instructor.course) === false) {
+    if ('course' in sorted === false) {
       sorted[instructor.course] = []; // Add the course
     };
     // List this instructor among this course's instructors

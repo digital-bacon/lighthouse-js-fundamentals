@@ -16,21 +16,6 @@ const checkAir = function (samples, threshold) {
   return percentageCleanSamples > threshold ? 'Polluted' : 'Clean';
 };
 
-console.log(checkAir(
-  ['clean', 'clean', 'dirty', 'clean', 'dirty', 'clean', 'clean', 'dirty', 'clean', 'dirty'],
-  0.3
-), '?=', 'Polluted' );
-
-console.log(checkAir(
-  ['dirty', 'dirty', 'dirty', 'dirty', 'clean'],
-  0.25
-), '?=', 'Polluted');
-
-console.log(checkAir(
-  ['clean', 'dirty', 'clean', 'dirty', 'clean', 'dirty', 'clean'],
-  0.9
-), '?=', 'Clean')
-
 /**
    * Function that searches an array or string for an item and returns total matches
    * @param {string | Array} searchIn The string or array to search for the item
@@ -59,6 +44,7 @@ function countMatches(searchIn, findText, total = 0) {
  */
 function findIndexOf(searchIn, itemToFind) {
   let index = -1; // returns -1 if substring not found
+  loopArray:
   for (let i = 0; i < searchIn.length; i++) {
     if (typeof searchIn === 'string') {
       // Find a match to the first letter of @itemToFind
@@ -68,12 +54,12 @@ function findIndexOf(searchIn, itemToFind) {
         // Check if the text ahead matches @itemToFind
         if (lookAhead === itemToFind) {
           index = i;
-          break;
+          break loopArray;
         };
       };
     } else if (searchIn[i] === itemToFind) {
         index = i;
-        break;
+        break loopArray;
     };
   };
   return index;
@@ -103,4 +89,78 @@ function slice(from, start, end) {
       };
   };
   return output;
+};
+
+// Test case 01
+result(
+  parseResult(
+    deepEqual(
+      checkAir(
+        ['clean', 'clean', 'dirty', 'clean', 'dirty', 'clean', 'clean', 'dirty', 'clean', 'dirty'],
+        0.3
+      ), `Polluted` // expected output
+    ), true, `Polluted` // expected output, literal form
+  ), `Polluted` // expected output, literal form
+);
+
+// Test case 02
+result(
+  parseResult(
+    deepEqual(
+      checkAir(
+        ['dirty', 'dirty', 'dirty', 'dirty', 'clean'],
+        0.25
+      ), `Clean` // expected output
+    ), true, `Clean` // expected output, literal form
+  ), `Clean` // expected output, literal form
+);
+
+// Test case 03
+result(
+  parseResult(
+    deepEqual(
+      checkAir(
+        ['clean', 'dirty', 'clean', 'dirty', 'clean', 'dirty', 'clean'],
+        0.9
+      ), `Clean` // expected output
+    ), true, `Clean` // expected output, literal form
+  ), `Clean` // expected output, literal form
+);
+
+// TEST CASE DEPENDENCIES:
+
+function result(output, expected) {
+  if (output === expected) {
+    console.log(`\n\x1b[32mTEST PASSED\n\x1b[36mresult:\n\x1b[0m`, output, `\n\x1b[36mexpected:\x1b[0m\n`, expected, `\n\n----------`);
+  } else {
+    console.log(`\n\x1b[33mTEST FAILED\n\x1b[36mresult:\n\x1b[0m`, output, `\n\x1b[36mexpected:\x1b[0m\n`, expected, `\n\n----------`);
+  };
+};
+
+function parseResult(result, expectation, output) {
+  if (result === expectation) return output;
+};
+
+function deepEqual(object1, object2) {
+  const keys1 = Object.keys(object1);
+  const keys2 = Object.keys(object2);
+  if (keys1.length !== keys2.length) {
+    return false;
+  };
+  for (const key of keys1) {
+    const val1 = object1[key];
+    const val2 = object2[key];
+    const areObjects = isObject(val1) && isObject(val2);
+    if (
+      areObjects && !deepEqual(val1, val2) ||
+      !areObjects && val1 !== val2
+    ) {
+      return false;
+    };
+  };
+  return true;
+};
+
+function isObject(object) {
+  return object != null && typeof object === 'object';
 };

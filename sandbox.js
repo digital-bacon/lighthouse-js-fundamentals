@@ -102,6 +102,10 @@ const result = (output, expected) => {
 
 
 
+// console.log(randomIndexFrom(array));
+// console.log(moveToLastIndex(2, array))
+
+
 const randomNumber = (min, max) => Math.floor(Math.random() * max) + min;
 
 const randomIndexFrom = (array) => randomNumber(0, array.length);
@@ -111,7 +115,44 @@ const moveToLastIndex = (indexOfItem, array) => {
   return array;
 }
 
-let candidates = ['b', 'd', 'f', 'k', 'm', 'n'];
+/**
+ * Function that randomly selects array elements and moves them to the 
+ * end of the array, while never picking the same element more than 
+ * once
+ * @param {Array} array - The array on which to work
+ * @param {Number} [count] - The number of elements to move to last. 
+ * When omitted, the entire array will be randomized
+ * @returns {Number} Final index of the first of the moved elements, 
+ * which is useful if `count` is less than the array length
+ */
+const randomizeArray = (array, count) => {
 
-// console.log(randomIndexFrom(candidates));
-console.log(moveToLastIndex(2, candidates))
+  // Ensure the array has more than 1 item
+  if (array.length === 1) return 0;
+
+  // If no count argument was provided, assign a default
+  if (typeof count === 'undefined') {
+    count = array.length;
+  // Ensure the count argument isn't larger than the array length
+  } else if (count > array.length) {
+    count = array.length;
+  }
+
+  console.log(`${array} intial`)
+  // Move random elements to the end of the array until count is reached
+  for (let i = 0; i < count; i++) {
+    // If this is the first iteration, don't pick the last element
+    const indexMax = i > 0 ? array.length - i : (array.length - 1) - i;
+    const randomIndex = Math.floor(Math.random() * (indexMax) + 0);
+    array.push(...array.splice(randomIndex, 1));
+    console.log(`${array} index: ${randomIndex} moved to end count: ${i} `);
+  }
+
+  // Return the final position of the first item that was moved
+  return (array.length - count);
+}
+
+let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(`${array} before`)
+console.log(`array item with index: ${randomizeArray(array, 5)} denotes the start of the randomized elements`)
+console.log(`${array} after`);
